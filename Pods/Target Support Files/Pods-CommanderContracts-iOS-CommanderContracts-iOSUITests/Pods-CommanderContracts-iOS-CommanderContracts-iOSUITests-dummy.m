@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests : NSObject
+@end
+@implementation PodsDummy_Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests
+@end
