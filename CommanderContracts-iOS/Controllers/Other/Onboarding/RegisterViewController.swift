@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var companyEmailAddressTextField: UITextField!
     @IBOutlet weak var companyPasswordTextField: UITextField!
     @IBOutlet weak var companyConfirmPasswordTextField: UITextField!
+    @IBOutlet weak var termsAndPrivacyContainer: UIView!
     
     @IBOutlet weak var registerBtn: UIButton!
     struct Constants {
@@ -39,6 +40,7 @@ class RegisterViewController: UIViewController {
         companyConfirmPasswordTextField.delegate = self
         
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+        termsAndPrivacyContainer.backgroundColor = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
         
         setUpView()
@@ -63,11 +65,27 @@ class RegisterViewController: UIViewController {
         
     }
     
+   
     
+    
+    
+    @IBAction func backToLoginVC(_ sender: Any) {
+        
+        Utilities.vibrate()
+        
+        
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let historyBookModalVC = storyboard.instantiateViewController(withIdentifier: "LoginID") as? LoginViewController
+        historyBookModalVC?.modalPresentationStyle = .fullScreen
+        present(historyBookModalVC!, animated: true, completion: nil)
+    }
     
     
     
     @IBAction func backBtnTapped(_ sender: Any) {
+        Utilities.vibrate()
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -85,10 +103,10 @@ class RegisterViewController: UIViewController {
         companyNameTextField.autocapitalizationType = .none
         companyNameTextField.autocorrectionType = .no
         companyNameTextField.layer.masksToBounds = true
-        companyNameTextField.backgroundColor = .secondarySystemBackground
+        companyNameTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         companyNameTextField.layer.cornerRadius = Constants.cornerRadius
-        companyNameTextField.layer.borderWidth = 1.0
-        companyNameTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        companyNameTextField.layer.borderWidth = 2.0
+        companyNameTextField.layer.borderColor = UIColor.white.cgColor
         
         
         
@@ -99,10 +117,10 @@ class RegisterViewController: UIViewController {
         companyAddressTextField.autocapitalizationType = .none
         companyAddressTextField.autocorrectionType = .no
         companyAddressTextField.layer.masksToBounds = true
-        companyAddressTextField.backgroundColor = .secondarySystemBackground
+        companyAddressTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         companyAddressTextField.layer.cornerRadius = Constants.cornerRadius
-        companyAddressTextField.layer.borderWidth = 1.0
-        companyAddressTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        companyAddressTextField.layer.borderWidth = 2.0
+        companyAddressTextField.layer.borderColor = UIColor.white.cgColor
         
         
         
@@ -113,10 +131,10 @@ class RegisterViewController: UIViewController {
         companyPhoneNumberTextField.autocapitalizationType = .none
         companyPhoneNumberTextField.autocorrectionType = .no
         companyPhoneNumberTextField.layer.masksToBounds = true
-        companyPhoneNumberTextField.backgroundColor = .secondarySystemBackground
+        companyPhoneNumberTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         companyPhoneNumberTextField.layer.cornerRadius = Constants.cornerRadius
-        companyPhoneNumberTextField.layer.borderWidth = 1.0
-        companyPhoneNumberTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        companyPhoneNumberTextField.layer.borderWidth = 2.0
+        companyPhoneNumberTextField.layer.borderColor = UIColor.white.cgColor
         
         
         
@@ -127,10 +145,10 @@ class RegisterViewController: UIViewController {
         companyEmailAddressTextField.autocapitalizationType = .none
         companyEmailAddressTextField.autocorrectionType = .no
         companyEmailAddressTextField.layer.masksToBounds = true
-        companyEmailAddressTextField.backgroundColor = .secondarySystemBackground
+        companyEmailAddressTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         companyEmailAddressTextField.layer.cornerRadius = Constants.cornerRadius
-        companyEmailAddressTextField.layer.borderWidth = 1.0
-        companyEmailAddressTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        companyEmailAddressTextField.layer.borderWidth = 2.0
+        companyEmailAddressTextField.layer.borderColor = UIColor.white.cgColor
         
         
         
@@ -140,10 +158,10 @@ class RegisterViewController: UIViewController {
         companyPasswordTextField.autocapitalizationType = .none
         companyPasswordTextField.autocorrectionType = .no
         companyPasswordTextField.layer.masksToBounds = true
-        companyPasswordTextField.backgroundColor = .secondarySystemBackground
+        companyPasswordTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         companyPasswordTextField.layer.cornerRadius = Constants.cornerRadius
-        companyPasswordTextField.layer.borderWidth = 1.0
-        companyPasswordTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        companyPasswordTextField.layer.borderWidth = 2.0
+        companyPasswordTextField.layer.borderColor = UIColor.white.cgColor
         
         
         companyConfirmPasswordTextField.returnKeyType = .continue
@@ -152,10 +170,10 @@ class RegisterViewController: UIViewController {
         companyConfirmPasswordTextField.autocapitalizationType = .none
         companyConfirmPasswordTextField.autocorrectionType = .no
         companyConfirmPasswordTextField.layer.masksToBounds = true
-        companyConfirmPasswordTextField.backgroundColor = .secondarySystemBackground
+        companyConfirmPasswordTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         companyConfirmPasswordTextField.layer.cornerRadius = Constants.cornerRadius
-        companyConfirmPasswordTextField.layer.borderWidth = 1.0
-        companyConfirmPasswordTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        companyConfirmPasswordTextField.layer.borderWidth = 2.0
+        companyConfirmPasswordTextField.layer.borderColor = UIColor.white.cgColor
         
         
         

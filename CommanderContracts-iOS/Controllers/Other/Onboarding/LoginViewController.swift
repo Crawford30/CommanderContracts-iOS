@@ -56,12 +56,22 @@ class LoginViewController: UIViewController {
     
     @IBAction func goToSignUpTapped(_ sender: Any) {
         
+        Utilities.vibrate()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let historyBookModalVC = storyboard.instantiateViewController(withIdentifier: "RegisterID") as? RegisterViewController
         historyBookModalVC?.modalPresentationStyle = .fullScreen
         present(historyBookModalVC!, animated: true, completion: nil)
         
         
+    }
+    
+    
+    @IBAction func backBtnTapped(_ sender: Any) {
+        
+        Utilities.vibrate()
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -77,10 +87,12 @@ class LoginViewController: UIViewController {
         emailTextField.autocapitalizationType = .none
         emailTextField.autocorrectionType = .no
         emailTextField.layer.masksToBounds = true
-        emailTextField.backgroundColor = .secondarySystemBackground
+        emailTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            
+            //.secondarySystemBackground
         emailTextField.layer.cornerRadius = Constants.cornerRadius
-        emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        emailTextField.layer.borderWidth = 2.0
+        emailTextField.layer.borderColor = UIColor.white.cgColor
         
         
         
@@ -91,10 +103,13 @@ class LoginViewController: UIViewController {
         passwordTextField.autocapitalizationType = .none
         passwordTextField.autocorrectionType = .no
         passwordTextField.layer.masksToBounds = true
-        passwordTextField.backgroundColor = .secondarySystemBackground
+        passwordTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+            //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            
+            //.secondarySystemBackground
         passwordTextField.layer.cornerRadius = Constants.cornerRadius
-        passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.borderColor = UIColor.secondaryLabel.cgColor
+        passwordTextField.layer.borderWidth = 2.0
+        passwordTextField.layer.borderColor = UIColor.white.cgColor
         
         
     }
