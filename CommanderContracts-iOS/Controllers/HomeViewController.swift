@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func signOutBtn(_ sender: Any) {
+        Utilities.vibrate()
         
         do {
             try Auth.auth().signOut()

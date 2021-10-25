@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-        // forgotPasswordLabel.font = forgotPasswordLabel.font.italic
+         forgotPasswordLabel.font = forgotPasswordLabel.font.italic
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
