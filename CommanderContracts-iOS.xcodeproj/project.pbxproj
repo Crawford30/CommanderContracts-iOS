@@ -24,6 +24,7 @@
 		EE50B9B2271DB8190073B197 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9B1271DB8190073B197 /* AuthManager.swift */; };
 		EE50B9B7271DB89D0073B197 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9B6271DB89D0073B197 /* StorageManager.swift */; };
 		EE50B9BC271DB8E70073B197 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9BB271DB8E70073B197 /* DatabaseManager.swift */; };
+		EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE846219272703590022E493 /* ResetPasswordViewController.swift */; };
 		EE96DCDB27235FA000D20A2F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCDA27235FA000D20A2F /* Utilities.swift */; };
 		EE96DCE3272361EE00D20A2F /* TogglePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCE2272361EE00D20A2F /* TogglePassword.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		EE50B9B1271DB8190073B197 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		EE50B9B6271DB89D0073B197 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		EE50B9BB271DB8E70073B197 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		EE846219272703590022E493 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		EE96DCDA27235FA000D20A2F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EE96DCE2272361EE00D20A2F /* TogglePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePassword.swift; sourceTree = "<group>"; };
 		FFD6DD5E25D8D1F2AC4B452B /* Pods_CommanderContracts_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommanderContracts_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +247,7 @@
 			children = (
 				EE50B9A2271DB6CA0073B197 /* LoginViewController.swift */,
 				EE50B9A7271DB7010073B197 /* RegisterViewController.swift */,
+				EE846219272703590022E493 /* ResetPasswordViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				EE50B9A3271DB6CA0073B197 /* LoginViewController.swift in Sources */,
 				EE50B9B2271DB8190073B197 /* AuthManager.swift in Sources */,
 				EE50B9AD271DB7510073B197 /* Extensions.swift in Sources */,
+				EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */,
 				EE50B9A8271DB7010073B197 /* RegisterViewController.swift in Sources */,
 				EE341D05271AF75F00832A96 /* ViewController.swift in Sources */,
 				EE341D01271AF75F00832A96 /* AppDelegate.swift in Sources */,

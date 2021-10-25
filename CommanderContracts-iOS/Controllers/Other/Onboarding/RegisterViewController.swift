@@ -44,23 +44,8 @@ class RegisterViewController: UIViewController {
         
         
         setUpView()
-        // Do any additional setup after loading the view.
         
-        //        registerButton.addTarget(self, action: #selector(didTapRegisterButton), for: .touchUpInside)
-        //        emailField.delegate = self
-        //        usernameField.delegate = self
-        //        passwordField.delegate = self
-        //
-        //        view.addSubview(usernameField)
-        //        view.addSubview(emailField)
-        //        view.addSubview(passwordField)
-        //        view.addSubview(registerButton)
-        
-        
-        
-        
-        
-        
+
         
         
     }
@@ -72,10 +57,6 @@ class RegisterViewController: UIViewController {
     @IBAction func backToLoginVC(_ sender: Any) {
         
         Utilities.vibrate()
-        
-        
-        
-        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let historyBookModalVC = storyboard.instantiateViewController(withIdentifier: "LoginID") as? LoginViewController
         historyBookModalVC?.modalPresentationStyle = .fullScreen
@@ -86,16 +67,12 @@ class RegisterViewController: UIViewController {
     
     @IBAction func backBtnTapped(_ sender: Any) {
         Utilities.vibrate()
-        
         self.dismiss(animated: true, completion: nil)
     }
     
     func setUpView(){
-        
-        
+
         registerBtn.layer.cornerRadius = Constants.cornerRadius
-        
-        
         
         companyNameTextField.returnKeyType = .continue
         companyNameTextField.leftViewMode = .always
@@ -108,8 +85,7 @@ class RegisterViewController: UIViewController {
         companyNameTextField.layer.borderWidth = 2.0
         companyNameTextField.layer.borderColor = UIColor.white.cgColor
         
-        
-        
+     
         
         companyAddressTextField.returnKeyType = .continue
         companyAddressTextField.leftViewMode = .always
@@ -122,8 +98,7 @@ class RegisterViewController: UIViewController {
         companyAddressTextField.layer.borderWidth = 2.0
         companyAddressTextField.layer.borderColor = UIColor.white.cgColor
         
-        
-        
+      
         
         companyPhoneNumberTextField.returnKeyType = .continue
         companyPhoneNumberTextField.leftViewMode = .always
@@ -136,8 +111,7 @@ class RegisterViewController: UIViewController {
         companyPhoneNumberTextField.layer.borderWidth = 2.0
         companyPhoneNumberTextField.layer.borderColor = UIColor.white.cgColor
         
-        
-        
+ 
         
         companyEmailAddressTextField.returnKeyType = .continue
         companyEmailAddressTextField.leftViewMode = .always

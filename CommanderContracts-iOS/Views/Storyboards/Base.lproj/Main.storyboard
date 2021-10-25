@@ -22,7 +22,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1924" y="-69"/>
+            <point key="canvasLocation" x="1791" y="-140"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Ess-uP-MT6">
@@ -207,6 +207,76 @@
             </objects>
             <point key="canvasLocation" x="386.25" y="-140.49295774647888"/>
         </scene>
+        <!--Reset Password View Controller-->
+        <scene sceneID="LmX-o6-oYI">
+            <objects>
+                <viewController storyboardIdentifier="ResetPasswordID" id="YAK-Zg-pEB" customClass="ResetPasswordViewController" customModule="CommanderContracts_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rD2-1D-zga">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnG-NS-i0w">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" systemColor="opaqueSeparatorColor"/>
+                                <items>
+                                    <navigationItem title="RESET PASSWORD" id="wN7-Ao-iUR">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="Ob9-vU-yvc">
+                                            <color key="tintColor" systemColor="labelColor"/>
+                                            <connections>
+                                                <action selector="backBtnTapped:" destination="YAK-Zg-pEB" id="0Yi-Jj-MVI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Nhf-sn-JnO">
+                                <rect key="frame" x="20" y="74" width="280" height="108"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUg-jE-TWm" customClass="TogglePassword" customModule="CommanderContracts_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="LEQ-24-oj6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5v-ho-Aqv">
+                                        <rect key="frame" x="0.0" y="58" width="280" height="50"/>
+                                        <color key="backgroundColor" name="AccentColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="e9V-yY-ynr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="RESET PASSWORD">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="forgotPasswordBtnAction:" destination="YAK-Zg-pEB" eventType="touchUpInside" id="sRZ-4h-tbr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sdX-fW-2bd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="NnG-NS-i0w" firstAttribute="trailing" secondItem="sdX-fW-2bd" secondAttribute="trailing" id="0Qi-ke-ft2"/>
+                            <constraint firstItem="Nhf-sn-JnO" firstAttribute="top" secondItem="NnG-NS-i0w" secondAttribute="bottom" constant="30" id="B4L-3h-NBe"/>
+                            <constraint firstItem="Nhf-sn-JnO" firstAttribute="leading" secondItem="sdX-fW-2bd" secondAttribute="leading" constant="20" id="SZW-JG-xSi"/>
+                            <constraint firstItem="NnG-NS-i0w" firstAttribute="top" secondItem="sdX-fW-2bd" secondAttribute="top" id="YdM-7R-mEU"/>
+                            <constraint firstItem="NnG-NS-i0w" firstAttribute="leading" secondItem="sdX-fW-2bd" secondAttribute="leading" id="k2O-tr-1gr"/>
+                            <constraint firstItem="sdX-fW-2bd" firstAttribute="trailing" secondItem="Nhf-sn-JnO" secondAttribute="trailing" constant="20" id="uVo-dn-61f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="forgotPasswordBtn" destination="l5v-ho-Aqv" id="BMv-aW-gcH"/>
+                        <outlet property="forgotPasswordTextField" destination="eUg-jE-TWm" id="gyz-yq-UcX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ozd-6F-fAf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1058" y="-140"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="zKv-bT-KrK">
             <objects>
@@ -236,12 +306,16 @@
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eox-rk-Whr">
                                         <rect key="frame" x="0.0" y="116" width="280" height="40"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="coh-vo-UGr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="vNq-yG-csL" appends="YES" id="85I-ei-hB6"/>
+                                        </connections>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccb-yy-vtM">
                                         <rect key="frame" x="0.0" y="164" width="280" height="50"/>
@@ -263,14 +337,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <color key="barTintColor" systemColor="opaqueSeparatorColor"/>
                                 <items>
-                                    <navigationItem title="LOGIN" id="akN-aT-vk9">
-                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="rNh-no-L6w">
-                                            <color key="tintColor" systemColor="labelColor"/>
-                                            <connections>
-                                                <action selector="backBtnTapped:" destination="xt5-8V-nig" id="oFd-Tb-dqa"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="LOGIN" id="akN-aT-vk9"/>
                                 </items>
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="sey-iM-Khu">
@@ -291,6 +358,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.4226532201" green="0.25813929079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Vcj-rO-Ied" appends="YES" id="R6T-HM-rvK"/>
+                                        </connections>
                                     </label>
                                 </subviews>
                                 <constraints>
@@ -356,6 +426,16 @@
                 <tapGestureRecognizer id="yy9-8V-wUh">
                     <connections>
                         <action selector="goToSignUpTapped:" destination="xt5-8V-nig" id="h97-FJ-tT7"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="vNq-yG-csL">
+                    <connections>
+                        <action selector="forgotPasswordVC:" destination="xt5-8V-nig" id="Drc-h1-PQD"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Vcj-rO-Ied">
+                    <connections>
+                        <action selector="resendVerificationTapped:" destination="xt5-8V-nig" id="8Lt-ER-akh"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

@@ -17,30 +17,32 @@ class LoginViewController: UIViewController {
     //    @IBOutlet weak var genericView: UIView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var navBar: UINavigationBar!
+    
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         
     }
     
     
-    
-    
-    
-    
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        forgotPasswordLabel.font = forgotPasswordLabel.font.italic
+        self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-     
+        forgotPasswordLabel.font = forgotPasswordLabel.font.italic
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
         
         signUpLabel.isUserInteractionEnabled = true
+        
+        forgotPasswordLabel.isUserInteractionEnabled = true
+        
+        resendCodeLabel.isUserInteractionEnabled = true
+        
+        
         
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         //navBar.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
@@ -49,8 +51,7 @@ class LoginViewController: UIViewController {
         
         setUpView()
         
-        
-        
+
         
     }
     
@@ -65,21 +66,33 @@ class LoginViewController: UIViewController {
         
         
     }
-    
-    
-    @IBAction func backBtnTapped(_ sender: Any) {
+    @IBAction func forgotPasswordVC(_ sender: Any) {
         
         Utilities.vibrate()
         
-        self.dismiss(animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let historyBookModalVC = storyboard.instantiateViewController(withIdentifier: "ResetPasswordID") as? ResetPasswordViewController
+        historyBookModalVC?.modalPresentationStyle = .fullScreen
+        present(historyBookModalVC!, animated: true, completion: nil)
+        
     }
+    
+    @IBAction func resendVerificationTapped(_ sender: Any) {
+        
+        Utilities.vibrate()
+    }
+    
+    
+    
+    
+    
+    
+  
     
     
     
     func setUpView(){
         loginBtn.layer.cornerRadius = Constants.cornerRadius
-        
-        
         
         emailTextField.returnKeyType = .continue
         emailTextField.leftViewMode = .always
@@ -117,6 +130,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginBtnAction(_ sender: Any) {
+        Utilities.vibrate()
     }
     
     
