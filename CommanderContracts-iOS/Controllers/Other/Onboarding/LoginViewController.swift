@@ -24,13 +24,13 @@ class LoginViewController: UIViewController {
     }
     
     
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-        forgotPasswordLabel.font = forgotPasswordLabel.font.italic
+        // forgotPasswordLabel.font = forgotPasswordLabel.font.italic
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -51,7 +51,7 @@ class LoginViewController: UIViewController {
         
         setUpView()
         
-
+        
         
     }
     
@@ -82,12 +82,12 @@ class LoginViewController: UIViewController {
         Utilities.vibrate()
     }
     
+   
     
     
     
     
     
-  
     
     
     
@@ -101,8 +101,8 @@ class LoginViewController: UIViewController {
         emailTextField.autocorrectionType = .no
         emailTextField.layer.masksToBounds = true
         emailTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            
-            //.secondarySystemBackground
+        
+        //.secondarySystemBackground
         emailTextField.layer.cornerRadius = Constants.cornerRadius
         emailTextField.layer.borderWidth = 2.0
         emailTextField.layer.borderColor = UIColor.white.cgColor
@@ -117,9 +117,9 @@ class LoginViewController: UIViewController {
         passwordTextField.autocorrectionType = .no
         passwordTextField.layer.masksToBounds = true
         passwordTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-            //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
-            
-            //.secondarySystemBackground
+        //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+        
+        //.secondarySystemBackground
         passwordTextField.layer.cornerRadius = Constants.cornerRadius
         passwordTextField.layer.borderWidth = 2.0
         passwordTextField.layer.borderColor = UIColor.white.cgColor
@@ -131,6 +131,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginBtnAction(_ sender: Any) {
         Utilities.vibrate()
+        
+        didTapLogginButton()
     }
     
     
@@ -141,6 +143,64 @@ class LoginViewController: UIViewController {
         
         
     }
+    
+    
+    
+    
+    private func didTapLogginButton() {
+        print("Login Button tapped!")
+        //When Logged in btn is tapped,,dismiss the Keyboard
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        
+        //check we have text
+        guard let userEmail = emailTextField.text, !userEmail.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty, password.count >= 8
+        else {
+            return
+        }
+        
+        //====Passed to login function ===
+        var username: String?
+        var email: String?
+        
+        //=====Figure wether to pass email or username
+        if userEmail.contains("@"), userEmail.contains(".") {
+            //its email
+            email = userEmail
+            
+            print("This is the user email: \(email!)")
+            
+        }else {
+            //username
+            username = userEmail
+            print("This is the user name: \(username!)")
+            
+        }
+        
+        //=======Login function===
+        AuthManager.shared.loginUser(username: username, email: email, password: password) {success in
+            //=====The closure should be called on the main thread
+            DispatchQueue.main.async {
+                
+                if success {
+                    //user logged in,, Dismiss the current VC
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    //Error occured, show alert view
+                    let alert = UIAlertController(title: "Login Error", message: "We're unable to log you in!", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                    
+                    Utilities.vibrateOnNotificationError()
+                }
+            }
+        }
+    }
+    
+    
     
     
     
@@ -257,7 +317,7 @@ extension LoginViewController: UITextFieldDelegate{
         }
         else if(textField == passwordTextField){
             
-            //didTapLogginButton()
+            didTapLogginButton()
             
         }
         
