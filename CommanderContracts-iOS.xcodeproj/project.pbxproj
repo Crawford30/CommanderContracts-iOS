@@ -18,6 +18,7 @@
 		EE341D0D271AF76100832A96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE341D0B271AF76100832A96 /* LaunchScreen.storyboard */; };
 		EE341D18271AF76200832A96 /* CommanderContracts_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D17271AF76200832A96 /* CommanderContracts_iOSTests.swift */; };
 		EE341D23271AF76200832A96 /* CommanderContracts_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D22271AF76200832A96 /* CommanderContracts_iOSUITests.swift */; };
+		EE3A5847272816E900AC4B53 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3A5846272816E900AC4B53 /* ProgressIndicator.swift */; };
 		EE50B9A3271DB6CA0073B197 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9A2271DB6CA0073B197 /* LoginViewController.swift */; };
 		EE50B9A8271DB7010073B197 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9A7271DB7010073B197 /* RegisterViewController.swift */; };
 		EE50B9AD271DB7510073B197 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9AC271DB7510073B197 /* Extensions.swift */; };
@@ -70,6 +71,7 @@
 		EE341D1E271AF76200832A96 /* CommanderContracts-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CommanderContracts-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE341D22271AF76200832A96 /* CommanderContracts_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderContracts_iOSUITests.swift; sourceTree = "<group>"; };
 		EE341D24271AF76200832A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE3A5846272816E900AC4B53 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EE50B9A2271DB6CA0073B197 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EE50B9A7271DB7010073B197 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		EE50B9AC271DB7510073B197 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				EE96DCDA27235FA000D20A2F /* Utilities.swift */,
 				EE96DCE2272361EE00D20A2F /* TogglePassword.swift */,
+				EE3A5846272816E900AC4B53 /* ProgressIndicator.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				EE50B9A3271DB6CA0073B197 /* LoginViewController.swift in Sources */,
 				EE50B9B2271DB8190073B197 /* AuthManager.swift in Sources */,
 				EE50B9AD271DB7510073B197 /* Extensions.swift in Sources */,
+				EE3A5847272816E900AC4B53 /* ProgressIndicator.swift in Sources */,
 				EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */,
 				EE50B9A8271DB7010073B197 /* RegisterViewController.swift in Sources */,
 				EE341D05271AF75F00832A96 /* HomeViewController.swift in Sources */,

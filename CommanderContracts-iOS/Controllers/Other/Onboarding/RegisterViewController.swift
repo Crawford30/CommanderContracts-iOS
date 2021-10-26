@@ -150,6 +150,19 @@ class RegisterViewController: UIViewController {
         companyConfirmPasswordTextField.layer.borderColor = UIColor.white.cgColor
         
         
+        //==================placeholder color===============
+        companyNameTextField.attributedPlaceholder = NSAttributedString(string: "Company Name",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        companyAddressTextField.attributedPlaceholder = NSAttributedString(string: "Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
+        companyPhoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "Phone Number",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        companyEmailAddressTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
+        
+        companyPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        companyConfirmPasswordTextField.attributedPlaceholder = NSAttributedString(string: "Confirm Password",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
+        
+        
         
     }
     

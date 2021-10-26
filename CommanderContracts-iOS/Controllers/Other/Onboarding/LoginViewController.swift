@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    var indicator:ProgressIndicator?
+    
     @IBOutlet weak var forgotPasswordLabel: UILabel!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var resendCodeLabel: UILabel!
@@ -30,7 +32,7 @@ class LoginViewController: UIViewController {
         
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-         forgotPasswordLabel.font = forgotPasswordLabel.font.italic
+        forgotPasswordLabel.font = forgotPasswordLabel.font.italic
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -82,7 +84,7 @@ class LoginViewController: UIViewController {
         Utilities.vibrate()
     }
     
-   
+    
     
     
     
@@ -125,6 +127,12 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.borderColor = UIColor.white.cgColor
         
         
+        //==================placeholder color===============
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
+        
+        
     }
     
     
@@ -153,6 +161,14 @@ class LoginViewController: UIViewController {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
+        
+        
+        if (emailTextField.text?.isEmpty)! || (passwordTextField.text?.isEmpty)! {
+            
+            self.displayMessage(title: "Error", userMessage: "All fields are required")
+            
+        }
+        
         //check we have text
         guard let userEmail = emailTextField.text, !userEmail.isEmpty,
               let password = passwordTextField.text, !password.isEmpty, password.count >= 8
@@ -163,6 +179,9 @@ class LoginViewController: UIViewController {
         //====Passed to login function ===
         var username: String?
         var email: String?
+        
+        
+        
         
         //=====Figure wether to pass email or username
         if userEmail.contains("@"), userEmail.contains(".") {
@@ -178,23 +197,31 @@ class LoginViewController: UIViewController {
             
         }
         
+        
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Logging in user...")
+        self.view.addSubview(indicator!)
+        indicator!.center = view.center
+        indicator!.start()
+        
+        
         //=======Login function===
         AuthManager.shared.loginUser(username: username, email: email, password: password) {success in
             //=====The closure should be called on the main thread
             DispatchQueue.main.async {
                 
                 if success {
+                    self.indicator!.stop()
+                    
+                    
                     //user logged in,, Dismiss the current VC
                     self.dismiss(animated: true, completion: nil)
+                    
                 } else {
-                    //Error occured, show alert view
-                    let alert = UIAlertController(title: "Login Error", message: "We're unable to log you in!", preferredStyle: .alert)
                     
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                    self.indicator!.stop()
                     
-                    self.present(alert, animated: true, completion: nil)
+                    self.displayMessage(title: "Login Error", userMessage: "We're unable to log you in! Make sure the email and password are correct")
                     
-                    Utilities.vibrateOnNotificationError()
                 }
             }
         }
@@ -206,104 +233,24 @@ class LoginViewController: UIViewController {
     
     
     
+    //============function to display alert messages==================
+    func displayMessage(title: String, userMessage: String ) -> Void {
+        
+        DispatchQueue.main.async {
+            
+            Utilities.vibrateOnNotificationError()
+            
+            let alertController = UIAlertController (title: title, message: userMessage, preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+    }
     
-    
-    
-    
-    //    //MARK:- Button Functions
-    //    @objc private func didTapLogginButton(){
-    //        print("Login Button tapped!")
-    //        //When Logged in btn is tapped,,dismiss the Keyboard
-    //        passwordField.resignFirstResponder()
-    //        usernameEmailField.resignFirstResponder()
-    //
-    //        //check we have text
-    //        guard let usernameEmail = usernameEmailField.text, !usernameEmail.isEmpty,
-    //            let password = passwordField.text, !password.isEmpty, password.count >= 8
-    //            else {
-    //                return
-    //        }
-    //
-    //        //====Passed to login function ===
-    //        var username: String?
-    //        var email: String?
-    //
-    //        //=====Figure wether to pass email or username
-    //        if usernameEmail.contains("@"), usernameEmail.contains(".") {
-    //            //its email
-    //            email = usernameEmail
-    //
-    //            print("This is the user email: \(email!)")
-    //
-    //        }else {
-    //            //username
-    //            username = usernameEmail
-    //            print("This is the user name: \(username!)")
-    //
-    //        }
-    //
-    //        //=======Login function===
-    //        AuthManager.shared.loginUser(username: username, email: email, password: password) {success in
-    //            //=====The closure should be called on the main thread
-    //            DispatchQueue.main.async {
-    //
-    //                if success {
-    //                    //user logged in,, Dismiss the current VC
-    //                    self.dismiss(animated: true, completion: nil)
-    //                } else {
-    //                    //Error occured, show alert view
-    //                    let alert = UIAlertController(title: "Login Error", message: "We're unable to log you in!", preferredStyle: .alert)
-    //
-    //                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-    //
-    //                    self.present(alert, animated: true, completion: nil)
-    //                }
-    //            }
-    //        }
-    //    }
-    //
-    
-    
-    //    @objc private func didTapTermsButton(){
-    //        print("Terms Button tapped!")
-    //
-    //        guard let url = URL(string: "https://www.instagram.com/about/legal/terms/before-january-19-2013/") else {
-    //            return
-    //        }
-    //
-    //        let vc = SFSafariViewController(url: url)
-    //        present(vc, animated: true, completion: nil)
-    //
-    //    }
-    
-    
-    
-    //    @objc private func didTapPrivacyButton(){
-    //        guard let url = URL(string: "https://www.elitedaily.com/p/what-is-instagrams-privacy-policy-heres-what-to-know-about-the-apps-rules-18689769") else {
-    //            return
-    //        }
-    //
-    //        let vc = SFSafariViewController(url: url)
-    //        present(vc, animated: true, completion: nil)
-    //
-    //    }
-    
-    
-    
-    
-    
-    
-    //    @objc private func didTapCreateAccountButton(){
-    //        let vc = RegisterViewController()
-    //        vc.title = "Create Account"
-    //        present(UINavigationController(rootViewController: vc), animated: true, completion: nil)
-    //
-    //
-    //    }
-    
-    
-    
-    
+  
     
 }
 
