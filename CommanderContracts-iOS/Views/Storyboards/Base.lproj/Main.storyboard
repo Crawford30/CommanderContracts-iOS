@@ -127,6 +127,9 @@
                                         <state key="normal" title="REGISTER">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerBtnAction:" destination="g3u-9w-SKs" eventType="touchUpInside" id="Psm-bO-8c8"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

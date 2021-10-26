@@ -17,7 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     //    @IBOutlet weak var genericView: UIView!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: TogglePassword!
     @IBOutlet weak var navBar: UINavigationBar!
     
     struct Constants {

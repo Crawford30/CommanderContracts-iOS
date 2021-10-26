@@ -34,7 +34,6 @@ public class AuthManager{
                 
                 
                 Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                    
                     guard error == nil, result != nil else {
                         //Completion will also be false if we are unable to create an account
                         //FirebaseAuth coudnot create an account

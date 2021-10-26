@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class RegisterViewController: UIViewController {
+    var ref: DatabaseReference!
+    
+    var indicator:ProgressIndicator?
+    
+    
     @IBOutlet weak var companyNameTextField: UITextField!
     @IBOutlet weak var companyAddressTextField: UITextField!
     @IBOutlet weak var companyPhoneNumberTextField: UITextField!
     @IBOutlet weak var companyEmailAddressTextField: UITextField!
-    @IBOutlet weak var companyPasswordTextField: UITextField!
-    @IBOutlet weak var companyConfirmPasswordTextField: UITextField!
+    @IBOutlet weak var companyPasswordTextField: TogglePassword!
+    @IBOutlet weak var companyConfirmPasswordTextField: TogglePassword!
     @IBOutlet weak var termsAndPrivacyContainer: UIView!
     
     @IBOutlet weak var registerBtn: UIButton!
@@ -27,6 +34,8 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref = Database.database().reference()
         
         
         
@@ -45,12 +54,22 @@ class RegisterViewController: UIViewController {
         
         setUpView()
         
-
+        
         
         
     }
     
-   
+    
+    
+    
+    @IBAction func registerBtnAction(_ sender: Any) {
+        
+        Utilities.vibrate()
+        
+        didTapRegisterButton()
+    }
+    
+    
     
     
     
@@ -71,7 +90,7 @@ class RegisterViewController: UIViewController {
     }
     
     func setUpView(){
-
+        
         registerBtn.layer.cornerRadius = Constants.cornerRadius
         
         companyNameTextField.returnKeyType = .continue
@@ -85,7 +104,7 @@ class RegisterViewController: UIViewController {
         companyNameTextField.layer.borderWidth = 2.0
         companyNameTextField.layer.borderColor = UIColor.white.cgColor
         
-     
+        
         
         companyAddressTextField.returnKeyType = .continue
         companyAddressTextField.leftViewMode = .always
@@ -98,7 +117,7 @@ class RegisterViewController: UIViewController {
         companyAddressTextField.layer.borderWidth = 2.0
         companyAddressTextField.layer.borderColor = UIColor.white.cgColor
         
-      
+        
         
         companyPhoneNumberTextField.returnKeyType = .continue
         companyPhoneNumberTextField.leftViewMode = .always
@@ -111,7 +130,7 @@ class RegisterViewController: UIViewController {
         companyPhoneNumberTextField.layer.borderWidth = 2.0
         companyPhoneNumberTextField.layer.borderColor = UIColor.white.cgColor
         
- 
+        
         
         companyEmailAddressTextField.returnKeyType = .continue
         companyEmailAddressTextField.leftViewMode = .always
@@ -176,38 +195,168 @@ class RegisterViewController: UIViewController {
     }
     
     
-    //    @objc private func didTapRegisterButton(){
-    //        //===Dismiss keyboard for all fields
-    //        usernameField.resignFirstResponder()
-    //        emailField.resignFirstResponder()
-    //        passwordField.resignFirstResponder()
-    //
-    //        //=====Get contents of all the fields
-    //        guard let username = usernameField.text, !username.isEmpty,
-    //            let email = emailField.text, !email.isEmpty,
-    //            let password = passwordField.text, !password.isEmpty,  password.count >= 8 else {
-    //                return
-    //        }
-    //
-    //
-    //        AuthManager.shared.registerNewUser(username: username, email: email, password: password) { registered in
-    //
-    //            DispatchQueue.main.async {
-    //                if registered {
-    //                    //Good to go
-    //
-    //                } else {
-    //
-    //                    //Failed
-    //
-    //
-    //                }
-    //
-    //            }
-    //
-    //
-    //        }
-    //    }
+    @objc private func didTapRegisterButton(){
+        //===Dismiss keyboard for all fields
+        companyNameTextField.resignFirstResponder()
+        companyAddressTextField.resignFirstResponder()
+        companyPhoneNumberTextField.resignFirstResponder()
+        companyEmailAddressTextField.resignFirstResponder()
+        companyPasswordTextField.resignFirstResponder()
+        companyConfirmPasswordTextField.resignFirstResponder()
+        
+        
+        //=====Get contents of all the fields
+        let comName = companyNameTextField.text
+        let comAddress = companyAddressTextField.text
+        let comEmail = companyEmailAddressTextField.text
+        let comPhone = companyPhoneNumberTextField.text
+        let comPasswordOne = companyPasswordTextField.text
+        let comPasswordTwo = companyConfirmPasswordTextField.text
+        
+        
+        if (comName?.isEmpty)! ||
+            (comAddress?.isEmpty)! ||
+            (comEmail?.isEmpty)! ||
+            (comPhone?.isEmpty)! ||
+            (comPasswordOne?.isEmpty)! ||
+            (comPasswordTwo?.isEmpty)!
+        {
+            //=========display alert messages and return============
+            self.displayMessage(title: "Error", userMessage: "All fields are required")
+            return
+        }
+        
+        
+        
+        
+        //====checking for email and its format================
+        let cleanedemail = comEmail!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if Utilities.isValid_Email(cleanedemail) == false {
+            //  ==========alert messgae=========
+            self.displayMessage(title: "Error", userMessage: "Please enter a valid E-mail")
+            return
+            
+        }
+        
+        if(Utilities.isPhoneNumber(value: comPhone!) == false){
+            
+            //==========alert messgae=========
+            self.displayMessage(title: "Error", userMessage: "Please enter a valid phone number")
+            return
+            
+        }
+        
+        
+        let cleanedpassword1 = comPasswordOne!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanedpassword2 = comPasswordTwo!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        
+        
+        //=========checking for password length=======
+        if Utilities.isPwdLenth(password: cleanedpassword1, confirmPassword: cleanedpassword2) == false {
+            //======alert messages======
+            
+            self.displayMessage(title: "Error", userMessage: "Passwords should be at leaset 8 characters")
+            return
+        }
+        
+        
+        //========================checking for match password=====================
+        if Utilities.isPasswordSame(password: cleanedpassword1, confirmPassword: cleanedpassword2) == false {
+            //========alert messages ===========
+            self.displayMessage(title: "Error", userMessage: "Passwords do not match")
+            return
+            
+        }
+        
+        
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Registering  user...")
+        self.view.addSubview(indicator!)
+        indicator!.center = view.center
+        indicator!.start()
+        
+        
+        
+        
+        
+        AuthManager.shared.registerNewUser(username: "", email: cleanedemail, password: comPasswordTwo!) { registered in
+            
+            DispatchQueue.main.async {
+                if registered {
+                    
+                    self.indicator!.stop()
+                    
+                    guard let userID = Auth.auth().currentUser?.uid else { return }
+                    
+                    
+                    //Good to go
+                    
+                    //                            companyAddress:
+                    //                            "Mississippi, USA"
+                    //                            companyEmail:
+                    //                            "jlorn2005@gmail.com"
+                    //                            companyLogoImageUrl:
+                    //                            "https://firebasestorage.googleapis.com/v0/b/com..."
+                    //                            companyName:
+                    //                            "Commander Contracts"
+                    //                            companyPhone:
+                    //                            "1293839393"
+                    //                            uid:
+                    //                            "Gnoq1hildINzhtGCNKAUntkcCMr1"
+                    
+                    
+                    let userData = ["companyAddress": comAddress! ,
+                                    "companyEmail": cleanedemail,
+                                    "companyLogoImageUrl": "https://firebasestorage.googleapis.com/v0/b/com...",
+                                    "companyName": comName!,
+                                    "companyPhone": comPhone!,
+                                    "uid": Auth.auth().currentUser!.uid
+                                    
+                    ]
+                    
+                    
+                    self.ref.child("users").child(userID).setValue(userData)
+                    
+                    
+                    
+                    
+                    //user logged in,, Dismiss the current VC
+                    self.dismiss(animated: true, completion: nil)
+                    
+                    
+                } else {
+                    
+                    //Failed
+                    
+                    self.indicator!.stop()
+                    
+                    self.displayMessage(title: "Registration Error", userMessage: "We're unable to register your account now! Please try again later")
+                    
+                }
+                
+            }
+            
+        }
+    }
+    
+    
+    
+    //============function to display alert messages==================
+    func displayMessage(title: String, userMessage: String ) -> Void {
+        
+        DispatchQueue.main.async {
+            
+            Utilities.vibrateOnNotificationError()
+            
+            let alertController = UIAlertController (title: title, message: userMessage, preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+    }
     
 }
 
@@ -215,7 +364,6 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         
         companyNameTextField.delegate = self
         companyAddressTextField.delegate = self
@@ -252,22 +400,24 @@ extension RegisterViewController: UITextFieldDelegate{
         
         else if(textField == companyPasswordTextField){
             
-            
             companyConfirmPasswordTextField.becomeFirstResponder() //the password field will be focused
-            
             
             
         }
         
         else if(textField == companyConfirmPasswordTextField){
             
-            
             //perform sign up here
             
+            didTapRegisterButton()
         }
         
         
         
         return true
     }
+    
+    
+    
+    
 }

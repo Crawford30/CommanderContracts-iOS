@@ -41,6 +41,10 @@ extension String {
         return  self.replacingOccurrences(of: "@", with: "_").replacingOccurrences(of: ".", with: "_")
          //return  self.replacingOccurrences(of: ".", with: "_")
     }
+    
+ 
+    
+    
 }
 
 
@@ -74,3 +78,15 @@ extension UIFont {
         return UIFont(descriptor: descriptor, size: 0)
     }
 }
+
+
+
+extension UIImageView {
+  func setImageColor(color: UIColor) {
+    let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
+    self.image = templateImage
+    self.tintColor = color
+  }
+}
+
+

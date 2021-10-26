@@ -32,7 +32,8 @@ class TogglePassword: UITextField {
     }
     
     func commonInit() {
-        rightButton.setImage(UIImage(named: "password_show") , for: .normal)
+        
+        rightButton.setImage(UIImage(named: "view-password")?.withTintColor(UIColor.black) , for: .normal)
         rightButton.addTarget(self, action: #selector(toggleShowHide), for: .touchUpInside)
         rightButton.frame = CGRect(x:12, y:10, width:((self.frame.height) * 0.50), height:((self.frame.height) * 0.50))
         rightButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
@@ -49,16 +50,16 @@ class TogglePassword: UITextField {
     }
     
     func toggle() {
+        Utilities.vibrate()
+        
         isSecureTextEntry = !isSecureTextEntry
         if isSecureTextEntry {
-            rightButton.setImage(UIImage(named: "view-password") , for: .normal)
+            rightButton.setImage(UIImage(named: "view-password")?.withTintColor(UIColor.black) , for: .normal)
             
             
         } else {
-            rightButton.setImage(UIImage(named: "hide-password") , for: .normal)
+            rightButton.setImage(UIImage(named: "hide-password")?.withTintColor(UIColor.black) , for: .normal)
            
-            
-            
         }
     }
     
