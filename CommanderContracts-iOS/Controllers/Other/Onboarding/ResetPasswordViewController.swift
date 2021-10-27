@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ResetPasswordViewController: UIViewController {
     
@@ -31,8 +32,63 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func forgotPasswordBtnAction(_ sender: Any) {
         Utilities.vibrate()
+        
+        
+        if (forgotPasswordTextField.text?.isEmpty)! {
+            
+            self.displayMessage(title: "Error", userMessage: "E-mail field is required")
+            
+        }
+        
+        
+        callFIRPasswordReset()
+        
+   
     }
     
+    
+    //============function to display alert messages==================
+    func displayMessage(title: String, userMessage: String ) -> Void {
+        
+        DispatchQueue.main.async {
+            
+            Utilities.vibrateOnNotificationSuccess()
+            
+            let alertController = UIAlertController (title: title, message: userMessage, preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    
+    
+    // MARK: Firebase Forgotpassword
+        func callFIRPasswordReset(){
+            //show loader
+
+            Auth.auth().sendPasswordReset(withEmail: self.forgotPasswordTextField.text!) { (error) in
+                DispatchQueue.main.async {
+                    //hide loader
+
+                    self.forgotPasswordTextField.text = ""
+
+                    if let error = error {
+                        //show alert here
+                        print(error.localizedDescription)
+                    }
+                    else {
+                        //show alert here
+                        
+                        self.displayMessage(title: "Success", userMessage: "We send you an email with instructions on how to reset your password.")
+                        
+                    }
+                }
+            }
+        }
     
     
     
