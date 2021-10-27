@@ -16,6 +16,11 @@ class RegisterViewController: UIViewController {
     var indicator:ProgressIndicator?
     
     
+    private var authUser : User? {
+        return Auth.auth().currentUser
+    }
+    
+    
     @IBOutlet weak var companyNameTextField: UITextField!
     @IBOutlet weak var companyAddressTextField: UITextField!
     @IBOutlet weak var companyPhoneNumberTextField: UITextField!
@@ -60,6 +65,24 @@ class RegisterViewController: UIViewController {
         
     }
     
+    
+    public func sendVerificationMail() {
+        if self.authUser != nil && !self.authUser!.isEmailVerified {
+            self.authUser!.sendEmailVerification(completion: { (error) in
+                
+                
+                //self.displayMessage(title: "Success", userMessage: "A verification email has been sent your inbox, please check your inbox and verify your email")
+                
+                
+                //self.showToastMessage(message: "A verification email has been sent your inbox, please check your inbox and verify your email")
+                
+   
+            })
+        }
+        else {
+            // Either the user is not available, or the user is already verified.
+        }
+    }
     
     
     
@@ -291,6 +314,8 @@ class RegisterViewController: UIViewController {
             
             //====Navigate to login
             
+            self.sendVerificationMail()
+            
             self.navigateToLogin()
             
             
@@ -300,103 +325,13 @@ class RegisterViewController: UIViewController {
             self.indicator!.stop()
             self.view.isUserInteractionEnabled = true
             
-            self.displayMessage(title: "Registration Error", userMessage: "\(error) We're unable to register your account now! Please try again later")
+            self.displayMessage(title: "Registration Error", userMessage: "We're unable to register your account now! Please try again later")
             
             
         }
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //        guard let userID = Auth.auth().currentUser?.uid else { return }
-        //
-        //
-        //        AuthManager.shared.registerNewUser( companyName: comName!, companyAddress: comAddress!, companyPhone: comPhone!, companyEmail: cleanedemail, password: cleanedpassword2) { registered in
-        //
-        //            DispatchQueue.main.async {
-        //                if registered {
-        //                    //Good to go
-        //
-        //
-        //
-        //                    self.indicator!.stop()
-        //                    self.view.isUserInteractionEnabled = true
-        //
-        //                    //====Navigate to login
-        //
-        //                    self.navigateToLogin()
-        //
-        //
-        //                } else {
-        //
-        //                    //Failed
-        //
-        //                    self.indicator!.stop()
-        //                    self.view.isUserInteractionEnabled = true
-        //
-        //                    self.displayMessage(title: "Registration Error", userMessage: "We're unable to register your account now! Please try again later")
-        //
-        //
-        //                }
-        //
-        //            }
-        //
-        //
-        //        }
-        
-        
-        
-        
-        
-        
-        
-        //        Auth.auth().createUser(withEmail: cleanedemail, password: cleanedpassword2) { (authData, error) in
-        //            if let error = error {
-        //                debugPrint("FIREBASE ERROR : \(error.localizedDescription)")
-        //            } else {
-        //                if let authData = authData {
-        //                    let user = authData.user //here get the user from result
-        //
-        //                    let userData = ["companyAddress": comAddress! ,
-        //                                    "companyEmail": cleanedemail,
-        //                                    "companyLogoImageUrl": "https://firebasestorage.googleapis.com/v0/b/com...",
-        //                                    "companyName": comName!,
-        //                                    "companyPhone": comPhone!,
-        //                                    "uid": Auth.auth().currentUser!.uid
-        //
-        //                    ]
-        //
-        //
-        //                    self.ref.child("users").child(user.uid).setValue(userData)
-        //
-        //                                  self.indicator!.stop()
-        //                                  self.view.isUserInteractionEnabled = true
-        //
-        //                                  //====Navigate to login
-        //
-        //                                  self.navigateToLogin()
-        //
-        //
-        //
-        //                }
-        //            }
-        //        }
-        
-        
-        
-        
-        
-        
-        
+   
         
     }
     
@@ -418,6 +353,29 @@ class RegisterViewController: UIViewController {
         }
         
     }
+    
+    
+    func showToastMessage(message : String) {
+        
+        let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 75, y: self.view.frame.size.height-100, width: 150, height: 35))
+        toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+//        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 1.0
+        toastLabel.layer.cornerRadius = 10;
+        toastLabel.clipsToBounds  =  true
+        self.view.addSubview(toastLabel)
+        UIView.animate(withDuration: 4.0, delay: 0.1, options: .curveEaseOut, animations: {
+            toastLabel.alpha = 0.0
+        }, completion: {(isCompleted) in
+            toastLabel.removeFromSuperview()
+        })
+    }
+    
+    
+    
     
 }
 

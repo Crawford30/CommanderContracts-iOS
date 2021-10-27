@@ -6,8 +6,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
+    
+    private var authUser : User? {
+        return Auth.auth().currentUser
+    }
     
     var indicator:ProgressIndicator?
     
@@ -29,6 +36,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
         
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
@@ -82,7 +93,48 @@ class LoginViewController: UIViewController {
     @IBAction func resendVerificationTapped(_ sender: Any) {
         
         Utilities.vibrate()
+        
+        Auth.auth().currentUser?.reload()
+        
+        Auth.auth().currentUser?.sendEmailVerification()
+        
+        
+        
     }
+    
+    
+    private func  checkIfEmailVerified() {
+        if Auth.auth().currentUser?.isEmailVerified == true {
+            
+            //            performSegue(withIdentifier: "EmailVerified", sender: nil)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
+            homeVC?.modalPresentationStyle = .fullScreen
+            self.present(homeVC!, animated: true, completion: nil)
+            
+        }
+        else{
+            
+            Auth.auth().currentUser?.sendEmailVerification { (error) in
+                
+                print("check for email verified")
+                while Auth.auth().currentUser?.isEmailVerified == false {
+                    Auth.auth().currentUser?.reload()
+                    Auth.auth().currentUser?.sendEmailVerification()
+                }
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let homeVC = storyboard.instantiateViewController(withIdentifier: "LoginID") as? LoginViewController
+                homeVC?.modalPresentationStyle = .fullScreen
+                self.present(homeVC!, animated: true, completion: nil)
+                
+                
+                
+            }
+        }
+    }
+    
     
     
     
@@ -211,14 +263,21 @@ class LoginViewController: UIViewController {
             //=====The closure should be called on the main thread
             DispatchQueue.main.async {
                 
-                if success {
+                if success && Auth.auth().currentUser?.isEmailVerified == false {
+                    
+                    Auth.auth().currentUser?.reload()
+                    Auth.auth().currentUser?.sendEmailVerification()
+                    
+                    self.displayMessage(title: "Email Not Verified", userMessage: "Please Verify your email address")
+                    
+                    
                     self.indicator!.stop()
                     self.view.isUserInteractionEnabled = true
                     
                     
-                    //user logged in,, Dismiss the current VC
-                   // self.dismiss(animated: true, completion: nil)
                     
+                    
+                } else if (success && Auth.auth().currentUser?.isEmailVerified == true ) {
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
@@ -232,12 +291,33 @@ class LoginViewController: UIViewController {
                     self.indicator!.stop()
                     self.view.isUserInteractionEnabled = true
                     
-                    self.displayMessage(title: "Login Error", userMessage: "We're unable to log you in! Make sure the email and password are correct")
+                    self.displayMessage(title: "Login Error", userMessage: "We're unable to log you in! Make sure the email and password are correct or you're trying to log in with unverified email")
                     
                 }
             }
         }
     }
+    
+    
+    
+    public func sendVerificationMail() {
+        if self.authUser != nil && !self.authUser!.isEmailVerified {
+            self.authUser!.sendEmailVerification(completion: { (error) in
+                
+                
+                //self.displayMessage(title: "Success", userMessage: "A verification email has been sent your inbox, please check your inbox and verify your email")
+                
+                
+                //self.showToastMessage(message: "A verification email has been sent your inbox, please check your inbox and verify your email")
+                
+                
+            })
+        }
+        else {
+            // Either the user is not available, or the user is already verified.
+        }
+    }
+    
     
     
     
@@ -262,7 +342,7 @@ class LoginViewController: UIViewController {
         
     }
     
-  
+    
     
 }
 

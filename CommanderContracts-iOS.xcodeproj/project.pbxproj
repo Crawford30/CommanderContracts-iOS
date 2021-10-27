@@ -28,6 +28,7 @@
 		EE50B9BC271DB8E70073B197 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE50B9BB271DB8E70073B197 /* DatabaseManager.swift */; };
 		EE784537272963C6008EDEF6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE784536272963C6008EDEF6 /* GoogleService-Info.plist */; };
 		EE78453C2729698A008EDEF6 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE78453B2729698A008EDEF6 /* Services.swift */; };
+		EE784541272982B6008EDEF6 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE784540272982B6008EDEF6 /* Toast.swift */; };
 		EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE846219272703590022E493 /* ResetPasswordViewController.swift */; };
 		EE96DCDB27235FA000D20A2F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCDA27235FA000D20A2F /* Utilities.swift */; };
 		EE96DCE3272361EE00D20A2F /* TogglePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCE2272361EE00D20A2F /* TogglePassword.swift */; };
@@ -83,6 +84,7 @@
 		EE50B9BB271DB8E70073B197 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		EE784536272963C6008EDEF6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE78453B2729698A008EDEF6 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		EE784540272982B6008EDEF6 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		EE846219272703590022E493 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		EE96DCDA27235FA000D20A2F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EE96DCE2272361EE00D20A2F /* TogglePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePassword.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				EE96DCE2272361EE00D20A2F /* TogglePassword.swift */,
 				EE3A5846272816E900AC4B53 /* ProgressIndicator.swift */,
 				EE3A58632728222300AC4B53 /* UIShowHideTextField.swift */,
+				EE784540272982B6008EDEF6 /* Toast.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE3A58642728222300AC4B53 /* UIShowHideTextField.swift in Sources */,
+				EE784541272982B6008EDEF6 /* Toast.swift in Sources */,
 				EE50B9A3271DB6CA0073B197 /* LoginViewController.swift in Sources */,
 				EE50B9B2271DB8190073B197 /* AuthManager.swift in Sources */,
 				EE50B9AD271DB7510073B197 /* Extensions.swift in Sources */,

@@ -40,6 +40,9 @@ class ResetPasswordViewController: UIViewController {
     func setUpView(){
         forgotPasswordBtn.layer.cornerRadius = Constants.cornerRadius
         
+        
+        forgotPasswordTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
         forgotPasswordTextField.returnKeyType = .continue
         forgotPasswordTextField.leftViewMode = .always
         forgotPasswordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0)) //so that text is not flushed with the frame
