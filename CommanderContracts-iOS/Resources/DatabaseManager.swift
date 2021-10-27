@@ -5,8 +5,9 @@
 //  Created by JOEL CRAWFORD on 10/18/21.
 //
 
-import FirebaseDatabase
 
+import FirebaseDatabase
+import FirebaseAuth
 
 public class DatabaseManager{
     
@@ -23,7 +24,7 @@ public class DatabaseManager{
     //   -email string representing email
     //   -username string representing username
     
-    public func canCreateNewUser(with email: String, username: String, password: String, completion: (Bool) -> Void){
+    public func canCreateNewUser(with   companyName: String,  companyAddress: String,  companyPhone: String, companyEmail: String,  password: String, completion: (Bool) -> Void){
         
         completion(true)
         
@@ -38,20 +39,38 @@ public class DatabaseManager{
     //   -email string representing email
     //   -username string representing username
     // -completion : Async callback for result if database entry succeeded
-    public func insertNewUser(with email: String, username:String, completion: @escaping (Bool) -> Void) {
+    public func insertNewUser(with   companyName: String,  companyAddress: String,  companyPhone: String, companyEmail: String, completion: @escaping (Bool) -> Void) {
         
-//        databaseRef.child(email).setValue(["username" : username], withCompletionBlock: { error,_  in
-//        })
+        // databaseRef.child("users").child(userID).setValue(["username" : username])
+        
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+        
+        
+        let userData = ["companyAddress": companyAddress ,
+                        "companyEmail": companyEmail,
+                        "companyLogoImageUrl": "https://firebasestorage.googleapis.com/v0/b/com...",
+                        "companyName": companyName,
+                        "companyPhone": companyPhone,
+                        "uid": userID
+                        
+        ]
+        
+        print("CURRENT USED ID: \(userID)")
+        
         
         //Making it with a Trailing clousre syntax
-        databaseRef.child(email.safeDatabaseKey()).setValue(["username" : username]) { error,_  in
+        databaseRef.child("users").child(userID).setValue(userData) { error,_  in
             
             if error == nil  {
                 //succeeded
+                print("NO ERROR ")
+                
                 completion(true)
                 return
                 
             }else {
+                
+                print("THIS IS ERROR: \(String(describing: error))")
                 //Failed
                 completion(false)
                 return
@@ -60,17 +79,8 @@ public class DatabaseManager{
         }
         
         
-        
     }
     
-    
-    //=====Function to create a safe email since firebase gives error with child key having "."
-    // databaseRef.child(email).setValue(["username" : username])  in the email --> in the extensions
-    
-    //MARK: - Private
-//    private func safeKey() {
-//
-//    }
-
 }
+
 

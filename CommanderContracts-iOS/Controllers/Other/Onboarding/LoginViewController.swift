@@ -203,22 +203,34 @@ class LoginViewController: UIViewController {
         indicator!.center = view.center
         indicator!.start()
         
+        view.isUserInteractionEnabled = false
+        
         
         //=======Login function===
-        AuthManager.shared.loginUser(username: username, email: email, password: password) {success in
+        AuthManager.shared.loginUser( email: email, password: password) {success in
             //=====The closure should be called on the main thread
             DispatchQueue.main.async {
                 
                 if success {
                     self.indicator!.stop()
+                    self.view.isUserInteractionEnabled = true
                     
                     
                     //user logged in,, Dismiss the current VC
-                    self.dismiss(animated: true, completion: nil)
+                   // self.dismiss(animated: true, completion: nil)
+                    
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
+                    homeVC?.modalPresentationStyle = .fullScreen
+                    self.present(homeVC!, animated: true, completion: nil)
+                    
+                    
                     
                 } else {
                     
                     self.indicator!.stop()
+                    self.view.isUserInteractionEnabled = true
                     
                     self.displayMessage(title: "Login Error", userMessage: "We're unable to log you in! Make sure the email and password are correct")
                     

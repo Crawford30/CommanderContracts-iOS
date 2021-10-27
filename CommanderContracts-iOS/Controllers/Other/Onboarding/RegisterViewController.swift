@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
@@ -76,6 +77,11 @@ class RegisterViewController: UIViewController {
     @IBAction func backToLoginVC(_ sender: Any) {
         
         Utilities.vibrate()
+        navigateToLogin()
+    }
+    
+    
+    func navigateToLogin(){
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let historyBookModalVC = storyboard.instantiateViewController(withIdentifier: "LoginID") as? LoginViewController
         historyBookModalVC?.modalPresentationStyle = .fullScreen
@@ -274,69 +280,124 @@ class RegisterViewController: UIViewController {
         self.view.addSubview(indicator!)
         indicator!.center = view.center
         indicator!.start()
+        view.isUserInteractionEnabled = false
         
+        //userID
         
-        
-        
-        
-        AuthManager.shared.registerNewUser(username: "", email: cleanedemail, password: comPasswordTwo!) { registered in
+        Services.signUpUser(email: cleanedemail, password: cleanedpassword2, comName: comName!, comAddress: comAddress!, comPhone: comPhone!) {
             
-            DispatchQueue.main.async {
-                if registered {
-                    
-                    self.indicator!.stop()
-                    
-                    guard let userID = Auth.auth().currentUser?.uid else { return }
-                    
-                    
-                    //Good to go
-                    
-                    //                            companyAddress:
-                    //                            "Mississippi, USA"
-                    //                            companyEmail:
-                    //                            "jlorn2005@gmail.com"
-                    //                            companyLogoImageUrl:
-                    //                            "https://firebasestorage.googleapis.com/v0/b/com..."
-                    //                            companyName:
-                    //                            "Commander Contracts"
-                    //                            companyPhone:
-                    //                            "1293839393"
-                    //                            uid:
-                    //                            "Gnoq1hildINzhtGCNKAUntkcCMr1"
-                    
-                    
-                    let userData = ["companyAddress": comAddress! ,
-                                    "companyEmail": cleanedemail,
-                                    "companyLogoImageUrl": "https://firebasestorage.googleapis.com/v0/b/com...",
-                                    "companyName": comName!,
-                                    "companyPhone": comPhone!,
-                                    "uid": Auth.auth().currentUser!.uid
-                                    
-                    ]
-                    
-                    
-                    self.ref.child("users").child(userID).setValue(userData)
-                    
-                    
-                    
-                    
-                    //user logged in,, Dismiss the current VC
-                    self.dismiss(animated: true, completion: nil)
-                    
-                    
-                } else {
-                    
-                    //Failed
-                    
-                    self.indicator!.stop()
-                    
-                    self.displayMessage(title: "Registration Error", userMessage: "We're unable to register your account now! Please try again later")
-                    
-                }
-                
-            }
+            self.indicator!.stop()
+            self.view.isUserInteractionEnabled = true
+            
+            //====Navigate to login
+            
+            self.navigateToLogin()
+            
+            
+        } onError: { (error) in
+            
+            
+            self.indicator!.stop()
+            self.view.isUserInteractionEnabled = true
+            
+            self.displayMessage(title: "Registration Error", userMessage: "\(error) We're unable to register your account now! Please try again later")
+            
             
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //        guard let userID = Auth.auth().currentUser?.uid else { return }
+        //
+        //
+        //        AuthManager.shared.registerNewUser( companyName: comName!, companyAddress: comAddress!, companyPhone: comPhone!, companyEmail: cleanedemail, password: cleanedpassword2) { registered in
+        //
+        //            DispatchQueue.main.async {
+        //                if registered {
+        //                    //Good to go
+        //
+        //
+        //
+        //                    self.indicator!.stop()
+        //                    self.view.isUserInteractionEnabled = true
+        //
+        //                    //====Navigate to login
+        //
+        //                    self.navigateToLogin()
+        //
+        //
+        //                } else {
+        //
+        //                    //Failed
+        //
+        //                    self.indicator!.stop()
+        //                    self.view.isUserInteractionEnabled = true
+        //
+        //                    self.displayMessage(title: "Registration Error", userMessage: "We're unable to register your account now! Please try again later")
+        //
+        //
+        //                }
+        //
+        //            }
+        //
+        //
+        //        }
+        
+        
+        
+        
+        
+        
+        
+        //        Auth.auth().createUser(withEmail: cleanedemail, password: cleanedpassword2) { (authData, error) in
+        //            if let error = error {
+        //                debugPrint("FIREBASE ERROR : \(error.localizedDescription)")
+        //            } else {
+        //                if let authData = authData {
+        //                    let user = authData.user //here get the user from result
+        //
+        //                    let userData = ["companyAddress": comAddress! ,
+        //                                    "companyEmail": cleanedemail,
+        //                                    "companyLogoImageUrl": "https://firebasestorage.googleapis.com/v0/b/com...",
+        //                                    "companyName": comName!,
+        //                                    "companyPhone": comPhone!,
+        //                                    "uid": Auth.auth().currentUser!.uid
+        //
+        //                    ]
+        //
+        //
+        //                    self.ref.child("users").child(user.uid).setValue(userData)
+        //
+        //                                  self.indicator!.stop()
+        //                                  self.view.isUserInteractionEnabled = true
+        //
+        //                                  //====Navigate to login
+        //
+        //                                  self.navigateToLogin()
+        //
+        //
+        //
+        //                }
+        //            }
+        //        }
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
     
@@ -374,35 +435,28 @@ extension RegisterViewController: UITextFieldDelegate{
         
         if(textField == companyNameTextField) {
             companyAddressTextField.becomeFirstResponder() //the password field will be focused
-            
         }
         else if(textField == companyNameTextField){
             
             companyAddressTextField.becomeFirstResponder() //the password field will be focused
-            
         }
         else if(textField == companyAddressTextField){
             
             companyPhoneNumberTextField.becomeFirstResponder() //the password field will be focused
-            
         }
         else if(textField == companyPhoneNumberTextField){
             
             companyEmailAddressTextField.becomeFirstResponder() //the password field will be focused
-            
         }
         
         else if(textField == companyEmailAddressTextField){
             
             companyPasswordTextField.becomeFirstResponder() //the password field will be focused
-            
         }
         
         else if(textField == companyPasswordTextField){
             
             companyConfirmPasswordTextField.becomeFirstResponder() //the password field will be focused
-            
-            
         }
         
         else if(textField == companyConfirmPasswordTextField){
@@ -412,12 +466,8 @@ extension RegisterViewController: UITextFieldDelegate{
             didTapRegisterButton()
         }
         
-        
-        
         return true
     }
-    
-    
     
     
 }
