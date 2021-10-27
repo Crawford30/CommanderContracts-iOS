@@ -78,6 +78,8 @@ class ResetPasswordViewController: UIViewController {
 
                     if let error = error {
                         //show alert here
+                        
+                        self.displayMessage(title: "Error", userMessage: "An error has occured. Please try again later")
                         print(error.localizedDescription)
                     }
                     else {
