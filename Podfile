@@ -18,6 +18,7 @@ target 'CommanderContracts-iOS' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
+  pod 'IQKeyboardManagerSwift', '6.3.0'
 
   target 'CommanderContracts-iOSTests' do
     inherit! :search_paths
