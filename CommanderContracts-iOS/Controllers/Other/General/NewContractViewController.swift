@@ -9,6 +9,8 @@ import UIKit
 
 class NewContractViewController: UIViewController, UITextViewDelegate {
     
+    let datePicker: UIDatePicker = UIDatePicker()
+    
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         
@@ -26,7 +28,16 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        clientAddressTextField.delegate = self
+        clientNameTextField.delegate = self
+        clientDateTextField.delegate = self
+        contractPriceTextField.delegate = self
+        
         contractDescriptionTexView.delegate = self
+        
+        createDatePickerView()
         
         setUpViews()
 
@@ -43,6 +54,41 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     @IBAction func nextBtnTapped(_ sender: Any) {
         
         Utilities.vibrate()
+        
+        didTapNext()
+    }
+    
+    
+    
+    private func didTapNext() {
+        clientAddressTextField.resignFirstResponder()
+        clientNameTextField.resignFirstResponder()
+        clientDateTextField.resignFirstResponder()
+        contractPriceTextField.resignFirstResponder()
+        
+        
+        
+        //=====Get contents of all the fields
+        let clientName = clientNameTextField.text
+        let clientAddress = clientAddressTextField.text
+        let clientDate = clientDateTextField.text
+        let clientDesc = contractDescriptionTexView.text
+        let clientPrice = contractPriceTextField.text
+        
+        
+        
+        if (clientName?.isEmpty)! ||
+            (clientAddress?.isEmpty)! ||
+            (clientDesc?.isEmpty)! ||
+            (clientDate?.isEmpty)! ||
+            (clientPrice?.isEmpty)!
+        {
+            //=========display alert messages and return============
+            self.displayMessage(title: "Error", userMessage: "All fields are required")
+            return
+        }
+        
+        
     }
     
     private func setUpViews() {
@@ -149,6 +195,100 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     }
     
     
+    
+    
+    
+    //============function to display alert messages==================
+    func displayMessage(title: String, userMessage: String ) -> Void {
+        
+        DispatchQueue.main.async {
+            
+            Utilities.vibrateOnNotificationError()
+            
+            let alertController = UIAlertController (title: title, message: userMessage, preferredStyle: .alert)
+            
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            
+            self.present(alertController, animated: true, completion: nil)
+            
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    func createDatePickerView() {
+        
+        //=====creating tool bar
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        //customize the toolbar
+        toolBar.barStyle      = UIBarStyle.default
+        toolBar.isTranslucent = true
+//        toolBar.tintColor     = UIColor(named: "myToolbarTintColor")
+         toolBar.tintColor     = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        //=======creating done button ===
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
+        toolBar.setItems([doneBtn], animated: true)
+        
+        //======space between done and cancel buttons
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        //===cancel button ==
+        let cancelBtn = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(canclePressed))
+        
+        
+        toolBar.setItems([cancelBtn, flexSpace, doneBtn], animated: true)
+        
+        //assign toolbar to the keyboard
+        
+        clientDateTextField.inputAccessoryView = toolBar
+        
+        //asign datepicker to the text field
+        clientDateTextField.inputView = datePicker
+        
+        //date picker mode
+        datePicker.datePickerMode = .date
+        
+        datePicker.minimumDate = Date() //Hide past Date
+        
+    }
+    
+    @objc func canclePressed() {
+        
+        clientDateTextField.resignFirstResponder()
+        
+    }
+    
+    @objc func donePressed() {
+        
+        //format the text when done is pressed
+        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .none  //includes the time when selected hence none removes it
+        formatter.calendar = .current
+        
+        //2 things to be done: we assign the value to textfield and close the view
+        //serviceDatePickerTextField.text = "\(datePicker.date)"
+        
+        
+        clientDateTextField.text = formatter.string(from: datePicker.date)
+        
+        self.view.endEditing(true)
+        
+    }
+    
+  
+    
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         if contractDescriptionTexView.textColor == UIColor.black {
             contractDescriptionTexView.text = nil
@@ -163,6 +303,50 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    
+    
+}
+
+
+
+extension NewContractViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        clientAddressTextField.delegate = self
+        clientNameTextField.delegate = self
+        clientDateTextField.delegate = self
+        contractPriceTextField.delegate = self
+        
+        contractDescriptionTexView.delegate = self
+        
+        if(textField == clientNameTextField) {
+            clientAddressTextField.becomeFirstResponder() //the password field will be focused
+        }
+        
+        
+        if(textField == clientAddressTextField) {
+            clientDateTextField.becomeFirstResponder() //the password field will be focused
+        }
+        else if(textField == clientDateTextField){
+            
+            contractDescriptionTexView.becomeFirstResponder() //the password field will be focused
+        }
+        else if(textField == contractDescriptionTexView){
+            
+            contractPriceTextField.becomeFirstResponder() //the password field will be focused
+        }
+      
+        
+       
+        else if(textField == contractPriceTextField){
+            
+            //perform sign up here
+            
+            didTapNext()
+        }
+        
+        return true
+    }
     
     
 }
