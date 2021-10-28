@@ -10,12 +10,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    struct Constants {
+        static let cornerRadius: CGFloat = 8.0
+        
+    }
+    
+    
+    @IBOutlet weak var newOrExistingLabel: UILabel!
+    @IBOutlet weak var createContractBtn: UIButton!
+    
+    @IBOutlet weak var viewExistingContractBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setUpViews()
         
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "commanderlogo.jpg")!)
+        
+       
     }
     
     
@@ -37,6 +49,26 @@ class HomeViewController: UIViewController {
         
         
         
+    }
+    
+    
+    
+    
+    private func setUpViews() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "commanderlogo.jpg")!)
+        createContractBtn.layer.cornerRadius = Constants.cornerRadius
+        viewExistingContractBtn.layer.cornerRadius = Constants.cornerRadius
+        
+    }
+    
+    
+    
+    @IBAction func createNewContractAction(_ sender: Any) {
+        Utilities.vibrate()
+    }
+    
+    @IBAction func viewExistingContractAction(_ sender: Any) {
+        Utilities.vibrate()
     }
     
     

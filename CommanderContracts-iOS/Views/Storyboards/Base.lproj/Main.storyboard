@@ -30,19 +30,69 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhJ-Mr-olX">
+                                <rect key="frame" x="54" y="199" width="224" height="56"/>
+                                <color key="backgroundColor" red="0.3962034378" green="0.3633193911" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="CG9-Z2-UL2"/>
+                                </constraints>
+                                <state key="normal" title="CREATE NEW CONTRACT">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createNewContractAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SdE-lG-MLP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UG-H9-mIq">
+                                <rect key="frame" x="54" y="275" width="224" height="56"/>
+                                <color key="backgroundColor" red="0.3962034378" green="0.3633193911" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="2fG-Nz-l2Q"/>
+                                </constraints>
+                                <state key="normal" title="VIEW EXISTING CONTRACTS">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewExistingContractAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jyx-T4-cmf"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEW OR EXISTING CONTRACTS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYB-fb-sDq">
+                                <rect key="frame" x="54" y="114" width="224" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="s2r-it-Upm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="W0h-eI-GZE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3eq-Wl-3P0"/>
                             <constraint firstItem="W0h-eI-GZE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="95Q-8T-Ych"/>
+                            <constraint firstItem="bYB-fb-sDq" firstAttribute="top" secondItem="W0h-eI-GZE" secondAttribute="bottom" constant="70" id="JEt-Gf-1Vb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QhJ-Mr-olX" secondAttribute="trailing" constant="42" id="P7p-3h-lYK"/>
+                            <constraint firstItem="8UG-H9-mIq" firstAttribute="top" secondItem="QhJ-Mr-olX" secondAttribute="bottom" constant="20" id="UOt-eE-hPe"/>
+                            <constraint firstItem="QhJ-Mr-olX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="VmC-nO-F9f"/>
                             <constraint firstItem="W0h-eI-GZE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xpd-e8-LkF"/>
+                            <constraint firstItem="bYB-fb-sDq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="YFC-aL-C3C"/>
+                            <constraint firstItem="QhJ-Mr-olX" firstAttribute="top" secondItem="bYB-fb-sDq" secondAttribute="bottom" constant="25" id="iYN-B4-YXU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bYB-fb-sDq" secondAttribute="trailing" constant="42" id="nB7-ep-gUo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8UG-H9-mIq" secondAttribute="trailing" constant="42" id="pWj-DE-sjo"/>
+                            <constraint firstItem="8UG-H9-mIq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="54" id="tYU-JS-4An"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="createContractBtn" destination="QhJ-Mr-olX" id="UUG-UM-LCa"/>
+                        <outlet property="newOrExistingLabel" destination="bYB-fb-sDq" id="Bds-30-Wfp"/>
+                        <outlet property="viewExistingContractBtn" destination="8UG-H9-mIq" id="Ycy-9e-oQd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-300" y="-817"/>
+            <point key="canvasLocation" x="-300" y="-817.6056338028169"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Ess-uP-MT6">
