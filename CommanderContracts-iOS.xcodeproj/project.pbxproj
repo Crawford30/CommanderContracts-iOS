@@ -34,6 +34,7 @@
 		EE96DCE3272361EE00D20A2F /* TogglePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCE2272361EE00D20A2F /* TogglePassword.swift */; };
 		EEA71756272B163D0036A87B /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA71755272B163D0036A87B /* Canvas.swift */; };
 		EEA7175B272B17350036A87B /* SignaturePadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA7175A272B17350036A87B /* SignaturePadViewController.swift */; };
+		EEA71760272B2B840036A87B /* ClientOrUserSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA7175F272B2B840036A87B /* ClientOrUserSingleton.swift */; };
 		EEEEB5F7272AC7FB00F704C2 /* NewContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */; };
 		EEEEB5FC272AF09B00F704C2 /* CaptureSignaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEB5FB272AF09B00F704C2 /* CaptureSignaturesViewController.swift */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,7 @@
 		EE96DCE2272361EE00D20A2F /* TogglePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePassword.swift; sourceTree = "<group>"; };
 		EEA71755272B163D0036A87B /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		EEA7175A272B17350036A87B /* SignaturePadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignaturePadViewController.swift; sourceTree = "<group>"; };
+		EEA7175F272B2B840036A87B /* ClientOrUserSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOrUserSingleton.swift; sourceTree = "<group>"; };
 		EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContractViewController.swift; sourceTree = "<group>"; };
 		EEEEB5FB272AF09B00F704C2 /* CaptureSignaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSignaturesViewController.swift; sourceTree = "<group>"; };
 		FFD6DD5E25D8D1F2AC4B452B /* Pods_CommanderContracts_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommanderContracts_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -298,6 +300,7 @@
 				EE3A5846272816E900AC4B53 /* ProgressIndicator.swift */,
 				EE3A58632728222300AC4B53 /* UIShowHideTextField.swift */,
 				EE784540272982B6008EDEF6 /* Toast.swift */,
+				EEA7175F272B2B840036A87B /* ClientOrUserSingleton.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 			files = (
 				EE3A58642728222300AC4B53 /* UIShowHideTextField.swift in Sources */,
 				EE784541272982B6008EDEF6 /* Toast.swift in Sources */,
+				EEA71760272B2B840036A87B /* ClientOrUserSingleton.swift in Sources */,
 				EEEEB5FC272AF09B00F704C2 /* CaptureSignaturesViewController.swift in Sources */,
 				EE50B9A3271DB6CA0073B197 /* LoginViewController.swift in Sources */,
 				EE50B9B2271DB8190073B197 /* AuthManager.swift in Sources */,

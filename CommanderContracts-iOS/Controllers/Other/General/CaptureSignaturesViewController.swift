@@ -7,7 +7,17 @@
 
 import UIKit
 
+
+enum signatureModes: Int {
+    case modeClient
+    case modeContractor
+    case modeInactive
+    
+}
+
 class CaptureSignaturesViewController: UIViewController {
+    
+     var userSignatureMode = signatureModes.modeInactive.rawValue
     
     
     struct Constants {
@@ -41,6 +51,12 @@ class CaptureSignaturesViewController: UIViewController {
     
     @IBAction func captureContractorSignAction(_ sender: Any) {
         
+        userSignatureMode = signatureModes.modeContractor.rawValue
+        
+         UserDefaults.standard.set(userSignatureMode, forKey: "isClientOrContractor")
+        
+       // UserDefaults.standard.integer(forKey: <#T##String#>)
+        
         Utilities.vibrate()
         
         gotToSignaturePad()
@@ -48,6 +64,10 @@ class CaptureSignaturesViewController: UIViewController {
     
     
     @IBAction func captureClientSignAction(_ sender: Any) {
+        
+        userSignatureMode = signatureModes.modeClient.rawValue
+        
+        UserDefaults.standard.set(userSignatureMode, forKey: "isClientOrContractor")
         
         Utilities.vibrate()
         
@@ -75,6 +95,26 @@ class CaptureSignaturesViewController: UIViewController {
         
         contractorImageView.layer.cornerRadius = Constants.cornerRadius
         clientImageView.layer.cornerRadius = Constants.cornerRadius
+        
+        let singletonInstance = ClientOrUserSingleton.shared
+        
+        
+        switch userSignatureMode {
+        case signatureModes.modeClient.rawValue:
+            
+            clientImageView.image = singletonInstance.getClientImage()
+            
+            
+            
+            break
+            
+        case signatureModes.modeContractor.rawValue:
+            
+             contractorImageView.image = singletonInstance.getContractorImage()
+            break
+        default:
+            return
+        }
         
         
         

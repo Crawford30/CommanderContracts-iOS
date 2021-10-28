@@ -7,7 +7,21 @@
 
 import UIKit
 
+
+enum possibleSignatureModes: Int {
+    case modeClient
+    case modeContractor
+    case modeInactive
+    
+}
+
+
+
 class SignaturePadViewController: UIViewController {
+    
+    var valueForInfo:Int = 0
+    
+    var myCurrentMode = possibleSignatureModes.modeInactive.rawValue
     
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
@@ -33,6 +47,9 @@ class SignaturePadViewController: UIViewController {
         super.viewDidLoad()
         
         setUpViews()
+        
+        
+        valueForInfo = UserDefaults.standard.integer(forKey: "isClientOrContractor")
 
       
     }
@@ -64,7 +81,36 @@ class SignaturePadViewController: UIViewController {
     
     @IBAction func okBtnAction(_ sender: Any) {
         
+        let singletonInstance = ClientOrUserSingleton.shared
+        
+        let signatureSaved = signatureView.image
+        
+//        secondVC.signature = signatureSaved ?? UIImage()
+        
         Utilities.vibrate()
+        
+        switch valueForInfo  {
+        case possibleSignatureModes.modeClient.rawValue:
+            
+            singletonInstance.setClientImage(theImage: signatureSaved ?? UIImage() )
+            
+            self.dismiss(animated: true, completion: nil)
+            
+            
+            break
+            
+        case possibleSignatureModes.modeContractor.rawValue:
+            
+            singletonInstance.setContractorImage(theImage: signatureSaved ?? UIImage())
+            
+            self.dismiss(animated: true, completion: nil)
+            break
+        default:
+            return
+        }
+        
+        
+      
     }
     
     
