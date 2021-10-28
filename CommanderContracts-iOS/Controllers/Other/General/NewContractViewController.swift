@@ -89,6 +89,13 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         }
         
         
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "CaptureSignatureID") as? CaptureSignaturesViewController
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
+        
+        
+        
     }
     
     private func setUpViews() {
