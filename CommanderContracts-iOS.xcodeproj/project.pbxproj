@@ -32,6 +32,7 @@
 		EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE846219272703590022E493 /* ResetPasswordViewController.swift */; };
 		EE96DCDB27235FA000D20A2F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCDA27235FA000D20A2F /* Utilities.swift */; };
 		EE96DCE3272361EE00D20A2F /* TogglePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE96DCE2272361EE00D20A2F /* TogglePassword.swift */; };
+		EEEEB5F7272AC7FB00F704C2 /* NewContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		EE846219272703590022E493 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		EE96DCDA27235FA000D20A2F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		EE96DCE2272361EE00D20A2F /* TogglePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TogglePassword.swift; sourceTree = "<group>"; };
+		EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContractViewController.swift; sourceTree = "<group>"; };
 		FFD6DD5E25D8D1F2AC4B452B /* Pods_CommanderContracts_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommanderContracts_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -267,6 +269,7 @@
 		EE50B9A1271DB67F0073B197 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				EE50B9B2271DB8190073B197 /* AuthManager.swift in Sources */,
 				EE50B9AD271DB7510073B197 /* Extensions.swift in Sources */,
 				EE3A5847272816E900AC4B53 /* ProgressIndicator.swift in Sources */,
+				EEEEB5F7272AC7FB00F704C2 /* NewContractViewController.swift in Sources */,
 				EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */,
 				EE50B9A8271DB7010073B197 /* RegisterViewController.swift in Sources */,
 				EE341D05271AF75F00832A96 /* HomeViewController.swift in Sources */,

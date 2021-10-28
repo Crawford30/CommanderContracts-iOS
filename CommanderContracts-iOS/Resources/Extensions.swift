@@ -113,3 +113,12 @@ extension UIViewController {
         })
     } }
 
+
+
+
+extension UITextView {
+    func leftSpace() {
+        self.textContainerInset = UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 4)
+    }
+}
+

@@ -65,6 +65,14 @@ class HomeViewController: UIViewController {
     
     @IBAction func createNewContractAction(_ sender: Any) {
         Utilities.vibrate()
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "NewContractID") as? NewContractViewController
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
+        
+        //
     }
     
     @IBAction func viewExistingContractAction(_ sender: Any) {
