@@ -42,12 +42,16 @@ class CaptureSignaturesViewController: UIViewController {
     @IBAction func captureContractorSignAction(_ sender: Any) {
         
         Utilities.vibrate()
+        
+        gotToSignaturePad()
     }
     
     
     @IBAction func captureClientSignAction(_ sender: Any) {
         
         Utilities.vibrate()
+        
+        gotToSignaturePad()
     }
     
     @IBAction func submitBtnAction(_ sender: Any) {
@@ -73,6 +77,15 @@ class CaptureSignaturesViewController: UIViewController {
         clientImageView.layer.cornerRadius = Constants.cornerRadius
         
         
+        
+    }
+    
+    private func gotToSignaturePad() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "SignaturePadID") as? SignaturePadViewController
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
         
         
     }

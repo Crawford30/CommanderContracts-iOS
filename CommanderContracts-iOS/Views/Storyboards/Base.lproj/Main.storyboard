@@ -592,6 +592,114 @@
             </objects>
             <point key="canvasLocation" x="2471.25" y="-140.49295774647888"/>
         </scene>
+        <!--Signature Pad View Controller-->
+        <scene sceneID="Llx-GN-e1i">
+            <objects>
+                <viewController storyboardIdentifier="SignaturePadID" id="LSB-Aj-vmf" customClass="SignaturePadViewController" customModule="CommanderContracts_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="f4M-fG-Yu5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6E-3n-jko">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" red="0.4226532201" green="0.25813929079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="SIGNATURE PAD" id="mQA-dn-sTv">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.left" catalog="system" id="zqE-gG-Gmb">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backBtnTapped:" destination="LSB-Aj-vmf" id="aEv-mh-Y0S"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCz-ou-455" customClass="Canvas" customModule="CommanderContracts_iOS" customModuleProvider="target">
+                                <rect key="frame" x="16" y="64" width="288" height="350"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="G7O-u7-7Jh"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HDx-CM-zVZ">
+                                <rect key="frame" x="32" y="452" width="256" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZL-qR-oJ8">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                        <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="7yt-27-yTk"/>
+                                            <constraint firstAttribute="width" constant="80" id="CcC-wq-pQS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="CANCEL">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelBtnAction:" destination="LSB-Aj-vmf" eventType="touchUpInside" id="e9S-2O-h9y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbR-b1-if9">
+                                        <rect key="frame" x="88" y="0.0" width="80" height="60"/>
+                                        <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="YD8-OJ-se0"/>
+                                            <constraint firstAttribute="height" constant="60" id="l4K-WF-EXV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="CLEAR">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="clearBtnAction:" destination="LSB-Aj-vmf" eventType="touchUpInside" id="XUM-fY-mTg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCG-M9-W4s">
+                                        <rect key="frame" x="176" y="0.0" width="80" height="60"/>
+                                        <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="MMH-Th-reE"/>
+                                            <constraint firstAttribute="width" constant="80" id="ULE-RE-kjP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <state key="normal" title="OK">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="okBtnAction:" destination="LSB-Aj-vmf" eventType="touchUpInside" id="Nfe-jf-9Fb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yBf-4P-VTN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FCz-ou-455" firstAttribute="leading" secondItem="yBf-4P-VTN" secondAttribute="leading" constant="16" id="11q-xT-TN0"/>
+                            <constraint firstItem="FCz-ou-455" firstAttribute="top" secondItem="B6E-3n-jko" secondAttribute="bottom" constant="20" id="247-kz-Vqv"/>
+                            <constraint firstItem="B6E-3n-jko" firstAttribute="top" secondItem="yBf-4P-VTN" secondAttribute="top" id="2Ax-3f-HaP"/>
+                            <constraint firstItem="B6E-3n-jko" firstAttribute="trailing" secondItem="yBf-4P-VTN" secondAttribute="trailing" id="8ct-q4-C9Q"/>
+                            <constraint firstItem="B6E-3n-jko" firstAttribute="leading" secondItem="yBf-4P-VTN" secondAttribute="leading" id="C4B-8s-ERb"/>
+                            <constraint firstItem="yBf-4P-VTN" firstAttribute="trailing" secondItem="HDx-CM-zVZ" secondAttribute="trailing" constant="32" id="LCw-Pc-hAi"/>
+                            <constraint firstItem="HDx-CM-zVZ" firstAttribute="top" secondItem="FCz-ou-455" secondAttribute="bottom" constant="38" id="Th3-1p-buS"/>
+                            <constraint firstItem="yBf-4P-VTN" firstAttribute="trailing" secondItem="FCz-ou-455" secondAttribute="trailing" constant="16" id="VrJ-y8-nhY"/>
+                            <constraint firstItem="HDx-CM-zVZ" firstAttribute="leading" secondItem="yBf-4P-VTN" secondAttribute="leading" constant="32" id="Yfa-jR-7Gx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="TZL-qR-oJ8" id="AEf-d5-BOQ"/>
+                        <outlet property="clearBtn" destination="AbR-b1-if9" id="VdK-Pl-3QR"/>
+                        <outlet property="okBtn" destination="hCG-M9-W4s" id="od9-jw-MN9"/>
+                        <outlet property="signatureView" destination="FCz-ou-455" id="tST-DI-p7i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YtW-ST-79F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3142.5" y="-140.49295774647888"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="zKv-bT-KrK">
             <objects>
