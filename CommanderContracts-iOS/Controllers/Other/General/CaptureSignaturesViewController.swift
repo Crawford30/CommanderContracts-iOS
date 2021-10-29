@@ -8,23 +8,21 @@
 import UIKit
 
 
-enum signatureModes: Int {
-    case modeClient
-    case modeContractor
-    case modeInactive
+class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewControllerDelegate, ImageInfoContractorViewControllerDelegate {
     
-}
-
-class CaptureSignaturesViewController: UIViewController {
     
-     var userSignatureMode = signatureModes.modeInactive.rawValue
+    func userSignature(image: UIImage) {
+        print("CLIENT IMAGE: \(image)")
+        clientImageView.image = image
+    }
+    
     
     
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         
     }
-
+    
     @IBOutlet weak var captureContractorSignBtn: UIButton!
     @IBOutlet weak var contractorImageView: UIImageView!
     
@@ -36,7 +34,7 @@ class CaptureSignaturesViewController: UIViewController {
         super.viewDidLoad()
         
         setUpViews()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -51,11 +49,7 @@ class CaptureSignaturesViewController: UIViewController {
     
     @IBAction func captureContractorSignAction(_ sender: Any) {
         
-        userSignatureMode = signatureModes.modeContractor.rawValue
-        
-         UserDefaults.standard.set(userSignatureMode, forKey: "isClientOrContractor")
-        
-       // UserDefaults.standard.integer(forKey: <#T##String#>)
+        UserDefaults.standard.set(true, forKey: "WhoseSign")
         
         Utilities.vibrate()
         
@@ -65,9 +59,8 @@ class CaptureSignaturesViewController: UIViewController {
     
     @IBAction func captureClientSignAction(_ sender: Any) {
         
-        userSignatureMode = signatureModes.modeClient.rawValue
+        UserDefaults.standard.set(false, forKey: "WhoseSign")
         
-        UserDefaults.standard.set(userSignatureMode, forKey: "isClientOrContractor")
         
         Utilities.vibrate()
         
@@ -96,41 +89,31 @@ class CaptureSignaturesViewController: UIViewController {
         contractorImageView.layer.cornerRadius = Constants.cornerRadius
         clientImageView.layer.cornerRadius = Constants.cornerRadius
         
-        let singletonInstance = ClientOrUserSingleton.shared
-        
-        
-        switch userSignatureMode {
-        case signatureModes.modeClient.rawValue:
-            
-            clientImageView.image = singletonInstance.getClientImage()
-            
-            
-            
-            break
-            
-        case signatureModes.modeContractor.rawValue:
-            
-             contractorImageView.image = singletonInstance.getContractorImage()
-            break
-        default:
-            return
-        }
-        
-        
         
     }
+    
+    
+    func didSelectContractorImage(_ image: UIImage) {
+        contractorImageView.image = image
+    }
+    
+    func didSelectClientImage(_ image: UIImage) {
+        clientImageView.image = image
+    }
+    
     
     private func gotToSignaturePad() {
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "SignaturePadID") as? SignaturePadViewController
+        homeVC?.clientdelegate = self
+        homeVC?.contractordelegate = self
         homeVC?.modalPresentationStyle = .fullScreen
         self.present(homeVC!, animated: true, completion: nil)
         
         
     }
     
-
     
     
 }

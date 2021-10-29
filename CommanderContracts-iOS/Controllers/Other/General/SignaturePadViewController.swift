@@ -8,21 +8,28 @@
 import UIKit
 
 
-enum possibleSignatureModes: Int {
-    case modeClient
-    case modeContractor
-    case modeInactive
-    
+
+protocol ImageInfoClientViewControllerDelegate: class {
+    func didSelectClientImage(_ image: UIImage)
 }
+
+
+protocol ImageInfoContractorViewControllerDelegate: class {
+    func didSelectContractorImage(_ image: UIImage)
+}
+
 
 
 
 class SignaturePadViewController: UIViewController {
     
-    var valueForInfo:Int = 0
+    var whoseSign: Bool = false
     
-    var myCurrentMode = possibleSignatureModes.modeInactive.rawValue
+    weak var clientdelegate: ImageInfoClientViewControllerDelegate?
     
+    weak var contractordelegate: ImageInfoContractorViewControllerDelegate?
+    
+   
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         
@@ -47,25 +54,20 @@ class SignaturePadViewController: UIViewController {
         super.viewDidLoad()
         
         setUpViews()
+        whoseSign = UserDefaults.standard.bool(forKey: "WhoseSign")
         
-        
-        valueForInfo = UserDefaults.standard.integer(forKey: "isClientOrContractor")
-
-      
+     
     }
     
     @IBAction func backBtnTapped(_ sender: Any) {
         
         Utilities.vibrate()
-        
         self.dismiss(animated: true, completion: nil)
     }
     
     
     @IBAction func cancelBtnAction(_ sender: Any) {
-        
         Utilities.vibrate()
-        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -81,43 +83,27 @@ class SignaturePadViewController: UIViewController {
     
     @IBAction func okBtnAction(_ sender: Any) {
         
-        let singletonInstance = ClientOrUserSingleton.shared
-        
+        Utilities.vibrate()
         let signatureSaved = signatureView.image
         
-//        secondVC.signature = signatureSaved ?? UIImage()
-        
-        Utilities.vibrate()
-        
-        switch valueForInfo  {
-        case possibleSignatureModes.modeClient.rawValue:
+        if(whoseSign == false) {
             
-            singletonInstance.setClientImage(theImage: signatureSaved ?? UIImage() )
+            clientdelegate?.didSelectClientImage(signatureSaved ?? UIImage() )
             
-            self.dismiss(animated: true, completion: nil)
+        } else {
             
-            
-            break
-            
-        case possibleSignatureModes.modeContractor.rawValue:
-            
-            singletonInstance.setContractorImage(theImage: signatureSaved ?? UIImage())
-            
-            self.dismiss(animated: true, completion: nil)
-            break
-        default:
-            return
+            contractordelegate?.didSelectContractorImage(signatureSaved ?? UIImage())
         }
         
         
-      
+        self.dismiss(animated: true, completion: nil)
+        
+
     }
     
     
     
     private func setUpViews() {
-        
-        
         cancelBtn.layer.cornerRadius = Constants.cornerRadius
         clearBtn.layer.cornerRadius = Constants.cornerRadius
         okBtn.layer.cornerRadius = Constants.cornerRadius

@@ -34,6 +34,11 @@ extension UIView{
         return frame.origin.x + frame.size.width
     }
     
+    
+    public  var isViewEmpty : Bool {
+        return  self.subviews.count == 0 ;
+    }
+    
 }
 
 extension String {
@@ -121,4 +126,10 @@ extension UITextView {
         self.textContainerInset = UIEdgeInsets(top: 4, left: 6, bottom: 4, right: 4)
     }
 }
+
+
+extension UIImageView {
+    var isEmpty: Bool { image == nil }
+}
+
 
