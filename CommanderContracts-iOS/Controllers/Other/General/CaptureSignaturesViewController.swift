@@ -169,6 +169,11 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
                                         //====Navigate to Existing Contracts
                                         
                                         
+                                        //clear the image view
+                                        self.clientImageView.image = nil
+                                        self.contractorImageView.image = nil
+                                        
+                                        
                                         self.navigateToExistingContracts()
                                         
                                         
