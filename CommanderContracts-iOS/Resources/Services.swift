@@ -60,16 +60,16 @@ class Services {
         
         let uid = Auth.auth().currentUser?.uid
         
-        let   ref = Database.database().reference().child("/user-contracts/\(String(describing: uid))").childByAutoId()
+        let   ref = Database.database().reference().child("/user-contracts/\(uid!)").childByAutoId()
         
         
         
         print("USERID: \(String(describing: uid))")
         
-        let clientProfileLogoUri = "https://firebasestorage.googleapis.com/v0/b/com..."
+        let clientProfileLogoUri = "https://firebasestorage.googleapis.com/v0/b/commander-s-contracts.appspot.com/o/images%2F36588d87-88a7-46d0-a86a-6d374be54040?alt=media&token=a4b5503e-9434-49ad-8ce6-bfc325244fe3"
         
         
-        var data = [ "clientAddress" : clientAddress,
+        let data = [ "clientAddress" : clientAddress,
                      "clientDate" : clientDate,
                      "clientDesc" : clientDesc,
                      "clientID" : clientID,
