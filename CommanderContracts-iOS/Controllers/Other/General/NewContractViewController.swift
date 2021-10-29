@@ -89,6 +89,15 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         }
         
         
+        let singleInstance = ClientOrUserSingleton.shared
+        
+        singleInstance.setClientName(theName: (clientName)!)
+        singleInstance.setClientAddress(theAddress: (clientAddress)!)
+        singleInstance.setContractDate(theDate: (clientDate)!)
+        singleInstance.setContractDescription(theDesc: (clientDesc)!)
+        singleInstance.setContractAmount(theAmount: Int((clientPrice!))!)
+        
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "CaptureSignatureID") as? CaptureSignaturesViewController
         homeVC?.modalPresentationStyle = .fullScreen

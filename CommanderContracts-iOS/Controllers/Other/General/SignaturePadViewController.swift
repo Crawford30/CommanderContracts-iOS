@@ -9,6 +9,7 @@ import UIKit
 
 
 
+
 protocol ImageInfoClientViewControllerDelegate: class {
     func didSelectClientImage(_ image: UIImage)
 }
@@ -23,13 +24,15 @@ protocol ImageInfoContractorViewControllerDelegate: class {
 
 class SignaturePadViewController: UIViewController {
     
+  
+    
     var whoseSign: Bool = false
     
     weak var clientdelegate: ImageInfoClientViewControllerDelegate?
     
     weak var contractordelegate: ImageInfoContractorViewControllerDelegate?
     
-   
+    
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         
@@ -45,19 +48,22 @@ class SignaturePadViewController: UIViewController {
         }
     }
     
-  
+    
     
     @IBOutlet weak var clearBtn: UIButton!
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+  
         setUpViews()
         whoseSign = UserDefaults.standard.bool(forKey: "WhoseSign")
         
-     
+        
     }
+    
+    
+   
     
     @IBAction func backBtnTapped(_ sender: Any) {
         
@@ -98,7 +104,7 @@ class SignaturePadViewController: UIViewController {
         
         self.dismiss(animated: true, completion: nil)
         
-
+        
     }
     
     
@@ -109,5 +115,5 @@ class SignaturePadViewController: UIViewController {
         okBtn.layer.cornerRadius = Constants.cornerRadius
         
     }
-   
+    
 }

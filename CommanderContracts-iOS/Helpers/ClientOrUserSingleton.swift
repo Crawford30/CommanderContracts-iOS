@@ -13,46 +13,101 @@ class ClientOrUserSingleton {
     static let shared = ClientOrUserSingleton()
     
    
-    private var clientSignature:  UIImage
+    private var clientName:  String
+    private var clientAddress:  String
+    private var contractDate:  String
+    private var contractDescription:  String
+    private var contractAmount:  Double
     
-    private var contractoreSignature: UIImage
+    
     
     
     private  init() { //A  private initilaizer, means it can only be called this class
         
-        clientSignature = UIImage()
-        
-         contractoreSignature = UIImage()
+        clientName = ""
+        clientAddress = ""
+        contractDate = ""
+        contractDescription = ""
+        contractAmount = 0.0
         
         
     } //not to be accessed anywhere apart from this class
     
     
     
-    func setClientImage(theImage: UIImage) -> () { //set the usertype to the singleton, thats why it doest have return type
+    func setClientName(theName: String) -> () {
         
-        clientSignature = theImage
-        
-    }
-    
-    
-    func getClientImage() -> UIImage {
-        
-        return clientSignature
-    }
-    
-    
-    func setContractorImage(theImage: UIImage) -> () { //set the usertype to the singleton, thats why it doest have return type
-        
-        contractoreSignature = theImage
+        clientName = theName
         
     }
     
     
-    func getContractorImage() -> UIImage {
+    func getClientName() -> String {
         
-        return contractoreSignature
+        return clientName
     }
+    
+    
+    func setClientAddress(theAddress: String) -> () {
+        
+        clientAddress = theAddress
+        
+    }
+    
+    
+    func getClientAddress() -> String {
+        
+        return clientAddress
+    }
+    
+    
+    
+    func setContractDate(theDate: String) -> () {
+        
+        contractDate = theDate
+        
+    }
+    
+    
+    func getContractDate() -> String {
+        
+        return contractDate
+    }
+    
+    
+    func setContractDescription(theDesc: String) -> () {
+        
+        contractDescription = theDesc
+        
+    }
+    
+    
+    func getContractDescription() -> String {
+        
+        return contractDescription
+    }
+    
+    
+    
+    func setContractAmount(theAmount: Int) -> () {
+        
+        contractAmount = Double(Int(theAmount))
+        
+    }
+    
+    
+    func getContractAmount() -> Double {
+        
+        return contractAmount
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
 }

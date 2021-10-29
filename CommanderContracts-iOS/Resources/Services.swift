@@ -51,4 +51,57 @@ class Services {
     }
     
     
+    
+    
+    
+    static func uploadContractsToDatabase(clientAddress: String, clientDate: String, clientDesc: String,clientID: String, clientName: String, clientPrice: String,
+                                          clientSignUri: String,companyAddress: String, companyEmail: String, companyName: String,
+                                          contractorSignUri: String, id: String, onSuccess: @escaping () ->Void){
+        
+        let uid = Auth.auth().currentUser?.uid
+        
+        let   ref = Database.database().reference().child("/user-contracts/\(String(describing: uid))").childByAutoId()
+        
+        
+        
+        print("USERID: \(String(describing: uid))")
+        
+        let clientProfileLogoUri = "https://firebasestorage.googleapis.com/v0/b/com..."
+        
+        
+        var data = [ "clientAddress" : clientAddress,
+                     "clientDate" : clientDate,
+                     "clientDesc" : clientDesc,
+                     "clientID" : clientID,
+                     "clientName" : clientName,
+                     "clientPrice" : clientPrice,
+                     "clientProfileLogoUri" : clientProfileLogoUri,
+                     "clientSignUri" : clientSignUri,
+                     "companyAddress" : companyAddress,
+                     "companyEmail" : companyEmail,
+                     "companyName" : companyName,
+                     "contractorSignUri" : contractorSignUri,
+                     "id" : id,
+                     
+                     
+                     
+                     
+        ]
+        
+        ref.setValue(data)
+        
+        
+        
+        
+        
+        //        ref.child("users").child(uid!).setValue( ["companyAddress" : comAddress, "companyEmail": comEmail,  "companyLogoImageUrl": imgUrl, "companyName" : comName, "companyPhone" : comPhone, "uid": uid ])
+        
+        onSuccess()
+        
+        
+    }
+    
+    
+    
+    
 }

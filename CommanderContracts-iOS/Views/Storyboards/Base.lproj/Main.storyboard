@@ -700,6 +700,45 @@
             </objects>
             <point key="canvasLocation" x="3142.5" y="-140.49295774647888"/>
         </scene>
+        <!--Existing Contracts View Controller-->
+        <scene sceneID="geA-wc-fnM">
+            <objects>
+                <viewController storyboardIdentifier="ExistingContractsID" id="oDi-B4-aKf" customClass="ExistingContractsViewController" customModule="CommanderContracts_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="ExistingContractsID" id="33y-tV-lT6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uii-JH-GZl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <color key="barTintColor" red="0.3962034378" green="0.3633193911" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="EXISTING CONTRACTS" id="SC5-iv-l2F">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="8Y4-bC-OrT">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="oDi-B4-aKf" id="zQZ-hh-2Li"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VoN-JN-HJh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uii-JH-GZl" firstAttribute="leading" secondItem="VoN-JN-HJh" secondAttribute="leading" id="5mt-Wb-X9k"/>
+                            <constraint firstItem="uii-JH-GZl" firstAttribute="top" secondItem="VoN-JN-HJh" secondAttribute="top" id="bh9-xn-e1g"/>
+                            <constraint firstItem="uii-JH-GZl" firstAttribute="trailing" secondItem="VoN-JN-HJh" secondAttribute="trailing" id="ccG-Qc-C9E"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MMb-i6-ZcP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3831" y="-140"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="zKv-bT-KrK">
             <objects>
