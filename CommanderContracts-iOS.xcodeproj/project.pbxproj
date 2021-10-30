@@ -12,6 +12,7 @@
 		E7E77634EA0347899EB0CC19 /* Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFEF8E9F8050B2D87391F40 /* Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests.framework */; };
 		EE20E632272C929600E7C783 /* ExistingContractsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20E631272C929600E7C783 /* ExistingContractsViewController.swift */; };
 		EE20E640272D142200E7C783 /* MyContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20E63F272D142200E7C783 /* MyContracts.swift */; };
+		EE20E649272D280B00E7C783 /* MyContractsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20E648272D280B00E7C783 /* MyContractsCollectionViewCell.swift */; };
 		EE341D01271AF75F00832A96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D00271AF75F00832A96 /* AppDelegate.swift */; };
 		EE341D03271AF75F00832A96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D02271AF75F00832A96 /* SceneDelegate.swift */; };
 		EE341D05271AF75F00832A96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D04271AF75F00832A96 /* HomeViewController.swift */; };
@@ -70,6 +71,7 @@
 		E093186DD88539C5E5AB8AB0 /* Pods-CommanderContracts-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommanderContracts-iOS.debug.xcconfig"; path = "Target Support Files/Pods-CommanderContracts-iOS/Pods-CommanderContracts-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EE20E631272C929600E7C783 /* ExistingContractsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingContractsViewController.swift; sourceTree = "<group>"; };
 		EE20E63F272D142200E7C783 /* MyContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContracts.swift; sourceTree = "<group>"; };
+		EE20E648272D280B00E7C783 /* MyContractsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContractsCollectionViewCell.swift; sourceTree = "<group>"; };
 		EE341CFD271AF75F00832A96 /* CommanderContracts-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CommanderContracts-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE341D00271AF75F00832A96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE341D02271AF75F00832A96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EE20E647272D27CE00E7C783 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				EE20E648272D280B00E7C783 /* MyContractsCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		EE341CF4271AF75F00832A96 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +193,7 @@
 		EE341CFF271AF75F00832A96 /* CommanderContracts-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				EE20E647272D27CE00E7C783 /* CollectionViewCells */,
 				EE96DCD927235F8400D20A2F /* Helpers */,
 				EE50B9C0271DB9240073B197 /* Models */,
 				EE50B99D271DB6270073B197 /* Controllers */,
@@ -567,6 +578,7 @@
 				EE84621A272703590022E493 /* ResetPasswordViewController.swift in Sources */,
 				EE50B9A8271DB7010073B197 /* RegisterViewController.swift in Sources */,
 				EEB86BBC272C727F006E4E07 /* FirebaseStorageManager.swift in Sources */,
+				EE20E649272D280B00E7C783 /* MyContractsCollectionViewCell.swift in Sources */,
 				EE341D05271AF75F00832A96 /* HomeViewController.swift in Sources */,
 				EE341D01271AF75F00832A96 /* AppDelegate.swift in Sources */,
 				EE341D03271AF75F00832A96 /* SceneDelegate.swift in Sources */,
