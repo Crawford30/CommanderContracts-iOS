@@ -12,7 +12,17 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class ExistingContractsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ExistingContractsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+    
+    var myCurrentButton: Int = 0
+    
+    var currentFilteredArray: [MyContracts] = []  //for search
+    var searchController: UISearchController!
+    var shouldShowSearchResults: Bool = false
+    var clientID: String = ""
+    var allContracts: [ MyContracts ] = []
+    
+    var ref: DatabaseReference!
     
     var indicator:ProgressIndicator?
     
@@ -25,10 +35,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     
     @IBOutlet weak var contractCollectionView: UICollectionView!
     
-    var clientID: String = ""
-    var allContracts: [ MyContracts ] = []
     
-    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         
@@ -64,6 +71,250 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         refreshControl.endRefreshing()
         
     }
+    
+    
+    @IBAction func searchBtnTapped(_ sender: Any) {
+        Utilities.vibrate()
+        customSearch()
+        
+    }
+    
+    
+    @IBAction func verticalDotTapped(_ sender: Any) {
+        Utilities.vibrate()
+        
+    // print("Cell number \(String(indexPath.item)) tapped" )
+        prepCustomMenu()
+        
+        
+    }
+    
+    
+    
+    
+    func prepCustomMenu()  {
+        
+        
+        
+        let tempView: UIView     = UIView.init()    // Fill screen with invisible view to disable taps in back
+        tempView.tag             = 1000
+        tempView.frame           = self.view.frame
+        tempView.backgroundColor = UIColor.clear
+        self.view.addSubview( tempView )
+        
+        //-----------------------------------------------------------------------------------
+        
+        var buttonRect: CGRect = CGRect.zero
+        buttonRect.origin.x    = contractCollectionView.frame.origin.x + 40
+        buttonRect.origin.y    = 0
+        buttonRect.size.width  = contractCollectionView.frame.size.width - 80.0
+        buttonRect.size.height = 44
+        
+        let buttonGap:CGFloat  = 10.0 // vertical gap between buttons
+        
+        //-----------------------------------------------------------------------------------
+        
+        let bgLabel: UILabel    = UILabel.init()
+        bgLabel.backgroundColor = UIColor.white
+        var bgRect: CGRect      = CGRect.zero
+        bgRect.origin.x         = contractCollectionView.frame.origin.x + 20
+        bgRect.origin.y         = 0
+        bgRect.size.width       = contractCollectionView.frame.size.width - 60.0
+        bgRect.size.height      = ( buttonRect.size.height * 3.0 ) + ( buttonGap * 4.0 )
+        bgLabel.frame           = bgRect
+        tempView.addSubview( bgLabel )
+        
+        bgLabel.layer.cornerRadius = 10.0
+        bgLabel.clipsToBounds      = true
+        bgLabel.center             = self.view.center
+        
+        
+        //-----------------------------------------------------------------------------------
+        
+        
+        
+        let viewPDFButton:  UIButton            = UIButton.init()
+        
+        
+        viewPDFButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            
+            //UIColor(named: "myLightGray")
+        viewPDFButton.titleLabel?.textAlignment = .center
+        viewPDFButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+        viewPDFButton.setTitleColor( UIColor.white, for: .normal)
+        viewPDFButton.setTitle("View PDF", for: .normal )
+        viewPDFButton.addTarget(self, action: #selector( self.handleViewPDF ), for: .touchUpInside )
+        
+        tempView.addSubview( viewPDFButton )
+        viewPDFButton.layer.cornerRadius = 8.0
+        viewPDFButton.clipsToBounds      = true
+        
+        buttonRect.origin.y        = bgLabel.frame.origin.y + buttonGap
+        viewPDFButton.frame = buttonRect
+        
+        buttonRect.origin.y += buttonRect.size.height + buttonGap
+        
+        //-----------------------------------------------------------------------------------
+        
+        
+        let shareContractButton: UIButton             = UIButton.init()
+        shareContractButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            //UIColor(named: "myLightGray")
+        shareContractButton.titleLabel?.textAlignment = .center
+        shareContractButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+        shareContractButton.setTitleColor( UIColor.white, for: .normal)
+        shareContractButton.setTitle("Share", for: .normal )
+        shareContractButton.addTarget(self, action: #selector( self.handleShareContract ), for: .touchUpInside )
+        tempView.addSubview( shareContractButton )
+        shareContractButton.layer.cornerRadius = 8.0
+        shareContractButton.clipsToBounds      = true
+        
+        shareContractButton.frame = buttonRect
+        
+        buttonRect.origin.y += buttonRect.size.height + buttonGap
+        
+        
+        //-----------------------------------------------------------------------------------
+        
+        let cancelMenuButton: UIButton             = UIButton.init()
+        cancelMenuButton.backgroundColor           = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            
+            //UIColor(named: "myLightGray")
+        cancelMenuButton.setTitleColor( UIColor.red, for: .normal)
+        cancelMenuButton.titleLabel?.textAlignment = .center
+        cancelMenuButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+        cancelMenuButton.setTitle("Cancel", for: .normal )
+        cancelMenuButton.addTarget(self, action:#selector( self.handleCancel ), for: .touchUpInside )
+        tempView.addSubview( cancelMenuButton )
+        cancelMenuButton.frame = buttonRect
+        cancelMenuButton.layer.cornerRadius = 8.0
+        cancelMenuButton.clipsToBounds      = true
+        
+    }
+    
+    
+    
+    
+    
+    
+    //MARK:- POPUP VIEW ACTIONS
+    @objc func handleViewPDF(_ sender: UIButton) {
+        
+        Utilities.vibrate()
+        
+        sender.tag = myCurrentButton
+        
+        print("VIEW PDF Button \(String(sender.tag)) pressed!")
+        
+        
+        var tempServiceRequest: MyContracts
+        
+        tempServiceRequest = MyContracts.init()
+        
+        
+        if shouldShowSearchResults {
+            
+            tempServiceRequest = currentFilteredArray[sender.tag]
+            
+            searchController.dismiss(animated: false, completion: nil)
+            
+        } else {
+            
+            tempServiceRequest = allContracts[sender.tag]
+        }
+        
+      
+        self.view.viewWithTag(1000)?.removeFromSuperview()
+     
+    }
+    
+    
+    
+    
+    
+    
+    //MARK:-CONTRACT SHARE
+    @objc func handleShareContract(sender: UIButton) {
+        
+        Utilities.vibrate()
+        sender.tag = myCurrentButton
+        
+        print("Share Button \(String(sender.tag)) pressed!")
+        
+        var tempService:MyContracts
+        
+        //initialising
+        tempService = MyContracts.init()
+        
+        
+        if shouldShowSearchResults {
+            
+            tempService = currentFilteredArray[sender.tag]
+            
+            searchController.dismiss(animated: false, completion: nil)
+            
+        } else {
+            
+            tempService = allContracts[sender.tag]
+        }
+        
+        self.view.viewWithTag(1000)?.removeFromSuperview()
+        
+    }
+    
+    
+    
+    
+    @objc func handleCancel() {
+        Utilities.vibrate()
+        self.view.viewWithTag(1000)?.removeFromSuperview()
+        
+    }
+    
+    //END OF POPUP VIEW ACTIONS
+    
+    
+    
+    
+    
+    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
+    func customSearch() {
+        //https://www.raywenderlich.com/9218753-what-s-new-with-uisearchcontroller-and-uisearchbar#toc-anchor-002
+        //https://stackoverflow.com/questions/38729151/show-search-bar-with-action-bar-item
+        
+        //https://www.youtube.com/watch?v=55YdwGvIZwY&t=42s
+        
+        
+        //https://www.raywenderlich.com/9218753-what-s-new-with-uisearchcontroller-and-uisearchbar#toc-anchor-002
+        //https://stackoverflow.com/questions/38729151/show-search-bar-with-action-bar-item
+        
+        //https://www.youtube.com/watch?v=55YdwGvIZwY&t=42s
+        
+        
+        // Initialize and perform a minimum configuration to the search controller.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search By Name"
+        searchController.searchBar.tintColor = UIColor.red
+        
+        //will enable didSelectRowAtIndexPath
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        
+        // Set any properties (in this case, don't hide the nav bar and don't show the emoji keyboard option)
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        present(searchController, animated: true, completion: nil)
+        
+    }
+    
+    
+    
+    
     
     
     private func loadAllContracts() {
@@ -148,8 +399,30 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return allContracts.count
+        if shouldShowSearchResults {
+            
+            return currentFilteredArray.count
+            
+        } else {
+            
+            return allContracts.count
+            
+        }
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Utilities.vibrate()
+        
+        myCurrentButton = indexPath.item
+        
+        //Feedback on button tapped
+        Utilities.vibrate()
+    
+        
+    // print("Cell number \(String(indexPath.item)) tapped" )
+        prepCustomMenu()
+        print("\(indexPath.item) tapped")
     }
     
     
@@ -168,41 +441,27 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let contractCell = contractCollectionView.dequeueReusableCell(withReuseIdentifier: "MyContractsID", for: indexPath) as! MyContractsCollectionViewCell
         
+       
+        
         contractCell.shadowDecorate()
         
+        contractCell.viewBtn.tag = indexPath.item
         
-        contractCell.clientNameLabel.text = allContracts[indexPath.item].clientName
+    
+        if (shouldShowSearchResults) {
+            
+            contractCell.clientNameLabel.text = currentFilteredArray[indexPath.item].clientName
+            
+           
+            
+            
+        } else {
+            
+            contractCell.clientNameLabel.text = allContracts[indexPath.item].clientName
+      
+        }
         
-        
-        //
-        //
-        //        tenMajorCell.shadowDecorate()
-        //
-        //
-        //
-        //        tenMajorCell.tenMajorNumber.layer.cornerRadius =   tenMajorCell.tenMajorNumber.layer.frame.width/2
-        //        tenMajorCell.tenMajorNumber.layer.masksToBounds = true
-        //        tenMajorCell.tenMajorNumber.layer.borderColor = UIColor.white.cgColor
-        //        tenMajorCell.tenMajorNumber.layer.borderWidth = 1.0
-        //
-        //
-        //
-        //        if (shouldShowSearchResults) {
-        //
-        //            tenMajorCell.tenMajorNumber.text = String(currentFilteredArray[indexPath.item].tenMajorNumber)
-        //            tenMajorCell.tenMajorTitle.text = currentFilteredArray[indexPath.item].tenMajorTitle
-        //
-        //
-        //        } else {
-        //
-        //            tenMajorCell.tenMajorNumber.text = String(tenMajorSongsArray[indexPath.item].tenMajorNumber)
-        //            tenMajorCell.tenMajorTitle.text = tenMajorSongsArray[indexPath.item].tenMajorTitle
-        //
-        //
-        //        }
-        
-        
-        
+      
         return contractCell
     }
     
@@ -245,6 +504,63 @@ extension ExistingContractsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
         return myVertCVSpacing
+        
+    }
+    
+}
+
+
+@available(iOS 13.0, *)
+extension ExistingContractsViewController: UISearchBarDelegate {
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if !shouldShowSearchResults {
+            
+            shouldShowSearchResults = true
+            contractCollectionView.reloadData()
+        }
+        
+        searchController.searchBar.resignFirstResponder()
+        
+    }
+    
+    
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = true
+        contractCollectionView.reloadData()
+    }
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        contractCollectionView.reloadData()
+    }
+}
+
+
+extension ExistingContractsViewController: UISearchResultsUpdating {
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        let lowerSearchText = searchController.searchBar.text?.lowercased()
+        
+        currentFilteredArray = [] //clear the array
+        
+        currentFilteredArray = searchController.searchBar.text!.isEmpty ? allContracts :
+            
+            allContracts.filter { item -> Bool in
+                
+                let clientName: NSString = item.clientName  as NSString
+                
+                return  clientName.lowercased(with: NSLocale.current).contains(lowerSearchText!)
+                
+            }
+        
+        contractCollectionView.reloadData()
         
     }
     

@@ -723,6 +723,12 @@
                                                 <action selector="backButtonTapped:" destination="oDi-B4-aKf" id="zQZ-hh-2Li"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="CFL-hP-tPB">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="searchBtnTapped:" destination="oDi-B4-aKf" id="TEW-ys-UgO"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -754,6 +760,9 @@
                                                     <rect key="frame" x="300" y="14" width="32" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="menu-vertical-64"/>
+                                                    <connections>
+                                                        <action selector="verticalDotTapped:" destination="oDi-B4-aKf" eventType="touchUpInside" id="lnH-k7-r6M"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </collectionViewCellContentView>
@@ -955,6 +964,7 @@
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="menu-vertical-64" width="32" height="32"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
