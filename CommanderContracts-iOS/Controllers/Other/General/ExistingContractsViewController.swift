@@ -12,6 +12,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
+import PDFKit
+
 class ExistingContractsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
     var myCurrentButton: Int = 0
@@ -207,6 +209,15 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         print("VIEW PDF Button \(String(sender.tag)) pressed!")
         
         
+       
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "PDFID") as? PDFViewController
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
+        
+        
         var tempServiceRequest: MyContracts
         
         tempServiceRequest = MyContracts.init()
@@ -272,6 +283,10 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     }
     
     //END OF POPUP VIEW ACTIONS
+    
+    
+    
+ 
     
     
     

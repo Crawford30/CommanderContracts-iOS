@@ -10,6 +10,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var floatBtn: UIButton!
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
         
@@ -23,6 +24,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        floatBtn.createFloationgAction()
         
         setUpViews()
         
@@ -62,8 +65,25 @@ class HomeViewController: UIViewController {
     }
     
     
+    @IBAction func floatActionBtnTapped(_ sender: Any) {
+        
+        goToCreateContract()
+    }
     
     @IBAction func createNewContractAction(_ sender: Any) {
+       goToCreateContract()
+    }
+    
+    @IBAction func viewExistingContractAction(_ sender: Any) {
+        Utilities.vibrate()
+        
+        navigateToExistingContracts()
+    }
+    
+    
+    private func goToCreateContract() {
+        
+        
         Utilities.vibrate()
         
         
@@ -72,13 +92,6 @@ class HomeViewController: UIViewController {
         homeVC?.modalPresentationStyle = .fullScreen
         self.present(homeVC!, animated: true, completion: nil)
         
-        //
-    }
-    
-    @IBAction func viewExistingContractAction(_ sender: Any) {
-        Utilities.vibrate()
-        
-        navigateToExistingContracts()
     }
     
     

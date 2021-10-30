@@ -20,6 +20,13 @@
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W0h-eI-GZE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LXb-qg-8zm"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.4226532201" green="0.25813929079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Commander's Contracts" id="va8-kf-R4f">
                                         <barButtonItem key="rightBarButtonItem" title="SIGN OUT" id="L8g-eT-1DF">
@@ -67,6 +74,16 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="occ-8Z-qFG">
+                                <rect key="frame" x="303" y="591" width="56" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="floatActionBtnTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9mA-Mg-j7H"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -87,13 +104,14 @@
                     </view>
                     <connections>
                         <outlet property="createContractBtn" destination="QhJ-Mr-olX" id="UUG-UM-LCa"/>
+                        <outlet property="floatBtn" destination="occ-8Z-qFG" id="ZCM-BH-FxM"/>
                         <outlet property="newOrExistingLabel" destination="bYB-fb-sDq" id="Bds-30-Wfp"/>
                         <outlet property="viewExistingContractBtn" destination="8UG-H9-mIq" id="Ycy-9e-oQd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-300" y="-817.6056338028169"/>
+            <point key="canvasLocation" x="-300" y="-818.14092953523243"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Ess-uP-MT6">
@@ -796,6 +814,51 @@
             </objects>
             <point key="canvasLocation" x="3829.5999999999999" y="-140.77961019490255"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="6St-S6-LiN">
+            <objects>
+                <viewController storyboardIdentifier="PDFID" id="war-Ry-Jd4" customClass="PDFViewController" customModule="CommanderContracts_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cG4-Ax-dzl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4x-Ou-C3a">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <color key="barTintColor" red="0.4226532201" green="0.25813929079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="PDF VIEW" id="zkm-2e-0nK">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="d2l-Z6-Gk6">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tB6-sG-8Ch">
+                                <rect key="frame" x="16" y="60" width="343" height="587"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kce-1V-ScH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Z4x-Ou-C3a" firstAttribute="trailing" secondItem="kce-1V-ScH" secondAttribute="trailing" id="4Ae-GJ-Zal"/>
+                            <constraint firstItem="Z4x-Ou-C3a" firstAttribute="top" secondItem="kce-1V-ScH" secondAttribute="top" id="DTo-Lb-WLF"/>
+                            <constraint firstItem="Z4x-Ou-C3a" firstAttribute="leading" secondItem="kce-1V-ScH" secondAttribute="leading" id="NgL-4t-onY"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rI0-ie-zcJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4541.6000000000004" y="-141.67916041979012"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="zKv-bT-KrK">
             <objects>
@@ -966,6 +1029,7 @@
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="menu-vertical-64" width="32" height="32"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
