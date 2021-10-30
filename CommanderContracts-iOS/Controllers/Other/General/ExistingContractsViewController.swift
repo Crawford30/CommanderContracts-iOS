@@ -39,7 +39,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
         self.contractCollectionView.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-    
+        
         
         //ON REFRESH TO UPDATE COLLECTION VIEW
         refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
@@ -75,13 +75,13 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         let userID : String = (Auth.auth().currentUser?.uid)!
         
         
-        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Saving Contract...")
+        indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading Contracts...")
         self.view.addSubview(self.indicator!)
         indicator!.center = view.center
         indicator!.start()
         view.isUserInteractionEnabled = false
         
-
+        
         self.ref?.child("/user-contracts/").child(userID).observe(.value, with: { snapshot in
             
             
@@ -127,14 +127,14 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
                 
             }
             
-//            print(self.allContracts)
+            //            print(self.allContracts)
             
             self.contractCollectionView.reloadData()
             
             
             
             return
-
+            
         })
         
         
@@ -149,7 +149,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return allContracts.count
-
+        
     }
     
     
@@ -174,32 +174,32 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         contractCell.clientNameLabel.text = allContracts[indexPath.item].clientName
         
         
-//
-//
-//        tenMajorCell.shadowDecorate()
-//
-//
-//
-//        tenMajorCell.tenMajorNumber.layer.cornerRadius =   tenMajorCell.tenMajorNumber.layer.frame.width/2
-//        tenMajorCell.tenMajorNumber.layer.masksToBounds = true
-//        tenMajorCell.tenMajorNumber.layer.borderColor = UIColor.white.cgColor
-//        tenMajorCell.tenMajorNumber.layer.borderWidth = 1.0
-//
-//
-//
-//        if (shouldShowSearchResults) {
-//
-//            tenMajorCell.tenMajorNumber.text = String(currentFilteredArray[indexPath.item].tenMajorNumber)
-//            tenMajorCell.tenMajorTitle.text = currentFilteredArray[indexPath.item].tenMajorTitle
-//
-//
-//        } else {
-//
-//            tenMajorCell.tenMajorNumber.text = String(tenMajorSongsArray[indexPath.item].tenMajorNumber)
-//            tenMajorCell.tenMajorTitle.text = tenMajorSongsArray[indexPath.item].tenMajorTitle
-//
-//
-//        }
+        //
+        //
+        //        tenMajorCell.shadowDecorate()
+        //
+        //
+        //
+        //        tenMajorCell.tenMajorNumber.layer.cornerRadius =   tenMajorCell.tenMajorNumber.layer.frame.width/2
+        //        tenMajorCell.tenMajorNumber.layer.masksToBounds = true
+        //        tenMajorCell.tenMajorNumber.layer.borderColor = UIColor.white.cgColor
+        //        tenMajorCell.tenMajorNumber.layer.borderWidth = 1.0
+        //
+        //
+        //
+        //        if (shouldShowSearchResults) {
+        //
+        //            tenMajorCell.tenMajorNumber.text = String(currentFilteredArray[indexPath.item].tenMajorNumber)
+        //            tenMajorCell.tenMajorTitle.text = currentFilteredArray[indexPath.item].tenMajorTitle
+        //
+        //
+        //        } else {
+        //
+        //            tenMajorCell.tenMajorNumber.text = String(tenMajorSongsArray[indexPath.item].tenMajorNumber)
+        //            tenMajorCell.tenMajorTitle.text = tenMajorSongsArray[indexPath.item].tenMajorTitle
+        //
+        //
+        //        }
         
         
         
