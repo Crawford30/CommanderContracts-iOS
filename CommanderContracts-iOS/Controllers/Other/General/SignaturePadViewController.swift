@@ -8,8 +8,6 @@
 import UIKit
 
 
-
-
 protocol ImageInfoClientViewControllerDelegate: class {
     func didSelectClientImage(_ image: UIImage)
 }
@@ -23,9 +21,7 @@ protocol ImageInfoContractorViewControllerDelegate: class {
 
 
 class SignaturePadViewController: UIViewController {
-    
-  
-    
+   
     var whoseSign: Bool = false
     
     weak var clientdelegate: ImageInfoClientViewControllerDelegate?

@@ -193,27 +193,12 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
                 }
             }
             
-            //usersRef!!.key!!,
+          
         
         
     
             
-            
-           
-            
-            //===========Save DAta======
-            
-            
-          
-            
-            
-           
-        
-        
-        
-        
-        
-        
+       
         
         
     }
@@ -240,8 +225,6 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
     
     
     private func currentLoggedInUserData() {
-        
-        
         
         ref = Database.database().reference()
         

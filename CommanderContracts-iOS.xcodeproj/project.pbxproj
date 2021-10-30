@@ -11,6 +11,7 @@
 		CE95ED85A02443A080EE2631 /* Pods_CommanderContracts_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFD6DD5E25D8D1F2AC4B452B /* Pods_CommanderContracts_iOSTests.framework */; };
 		E7E77634EA0347899EB0CC19 /* Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBFEF8E9F8050B2D87391F40 /* Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests.framework */; };
 		EE20E632272C929600E7C783 /* ExistingContractsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20E631272C929600E7C783 /* ExistingContractsViewController.swift */; };
+		EE20E640272D142200E7C783 /* MyContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE20E63F272D142200E7C783 /* MyContracts.swift */; };
 		EE341D01271AF75F00832A96 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D00271AF75F00832A96 /* AppDelegate.swift */; };
 		EE341D03271AF75F00832A96 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D02271AF75F00832A96 /* SceneDelegate.swift */; };
 		EE341D05271AF75F00832A96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE341D04271AF75F00832A96 /* HomeViewController.swift */; };
@@ -68,6 +69,7 @@
 		DBFEF8E9F8050B2D87391F40 /* Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommanderContracts_iOS_CommanderContracts_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E093186DD88539C5E5AB8AB0 /* Pods-CommanderContracts-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommanderContracts-iOS.debug.xcconfig"; path = "Target Support Files/Pods-CommanderContracts-iOS/Pods-CommanderContracts-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		EE20E631272C929600E7C783 /* ExistingContractsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExistingContractsViewController.swift; sourceTree = "<group>"; };
+		EE20E63F272D142200E7C783 /* MyContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyContracts.swift; sourceTree = "<group>"; };
 		EE341CFD271AF75F00832A96 /* CommanderContracts-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CommanderContracts-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE341D00271AF75F00832A96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE341D02271AF75F00832A96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 		EE50B9C0271DB9240073B197 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE20E63F272D142200E7C783 /* MyContracts.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				EE341D03271AF75F00832A96 /* SceneDelegate.swift in Sources */,
 				EE78453C2729698A008EDEF6 /* Services.swift in Sources */,
 				EE50B9B7271DB89D0073B197 /* StorageManager.swift in Sources */,
+				EE20E640272D142200E7C783 /* MyContracts.swift in Sources */,
 				EE96DCDB27235FA000D20A2F /* Utilities.swift in Sources */,
 				EE50B9BC271DB8E70073B197 /* DatabaseManager.swift in Sources */,
 				EEA7175B272B17350036A87B /* SignaturePadViewController.swift in Sources */,

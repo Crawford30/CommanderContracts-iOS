@@ -77,6 +77,8 @@ class HomeViewController: UIViewController {
     
     @IBAction func viewExistingContractAction(_ sender: Any) {
         Utilities.vibrate()
+        
+        navigateToExistingContracts()
     }
     
     
@@ -100,6 +102,16 @@ class HomeViewController: UIViewController {
         let historyBookModalVC = storyboard.instantiateViewController(withIdentifier: "LoginID") as? LoginViewController
         historyBookModalVC?.modalPresentationStyle = .fullScreen
         present(historyBookModalVC!, animated: true, completion: nil)
+        
+    }
+    
+    
+    private func navigateToExistingContracts(){
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "ExistingContractsID") as? ExistingContractsViewController
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
         
     }
     
