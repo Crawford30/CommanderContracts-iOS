@@ -227,14 +227,39 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         }
         
         
-//        let pdfCreator = PDFCreator(
-//            title: allContracts[myCurrentButton].clientName,
-//          body: "body",
-//          image: UIImage(),
-//          contact: "contact"
-//        )
-       
+        let singletonInstance = ContractSingleton.shared
         
+        singletonInstance.setContractorCompanyName(theName: tempServiceRequest.companyName)
+        
+        singletonInstance.setContractorAddress(theAddress: tempServiceRequest.companyAddress)
+        
+        singletonInstance.setContractorEmail(theEmail: tempServiceRequest.companyEmail)
+        
+        singletonInstance.setClientName(theName: tempServiceRequest.clientName)
+        singletonInstance.setClientAddress(theAddress: tempServiceRequest.clientAdress)
+        singletonInstance.setContractDate(theDate: tempServiceRequest.clientDate)
+        
+        singletonInstance.setClientSignUri(theUri: tempServiceRequest.clientSignUrl)
+        
+        singletonInstance.setContractorSignUrl(theUri: tempServiceRequest.contractorSignUrl)
+        
+        singletonInstance.setContractDescription(theDesc: tempServiceRequest.clientDesc)
+        
+        
+        
+        
+        //singletonInstance.setA
+        
+        
+        
+        
+//        singletonInstance.setRequestID(theID: tempServiceRequest.requestID)
+//
+//        //===================SERVICE IDS====
+//        singletonInstance.setServiceID(theID: tempServiceRequest.serviceID)
+//
+//        singletonInstance.setServiceTitle(theTitle: tempServiceRequest.serviceRequestTitle)
+//
         
        
         
