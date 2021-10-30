@@ -209,14 +209,6 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         print("VIEW PDF Button \(String(sender.tag)) pressed!")
         
         
-       
-        
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "PDFID") as? PDFViewController
-        homeVC?.modalPresentationStyle = .fullScreen
-        self.present(homeVC!, animated: true, completion: nil)
-        
         
         var tempServiceRequest: MyContracts
         
@@ -233,6 +225,27 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
             
             tempServiceRequest = allContracts[sender.tag]
         }
+        
+        
+//        let pdfCreator = PDFCreator(
+//            title: allContracts[myCurrentButton].clientName,
+//          body: "body",
+//          image: UIImage(),
+//          contact: "contact"
+//        )
+       
+        
+        
+       
+        
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "GeneratePDFID") as? GeneratePDFViewController
+        
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
+        
+      
         
       
         self.view.viewWithTag(1000)?.removeFromSuperview()
@@ -268,6 +281,24 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
             
             tempService = allContracts[sender.tag]
         }
+        
+        
+        // 1
+     
+        // 3
+        let pdfCreator = PDFCreator(
+            title: allContracts[myCurrentButton].clientName,
+          body: "body",
+          image: UIImage(),
+          contact: "contact"
+        )
+        
+        let pdfData = pdfCreator.createFlyer()
+        let vc = UIActivityViewController(
+          activityItems: [pdfData],
+          applicationActivities: []
+        )
+        present(vc, animated: true, completion: nil)
         
         self.view.viewWithTag(1000)?.removeFromSuperview()
         

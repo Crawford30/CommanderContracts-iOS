@@ -651,7 +651,7 @@
                                         <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="7yt-27-yTk"/>
-                                            <constraint firstAttribute="width" constant="100" id="CcC-wq-pQS"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="CcC-wq-pQS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="CANCEL">
@@ -665,7 +665,7 @@
                                         <rect key="frame" x="108" y="0.0" width="100" height="60"/>
                                         <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="YD8-OJ-se0"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="YD8-OJ-se0"/>
                                             <constraint firstAttribute="height" constant="60" id="l4K-WF-EXV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
@@ -681,7 +681,7 @@
                                         <color key="backgroundColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="MMH-Th-reE"/>
-                                            <constraint firstAttribute="width" constant="100" id="ULE-RE-kjP"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="ULE-RE-kjP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="OK">
@@ -832,32 +832,82 @@
                                     <navigationItem title="PDF VIEW" id="zkm-2e-0nK">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="chevron.backward" catalog="system" id="d2l-Z6-Gk6">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="dismissBtnTapped:" destination="war-Ry-Jd4" id="PQQ-cN-COw"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tB6-sG-8Ch">
-                                <rect key="frame" x="16" y="60" width="343" height="587"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywr-t9-Qjn" customClass="PDFView">
+                                <rect key="frame" x="16" y="44" width="343" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kce-1V-ScH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Ywr-t9-Qjn" firstAttribute="leading" secondItem="kce-1V-ScH" secondAttribute="leading" constant="16" id="0ZQ-pQ-mdQ"/>
+                            <constraint firstItem="Ywr-t9-Qjn" firstAttribute="top" secondItem="Z4x-Ou-C3a" secondAttribute="bottom" id="1pc-iT-g9p"/>
                             <constraint firstItem="Z4x-Ou-C3a" firstAttribute="trailing" secondItem="kce-1V-ScH" secondAttribute="trailing" id="4Ae-GJ-Zal"/>
+                            <constraint firstItem="kce-1V-ScH" firstAttribute="trailing" secondItem="Ywr-t9-Qjn" secondAttribute="trailing" constant="16" id="7NH-U8-R7N"/>
                             <constraint firstItem="Z4x-Ou-C3a" firstAttribute="top" secondItem="kce-1V-ScH" secondAttribute="top" id="DTo-Lb-WLF"/>
                             <constraint firstItem="Z4x-Ou-C3a" firstAttribute="leading" secondItem="kce-1V-ScH" secondAttribute="leading" id="NgL-4t-onY"/>
+                            <constraint firstItem="Ywr-t9-Qjn" firstAttribute="bottom" secondItem="kce-1V-ScH" secondAttribute="bottom" id="sLi-xy-AMR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pdfView" destination="Ywr-t9-Qjn" id="YJS-Jy-7T3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rI0-ie-zcJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4541.6000000000004" y="-141.67916041979012"/>
+        </scene>
+        <!--GeneratePDF View Controller-->
+        <scene sceneID="OhP-pP-SPc">
+            <objects>
+                <viewController storyboardIdentifier="GeneratePDFID" id="Uug-Ki-5Hb" customClass="GeneratePDFViewController" customModule="CommanderContracts_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k9j-Y7-C3z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dfe-ts-yAI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="stG-M6-uV9"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.4226532201" green="0.25813929079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Commander Technology" id="ctO-Fs-eCZ">
+                                        <barButtonItem key="leftBarButtonItem" image="chevron.backward" catalog="system" id="sRh-6t-MnS">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="backButtonTapped:" destination="Uug-Ki-5Hb" id="aV8-Xe-zTx"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aY7-Hi-CLq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dfe-ts-yAI" firstAttribute="leading" secondItem="aY7-Hi-CLq" secondAttribute="leading" id="0un-YN-Laz"/>
+                            <constraint firstItem="dfe-ts-yAI" firstAttribute="trailing" secondItem="aY7-Hi-CLq" secondAttribute="trailing" id="JWf-0z-VTW"/>
+                            <constraint firstItem="dfe-ts-yAI" firstAttribute="top" secondItem="aY7-Hi-CLq" secondAttribute="top" id="Thu-mq-eo0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navBar" destination="dfe-ts-yAI" id="Ug0-fn-eM5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RLp-zx-EVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5223" y="-141"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="zKv-bT-KrK">
