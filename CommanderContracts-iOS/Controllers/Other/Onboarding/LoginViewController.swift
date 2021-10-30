@@ -219,7 +219,48 @@ class LoginViewController: UIViewController {
             
             self.displayMessage(title: "Error", userMessage: "All fields are required")
             
+            return
+            
         }
+        
+        
+        if (emailTextField.text?.isEmpty)! {
+            
+            self.displayMessage(title: "Error", userMessage: "E-mail field is required")
+            
+            return
+            
+        }
+        
+        
+        if (passwordTextField.text?.isEmpty)! {
+            
+            self.displayMessage(title: "Error", userMessage: "Password field is required")
+            
+            return
+            
+        }
+        
+        
+        
+        let cleanedemail = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        if Utilities.isValid_Email(cleanedemail) == false {
+            //  ==========alert messgae=========
+            self.displayMessage(title: "Error", userMessage: "Please enter a valid E-mail")
+            return
+            
+        }
+        
+        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if(cleanedPassword.count < 8) {
+            
+            self.displayMessage(title: "Error", userMessage: "Please make sure the password length is valid")
+            return
+            
+        }
+        
+        
         
         //check we have text
         guard let userEmail = emailTextField.text, !userEmail.isEmpty,
@@ -284,6 +325,8 @@ class LoginViewController: UIViewController {
                     homeVC?.modalPresentationStyle = .fullScreen
                     self.present(homeVC!, animated: true, completion: nil)
                     
+                    self.indicator!.stop()
+                    self.view.isUserInteractionEnabled = true
                     
                     
                 } else {
@@ -292,7 +335,6 @@ class LoginViewController: UIViewController {
                     self.view.isUserInteractionEnabled = true
                     
                     self.displayMessage(title: "Login Error", userMessage: "We're unable to log you in! Make sure the email and password are correct or you're trying to log in with unverified email")
-                    
                 }
             }
         }
