@@ -135,17 +135,17 @@ class GeneratePDFViewController: UIViewController {
         }
         
         
-       
+        
         
         let A4paperSize = CGSize(width: 595, height: 842)
         let pdf = SimplePDF(pageSize: A4paperSize, pageMarginLeft: 35, pageMarginTop: 50, pageMarginBottom: 40, pageMarginRight: 35)
         
-    
+        
         
         
         pdf.setContentAlignment(.center)
         pdf.addText( "CONTRACT DETAILS", font: UIFont.boldSystemFont(ofSize: 24.0 ), textColor: UIColor.blue )
-       
+        
         
         pdf.addVerticalSpace(2)
         pdf.addLineSpace(2.0)
@@ -183,7 +183,7 @@ class GeneratePDFViewController: UIViewController {
         
         
         
-
+        
         pdf.setContentAlignment(.left)
         pdf.addText( "PRICE", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
         pdf.addVerticalSpace(4)
@@ -195,7 +195,7 @@ class GeneratePDFViewController: UIViewController {
         pdf.addLineSpace(2.0)
         pdf.addVerticalSpace(15)
         
-      
+        
         
         
         
@@ -262,15 +262,70 @@ class GeneratePDFViewController: UIViewController {
         //savePdf(urlString: docsDir, fileName: "myPDF")
         
         
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
+        //        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        //        let documentsDirectory = paths[0]
+        //
+        //        print(documentsDirectory)
         
-        print(documentsDirectory)
+        
+        //        let docURLRecieved = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last)
+        //               do{
+        //                   let contents = try (FileManager.default.contentsOfDirectory(at: docURLRecieved!, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles))
+        //                   print("There are")
+        //                   print(contents)
+        //               }
+        //               catch (let error)
+        //               {
+        //                   print("error contents \(error)")
+        //               }
+        //
         
         
         
-      
         
+//        let docURLReceived = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
+//        let targetURL = docURLReceived.appendingPathComponent("myFileName.pdf")
+//
+//        print("There are")
+//        print(targetURL)
+        
+        
+        
+//        var webView = UIWebView(frame : view.frame)
+//        webView.scalesPageToFit = true
+        var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        
+        var documentsDirectory = paths[0]
+        let docURLReceived = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
+        let targetURL = docURLReceived.appendingPathComponent("myFileName.pdf")
+        var request = URLRequest(url: targetURL)
+//        webView.loadRequest(request)
+//        view.addSubview(webView)
+        
+        
+        var shareItems = [Any]()
+           shareItems.append("Compartilhar em...")
+           shareItems.append(targetURL)
+
+           let avController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        avController.excludedActivityTypes  = [
+               .postToWeibo,
+               .message,
+               .mail,
+               .print,
+               .copyToPasteboard,
+               .assignToContact,
+               .saveToCameraRoll,
+               .addToReadingList,
+               .postToFlickr,
+               .postToVimeo,
+               .postToTencentWeibo,
+               .airDrop
+           ] // caso queira excluir alguma opção
+
+           self.present(avController, animated: true, completion: nil)
+        
+     
         
         
         
