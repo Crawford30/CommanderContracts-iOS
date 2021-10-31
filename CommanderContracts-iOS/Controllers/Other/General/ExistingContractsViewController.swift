@@ -307,22 +307,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         }
         
         
-        // 1
-     
-        // 3
-        let pdfCreator = PDFCreator(
-            title: allContracts[myCurrentButton].clientName,
-          body: "body",
-          image: UIImage(),
-          contact: "contact"
-        )
-        
-        let pdfData = pdfCreator.createFlyer()
-        let vc = UIActivityViewController(
-          activityItems: [pdfData],
-          applicationActivities: []
-        )
-        present(vc, animated: true, completion: nil)
+   
         
         self.view.viewWithTag(1000)?.removeFromSuperview()
         
