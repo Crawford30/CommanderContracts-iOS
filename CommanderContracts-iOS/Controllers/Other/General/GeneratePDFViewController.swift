@@ -73,8 +73,9 @@ class GeneratePDFViewController: UIViewController {
         super.viewDidLoad()
         
         // createDir(dir: "AllPDFS" )
+        view.backgroundColor = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-        genericView.backgroundColor = .clear
+        genericView.backgroundColor = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
         getSentData()
         
