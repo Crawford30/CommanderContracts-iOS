@@ -80,7 +80,7 @@
 		EE20E679272DACB600E7C783 /* PDFCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFCreator.swift; sourceTree = "<group>"; };
 		EE20E67E272DCA6900E7C783 /* GeneratePDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePDFViewController.swift; sourceTree = "<group>"; };
 		EE20E683272DCC2B00E7C783 /* ContractSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractSingleton.swift; sourceTree = "<group>"; };
-		EE341CFD271AF75F00832A96 /* CommanderContracts-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CommanderContracts-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE341CFD271AF75F00832A96 /* Commander Contracts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Commander Contracts.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE341D00271AF75F00832A96 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE341D02271AF75F00832A96 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EE341D04271AF75F00832A96 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -88,10 +88,10 @@
 		EE341D09271AF76100832A96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE341D0C271AF76100832A96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE341D0E271AF76100832A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE341D13271AF76200832A96 /* CommanderContracts-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CommanderContracts-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE341D13271AF76200832A96 /* Commander ContractsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Commander ContractsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE341D17271AF76200832A96 /* CommanderContracts_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderContracts_iOSTests.swift; sourceTree = "<group>"; };
 		EE341D19271AF76200832A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EE341D1E271AF76200832A96 /* CommanderContracts-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CommanderContracts-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE341D1E271AF76200832A96 /* Commander ContractsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Commander ContractsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE341D22271AF76200832A96 /* CommanderContracts_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommanderContracts_iOSUITests.swift; sourceTree = "<group>"; };
 		EE341D24271AF76200832A96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE3A5846272816E900AC4B53 /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
@@ -191,9 +191,9 @@
 		EE341CFE271AF75F00832A96 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EE341CFD271AF75F00832A96 /* CommanderContracts-iOS.app */,
-				EE341D13271AF76200832A96 /* CommanderContracts-iOSTests.xctest */,
-				EE341D1E271AF76200832A96 /* CommanderContracts-iOSUITests.xctest */,
+				EE341CFD271AF75F00832A96 /* Commander Contracts.app */,
+				EE341D13271AF76200832A96 /* Commander ContractsTests.xctest */,
+				EE341D1E271AF76200832A96 /* Commander ContractsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,9 +340,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EE341CFC271AF75F00832A96 /* CommanderContracts-iOS */ = {
+		EE341CFC271AF75F00832A96 /* Commander Contracts */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE341D27271AF76200832A96 /* Build configuration list for PBXNativeTarget "CommanderContracts-iOS" */;
+			buildConfigurationList = EE341D27271AF76200832A96 /* Build configuration list for PBXNativeTarget "Commander Contracts" */;
 			buildPhases = (
 				7B4EA873CCB032410D7425C4 /* [CP] Check Pods Manifest.lock */,
 				EE341CF9271AF75F00832A96 /* Sources */,
@@ -354,14 +354,14 @@
 			);
 			dependencies = (
 			);
-			name = "CommanderContracts-iOS";
+			name = "Commander Contracts";
 			productName = "CommanderContracts-iOS";
-			productReference = EE341CFD271AF75F00832A96 /* CommanderContracts-iOS.app */;
+			productReference = EE341CFD271AF75F00832A96 /* Commander Contracts.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EE341D12271AF76200832A96 /* CommanderContracts-iOSTests */ = {
+		EE341D12271AF76200832A96 /* Commander ContractsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE341D2A271AF76200832A96 /* Build configuration list for PBXNativeTarget "CommanderContracts-iOSTests" */;
+			buildConfigurationList = EE341D2A271AF76200832A96 /* Build configuration list for PBXNativeTarget "Commander ContractsTests" */;
 			buildPhases = (
 				89F62613309858F8259DD3CA /* [CP] Check Pods Manifest.lock */,
 				EE341D0F271AF76200832A96 /* Sources */,
@@ -373,14 +373,14 @@
 			dependencies = (
 				EE341D15271AF76200832A96 /* PBXTargetDependency */,
 			);
-			name = "CommanderContracts-iOSTests";
+			name = "Commander ContractsTests";
 			productName = "CommanderContracts-iOSTests";
-			productReference = EE341D13271AF76200832A96 /* CommanderContracts-iOSTests.xctest */;
+			productReference = EE341D13271AF76200832A96 /* Commander ContractsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EE341D1D271AF76200832A96 /* CommanderContracts-iOSUITests */ = {
+		EE341D1D271AF76200832A96 /* Commander ContractsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EE341D2D271AF76200832A96 /* Build configuration list for PBXNativeTarget "CommanderContracts-iOSUITests" */;
+			buildConfigurationList = EE341D2D271AF76200832A96 /* Build configuration list for PBXNativeTarget "Commander ContractsUITests" */;
 			buildPhases = (
 				AFB056E346B75795CAE2FF93 /* [CP] Check Pods Manifest.lock */,
 				EE341D1A271AF76200832A96 /* Sources */,
@@ -393,9 +393,9 @@
 			dependencies = (
 				EE341D20271AF76200832A96 /* PBXTargetDependency */,
 			);
-			name = "CommanderContracts-iOSUITests";
+			name = "Commander ContractsUITests";
 			productName = "CommanderContracts-iOSUITests";
-			productReference = EE341D1E271AF76200832A96 /* CommanderContracts-iOSUITests.xctest */;
+			productReference = EE341D1E271AF76200832A96 /* Commander ContractsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -420,7 +420,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EE341CF8271AF75F00832A96 /* Build configuration list for PBXProject "CommanderContracts-iOS" */;
+			buildConfigurationList = EE341CF8271AF75F00832A96 /* Build configuration list for PBXProject "Commander Contracts" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -433,9 +433,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EE341CFC271AF75F00832A96 /* CommanderContracts-iOS */,
-				EE341D12271AF76200832A96 /* CommanderContracts-iOSTests */,
-				EE341D1D271AF76200832A96 /* CommanderContracts-iOSUITests */,
+				EE341CFC271AF75F00832A96 /* Commander Contracts */,
+				EE341D12271AF76200832A96 /* Commander ContractsTests */,
+				EE341D1D271AF76200832A96 /* Commander ContractsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -629,12 +629,12 @@
 /* Begin PBXTargetDependency section */
 		EE341D15271AF76200832A96 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EE341CFC271AF75F00832A96 /* CommanderContracts-iOS */;
+			target = EE341CFC271AF75F00832A96 /* Commander Contracts */;
 			targetProxy = EE341D14271AF76200832A96 /* PBXContainerItemProxy */;
 		};
 		EE341D20271AF76200832A96 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EE341CFC271AF75F00832A96 /* CommanderContracts-iOS */;
+			target = EE341CFC271AF75F00832A96 /* Commander Contracts */;
 			targetProxy = EE341D1F271AF76200832A96 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -834,7 +834,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CommanderContracts-iOS.app/CommanderContracts-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Commander Contracts.app/Commander Contracts";
 			};
 			name = Debug;
 		};
@@ -857,7 +857,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CommanderContracts-iOS.app/CommanderContracts-iOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Commander Contracts.app/Commander Contracts";
 			};
 			name = Release;
 		};
@@ -906,7 +906,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EE341CF8271AF75F00832A96 /* Build configuration list for PBXProject "CommanderContracts-iOS" */ = {
+		EE341CF8271AF75F00832A96 /* Build configuration list for PBXProject "Commander Contracts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE341D25271AF76200832A96 /* Debug */,
@@ -915,7 +915,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE341D27271AF76200832A96 /* Build configuration list for PBXNativeTarget "CommanderContracts-iOS" */ = {
+		EE341D27271AF76200832A96 /* Build configuration list for PBXNativeTarget "Commander Contracts" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE341D28271AF76200832A96 /* Debug */,
@@ -924,7 +924,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE341D2A271AF76200832A96 /* Build configuration list for PBXNativeTarget "CommanderContracts-iOSTests" */ = {
+		EE341D2A271AF76200832A96 /* Build configuration list for PBXNativeTarget "Commander ContractsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE341D2B271AF76200832A96 /* Debug */,
@@ -933,7 +933,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EE341D2D271AF76200832A96 /* Build configuration list for PBXNativeTarget "CommanderContracts-iOSUITests" */ = {
+		EE341D2D271AF76200832A96 /* Build configuration list for PBXNativeTarget "Commander ContractsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EE341D2E271AF76200832A96 /* Debug */,

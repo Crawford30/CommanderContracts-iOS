@@ -36,34 +36,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E8840FE3-6D12-424F-A789-45664607B68F - e6eaa86c83a1a675"
+                  uuid = "E8840FE3-6D12-424F-A789-45664607B68F - 7c244f1e3ccfbfe3"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in CommanderContracts_iOS.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "CommanderContracts-iOS"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in Commander_Contracts.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "Commander Contracts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joelcrawford/Desktop/CommanderContracts-iOS/CommanderContracts-iOS/Resources/AuthManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
-                  offsetFromSymbolStart = "256">
+                  offsetFromSymbolStart = "500">
                </Location>
                <Location
-                  uuid = "E8840FE3-6D12-424F-A789-45664607B68F - 809b5e11675f032a"
+                  uuid = "E8840FE3-6D12-424F-A789-45664607B68F - ab5a48da5ecf83c5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in CommanderContracts_iOS.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "CommanderContracts-iOS"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in Commander_Contracts.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "Commander Contracts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joelcrawford/Desktop/CommanderContracts-iOS/CommanderContracts-iOS/Resources/AuthManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "46"
                   endingLineNumber = "46"
-                  offsetFromSymbolStart = "164">
+                  offsetFromSymbolStart = "465">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -84,34 +84,34 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E2601D8A-BC55-4E3B-ADDF-77E86E73AEF8 - 809b5e11675f017c"
+                  uuid = "E2601D8A-BC55-4E3B-ADDF-77E86E73AEF8 - ab5a48da5ecf8193"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in CommanderContracts_iOS.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "CommanderContracts-iOS"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in Commander_Contracts.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "Commander Contracts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joelcrawford/Desktop/CommanderContracts-iOS/CommanderContracts-iOS/Resources/AuthManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "60"
                   endingLineNumber = "60"
-                  offsetFromSymbolStart = "348">
+                  offsetFromSymbolStart = "638">
                </Location>
                <Location
-                  uuid = "E2601D8A-BC55-4E3B-ADDF-77E86E73AEF8 - 953029810c435e9a"
+                  uuid = "E2601D8A-BC55-4E3B-ADDF-77E86E73AEF8 - 84930560be40eeb1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in CommanderContracts_iOS.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "CommanderContracts-iOS"
+                  symbolName = "closure #1 (Swift.Bool) -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (Swift.Bool) -&gt; () in Commander_Contracts.AuthManager.registerNewUser(companyName: Swift.String, companyAddress: Swift.String, companyPhone: Swift.String, companyEmail: Swift.String, password: Swift.String, completion: (Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "Commander Contracts"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/joelcrawford/Desktop/CommanderContracts-iOS/CommanderContracts-iOS/Resources/AuthManager.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "61"
                   endingLineNumber = "61"
-                  offsetFromSymbolStart = "60">
+                  offsetFromSymbolStart = "101">
                </Location>
             </Locations>
          </BreakpointContent>
