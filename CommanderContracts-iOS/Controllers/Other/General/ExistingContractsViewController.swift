@@ -244,9 +244,8 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         singletonInstance.setContractorSignUrl(theUri: tempServiceRequest.contractorSignUrl)
         
         singletonInstance.setContractDescription(theDesc: tempServiceRequest.clientDesc)
-        
-        
-        
+        singletonInstance.setContractAmount(theAmount: tempServiceRequest.clientPrice)
+        //setContractAmount(theAmount: Int(tempServiceRequest.clientPrice)!)
         
         //singletonInstance.setA
         

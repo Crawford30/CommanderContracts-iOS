@@ -104,6 +104,9 @@ extension UIImageView {
     
     func loadImageUsingCacheFromUrlString(urlString: String) {
         
+        //Avoid reusing the image, incase in a collection View or table view that resuses a cell
+       // self.image = nil
+        
         //check cache for image first
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
             self.image = cachedImage
