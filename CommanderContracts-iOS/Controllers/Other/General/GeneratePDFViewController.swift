@@ -9,6 +9,11 @@ import UIKit
 
 class GeneratePDFViewController: UIViewController {
     
+    struct Constants {
+        static let cornerRadius: CGFloat = 8.0
+        
+    }
+    
     @IBOutlet weak var genericView: UIView!
     
     @IBOutlet weak var contractHeaderLabel: UILabel!
@@ -88,6 +93,11 @@ class GeneratePDFViewController: UIViewController {
     
     
     func getSentData() {
+        
+        generatePDFNowBtn.layer.cornerRadius = Constants.cornerRadius
+        
+        contractDescriptionDetail.backgroundColor = .clear
+        
         let singletonInstance = ContractSingleton.shared
         
         contractorCompanyName = singletonInstance.getContractorCompanyName()
