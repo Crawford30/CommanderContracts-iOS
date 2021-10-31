@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -29,8 +30,8 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Commander's Contracts" id="va8-kf-R4f">
-                                        <barButtonItem key="rightBarButtonItem" title="SIGN OUT" id="L8g-eT-1DF">
-                                            <color key="tintColor" systemColor="labelColor"/>
+                                        <barButtonItem key="rightBarButtonItem" image="lock" catalog="system" id="L8g-eT-1DF">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="signOutBtn:" destination="BYZ-38-t0r" id="oDh-ev-lQV"/>
                                             </connections>
@@ -105,6 +106,7 @@
                     <connections>
                         <outlet property="createContractBtn" destination="QhJ-Mr-olX" id="UUG-UM-LCa"/>
                         <outlet property="floatBtn" destination="occ-8Z-qFG" id="ZCM-BH-FxM"/>
+                        <outlet property="navBar" destination="W0h-eI-GZE" id="xU3-lP-lv9"/>
                         <outlet property="newOrExistingLabel" destination="bYB-fb-sDq" id="Bds-30-Wfp"/>
                         <outlet property="viewExistingContractBtn" destination="8UG-H9-mIq" id="Ycy-9e-oQd"/>
                     </connections>
@@ -1191,6 +1193,7 @@
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="lock" catalog="system" width="128" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="menu-vertical-64" width="32" height="32"/>
         <image name="plus" catalog="system" width="128" height="113"/>
