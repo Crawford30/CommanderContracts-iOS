@@ -30,17 +30,17 @@ class HomeViewController: UIViewController {
         setupNavigationItems()
         
         
-//        let label = UILabel()
-//        label.textColor = UIColor.white
-//        label.text = "Commander's Contracts"
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        //        let label = UILabel()
+        //        label.textColor = UIColor.white
+        //        label.text = "Commander's Contracts"
+        //        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
         
         floatBtn.createFloationgAction()
         
         setUpViews()
         
         
-       
+        
     }
     
     
@@ -100,45 +100,20 @@ class HomeViewController: UIViewController {
         alert.view.tintColor = UIColor.white
         
         
-        
-        
-        alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: { (UIAlertAction) in
-            
-            self.dismiss(animated: true, completion: nil)
-            
-        }))
+        alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
         
         
         alert.addAction(UIAlertAction(title: "PROCEED", style: .default, handler: { (UIAlertAction) in
             
             
             
-                    do {
-                        try Auth.auth().signOut()
-                        self.redirectToLogin()
-                    }
-                    catch{
-                        print("Failed to signout")
-                    }
-                    
-            
-            
-//            UserDefaults.standard.set(false, forKey: "isUserLoggedIn")
-//
-//            UserDefaults.standard.removeObject(forKey: "AccessToken")
-//
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let rootVC = storyboard.instantiateViewController(withIdentifier: "LoginPage") as! ViewController
-//
-//            let nvc: UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "LoginNavController") as! UINavigationController
-//
-//
-//            nvc.viewControllers = [rootVC]
-//
-//
-//            UIApplication.shared.keyWindow?.rootViewController = nvc
-//
-            
+            do {
+                try Auth.auth().signOut()
+                self.redirectToLogin()
+            }
+            catch{
+                print("Failed to signout")
+            }
             
         }))
         
@@ -152,7 +127,7 @@ class HomeViewController: UIViewController {
         //        catch{
         //            print("Failed to signout")
         //        }
-                
+        
         
         
     }
@@ -174,7 +149,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func createNewContractAction(_ sender: Any) {
-       goToCreateContract()
+        goToCreateContract()
     }
     
     @IBAction func viewExistingContractAction(_ sender: Any) {
