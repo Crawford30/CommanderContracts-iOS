@@ -132,15 +132,17 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
         
         //========Submit Data to firebase =====
         
-        var currentFileName = NSDate().timeIntervalSince1970 * 1000
+//        var currentFileName = NSDate().timeIntervalSince1970 * 1000
         
      
-            if let data = clientImageView.image?.pngData() {
+            if let data = clientImageView.image!.pngData() {
                 // convert your UIImage into Data object using png representation
                 
                 
-                var number = arc4random_uniform(900000) + 100000
-                FirebaseStorageManager().uploadImageData(data: data, serverFileName: "\(number)" + ".png") { (isSuccess, url) in
+//                var number = arc4random_uniform(900000) + 100000
+                
+                let uniqueName = NSUUID().uuidString
+                FirebaseStorageManager().uploadImageData(data: data, serverFileName: "\(uniqueName).png") { (isSuccess, url) in
                     
                     if(isSuccess){
                         
@@ -149,10 +151,12 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
                         self.clientSignUri = url!
                         
                         
-                        if let contractorData = self.contractorImageView.image?.pngData() {
+                        if let contractorData = self.contractorImageView.image!.pngData() {
                             // convert your UIImage into Data object using png representation
-                            var number = arc4random_uniform(900000) + 100000
-                            FirebaseStorageManager().uploadImageData(data: contractorData, serverFileName: "\(number)" + ".png") { (isSuccess, url) in
+//                            var number = arc4random_uniform(900000) + 100000
+                            
+                            let uniqueName = NSUUID().uuidString
+                            FirebaseStorageManager().uploadImageData(data: contractorData, serverFileName: "\(uniqueName).png") { (isSuccess, url) in
                                 
                                 if(isSuccess){
                                     

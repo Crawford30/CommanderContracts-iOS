@@ -8,6 +8,10 @@
 
 import UIKit
 
+//var imageCache = NSCache()
+
+let imageCache = NSCache<NSString, UIImage>()
+
 extension UIView{
     
     public var width: CGFloat{
@@ -87,10 +91,52 @@ extension UIFont {
 
 
 extension UIImageView {
+    var isEmpty: Bool { image == nil }
+    
+    
     func setImageColor(color: UIColor) {
         let templateImage = self.image?.withRenderingMode(.alwaysTemplate)
         self.image = templateImage
         self.tintColor = color
+    }
+    
+    
+    
+    func loadImageUsingCacheFromUrlString(urlString: String) {
+        
+        //check cache for image first
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+            self.image = cachedImage
+            
+            return
+        }
+        
+        //Otherwise fireoff a new download
+
+        let url = NSURL(string: urlString)
+        
+        URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
+            
+            if(error != nil){
+                print(error?.localizedDescription)
+                return
+            }
+            
+            DispatchQueue.main.async{
+                if let downloadedImage = UIImage(data: data!) {
+                    //Image chache expects a non optional image
+                    imageCache.setObject(downloadedImage, forKey: urlString as NSString)
+                    
+                    self.image = downloadedImage
+                    
+                }
+                
+                
+            }
+            
+        }.resume()
+        
+        
     }
 }
 
@@ -134,29 +180,34 @@ extension UITextView {
 
 
 
-extension UIImageView {
-    
-    var isEmpty: Bool { image == nil }
-    
-    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
-            }
-        }.resume()
-    }
-    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
-}
+//extension UIImageView {
+//    
+//   
+//    
+//    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+//        contentMode = mode
+//        URLSession.shared.dataTask(with: url) { data, response, error in
+//            guard
+//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//                let data = data, error == nil,
+//                let image = UIImage(data: data)
+//            else { return }
+//            DispatchQueue.main.async() { [weak self] in
+//                self?.image = image
+//            }
+//        }.resume()
+//    }
+//    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+//        guard let url = URL(string: link) else { return }
+//        downloaded(from: url, contentMode: mode)
+//    }
+//    
+//    
+//    
+//    
+//    
+//}
 
 
 
@@ -166,7 +217,7 @@ extension UIButton {
     func createFloationgAction() {
         
         
-//        backgroundColor = .red
+        //        backgroundColor = .red
         
         layer.cornerRadius = frame.height/2
         

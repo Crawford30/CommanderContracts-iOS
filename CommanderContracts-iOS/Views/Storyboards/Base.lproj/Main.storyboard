@@ -892,6 +892,11 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-qe-RO4">
+                                <rect key="frame" x="103" y="269" width="169" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.52812871819999996" green="1" blue="0.79740811789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aY7-Hi-CLq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -902,12 +907,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clientImageView" destination="X2z-qe-RO4" id="s9q-JY-F2X"/>
                         <outlet property="navBar" destination="dfe-ts-yAI" id="Ug0-fn-eM5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLp-zx-EVc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5223" y="-141"/>
+            <point key="canvasLocation" x="5221.6000000000004" y="-141.67916041979012"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="zKv-bT-KrK">

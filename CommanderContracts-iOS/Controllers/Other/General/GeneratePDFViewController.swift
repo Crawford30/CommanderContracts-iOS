@@ -9,6 +9,7 @@ import UIKit
 
 class GeneratePDFViewController: UIViewController {
     
+    @IBOutlet weak var clientImageView: UIImageView!
     var contractorCompanyName: String  = ""
     var contractorCompanyAddress: String  = ""
     var contractorCompanyEmail: String  = ""
@@ -31,34 +32,18 @@ class GeneratePDFViewController: UIViewController {
     
     let singletonInstance = ContractSingleton.shared
     
-//    singletonInstance.setContractorCompanyName(theName: tempServiceRequest.companyName)
-//
-//    singletonInstance.setContractorAddress(theAddress: tempServiceRequest.companyAddress)
-//
-//    singletonInstance.setContractorEmail(theEmail: tempServiceRequest.companyEmail)
-//
-//    singletonInstance.setClientName(theName: tempServiceRequest.clientName)
-//    singletonInstance.setClientAddress(theAddress: tempServiceRequest.clientAdress)
-//    singletonInstance.setContractDate(theDate: tempServiceRequest.clientDate)
-//
-//    singletonInstance.setClientSignUri(theUri: tempServiceRequest.clientSignUrl)
-//
-//    singletonInstance.setContractorSignUrl(theUri: tempServiceRequest.contractorSignUrl)
-//
-//    singletonInstance.setContractDescription(theDesc: tempServiceRequest.clientDesc)
-//
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getSentData()
-
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     @IBAction func backButtonTapped(_ sender: Any) {
         
         
@@ -67,7 +52,7 @@ class GeneratePDFViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-
+    
     
     
     
@@ -88,13 +73,26 @@ class GeneratePDFViewController: UIViewController {
         
         navBar.topItem?.title = clientName
         
+        clientImageView.loadImageUsingCacheFromUrlString(urlString: clientSignUri)
         
-       
+        
+        
+
         
         
         
         
     }
     
-
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
