@@ -373,13 +373,8 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     
     
     private func loadAllContracts() {
-        
-        
-        
         ref = Database.database().reference()
-        
         let userID : String = (Auth.auth().currentUser?.uid)!
-        
         
         indicator = ProgressIndicator(inview:self.view,loadingViewColor: UIColor.gray, indicatorColor: UIColor.black, msg: "Loading Contracts...")
         self.view.addSubview(self.indicator!)
