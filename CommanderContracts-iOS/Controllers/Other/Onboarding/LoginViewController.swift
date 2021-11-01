@@ -109,7 +109,10 @@ class LoginViewController: UIViewController {
             //            performSegue(withIdentifier: "EmailVerified", sender: nil)
             
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
+//            let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
+            
+            
+            let homeVC = storyboard.instantiateViewController(withIdentifier: "SplashScreenID") as? SplashScreenViewController
             homeVC?.modalPresentationStyle = .fullScreen
             self.present(homeVC!, animated: true, completion: nil)
             
@@ -321,7 +324,9 @@ class LoginViewController: UIViewController {
                 } else if (success && Auth.auth().currentUser?.isEmailVerified == true ) {
                     
                     let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
+//                    let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
+                    
+                    let homeVC = storyboard.instantiateViewController(withIdentifier: "SplashScreenID") as? SplashScreenViewController
                     homeVC?.modalPresentationStyle = .fullScreen
                     self.present(homeVC!, animated: true, completion: nil)
                     
