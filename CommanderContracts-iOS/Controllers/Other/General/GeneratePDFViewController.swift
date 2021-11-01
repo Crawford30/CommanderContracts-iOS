@@ -138,7 +138,7 @@ class GeneratePDFViewController: UIViewController {
         
         
         
-        let A4paperSize = CGSize(width: 595, height: 842)
+        let A4paperSize = CGSize(width: 595, height: 1224) //842
         let pdf = SimplePDF(pageSize: A4paperSize, pageMarginLeft: 35, pageMarginTop: 50, pageMarginBottom: 40, pageMarginRight: 35)
         
         
