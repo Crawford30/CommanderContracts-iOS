@@ -35,11 +35,7 @@ class SplashScreenViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let homeVC = storyboard.instantiateViewController(withIdentifier: "HomeID") as? HomeViewController
             homeVC?.modalPresentationStyle = .fullScreen
-//            self.present(homeVC!, animated: true, completion: nil)
-            
-
-            
-            
+            homeVC?.modalTransitionStyle = .flipHorizontal
             self.present(homeVC!, animated: true) {
                 UIView.animate(withDuration: 1.0, delay: 0.5, options: .autoreverse, animations: {
                     self.view.alpha = 0
