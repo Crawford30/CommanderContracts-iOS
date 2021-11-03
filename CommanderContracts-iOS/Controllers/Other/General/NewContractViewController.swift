@@ -291,6 +291,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         datePicker.datePickerMode = .date
         
         datePicker.minimumDate = Date() //Hide past Date
+        datePicker.maximumDate = Date() //Hide future Date
         
     }
     
