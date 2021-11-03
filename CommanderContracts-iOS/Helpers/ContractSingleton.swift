@@ -21,7 +21,7 @@ class ContractSingleton {
     private var clientAddress:  String
     private var contractDate:  String
     private var contractDescription:  String
-    private var contractAmount:  String
+    private var contractAmount:  Double
     
     private var contractorName:  String
     private var contractorAddress:  String
@@ -40,7 +40,7 @@ class ContractSingleton {
         clientAddress = ""
         contractDate = ""
         contractDescription = ""
-        contractAmount = ""
+        contractAmount = 0.0
         
         contractorName = ""
         contractorAddress = ""
@@ -124,13 +124,13 @@ class ContractSingleton {
     }
     
     
-    func setContractAmount(theAmount: String) -> () {
+    func setContractAmount(theAmount: Double) -> () {
         contractAmount = theAmount
         
     }
     
     
-    func getContractAmount() -> String {
+    func getContractAmount() -> Double {
         
         return contractAmount
     }

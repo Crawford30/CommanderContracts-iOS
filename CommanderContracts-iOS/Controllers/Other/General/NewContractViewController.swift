@@ -91,11 +91,13 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         
         let singleInstance = ClientOrUserSingleton.shared
         
+     
+        
         singleInstance.setClientName(theName: (clientName)!)
         singleInstance.setClientAddress(theAddress: (clientAddress)!)
         singleInstance.setContractDate(theDate: (clientDate)!)
         singleInstance.setContractDescription(theDesc: (clientDesc)!)
-        singleInstance.setContractAmount(theAmount: Int((clientPrice!))!)
+        singleInstance.setContractAmount(theAmount: (clientPrice!).toDouble()!)
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -103,8 +105,23 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         homeVC?.modalPresentationStyle = .fullScreen
         self.present(homeVC!, animated: true, completion: nil)
         
+        resetTextField()
         
         
+        
+        
+        
+    }
+    
+    
+  private  func resetTextField(){
+    
+    clientNameTextField.text?.removeAll()
+    clientAddressTextField.text?.removeAll()
+    clientDateTextField.text?.removeAll()
+    contractDescriptionTexView.text?.removeAll()
+    contractPriceTextField.text?.removeAll()
+    
     }
     
     private func setUpViews() {
@@ -363,6 +380,35 @@ extension NewContractViewController: UITextFieldDelegate{
         
         return true
     }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == contractPriceTextField{
+        let isNumber = CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: string))
+        let withDecimal = (
+            string == NumberFormatter().decimalSeparator &&
+            textField.text?.contains(string) == false
+        )
+            
+       
+        return isNumber || withDecimal
+            
+        }
+        
+        return true
+    }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//        contractPriceTextField.delegate = self
+//        //For mobile numer validation
+//        if textField == contractPriceTextField {
+//            let allowedCharacters = CharacterSet(charactersIn:"+0123456789.")//Here change this characters based on your requirement
+//            let characterSet = CharacterSet(charactersIn: string)
+//            return allowedCharacters.isSuperset(of: characterSet)
+//        }
+//        return true
+//    }
     
     
 }

@@ -56,7 +56,7 @@ class GeneratePDFViewController: UIViewController {
     var clientSignUri: String  = ""
     
     var contractDesc: String  = ""
-    var contractPrice: String  = ""
+    var contractPrice: Double  = 0.0
     
     
     
@@ -395,8 +395,10 @@ class GeneratePDFViewController: UIViewController {
         
         contractDescriptionDetail.text = contractDesc
         
+        let formattedContractPrice = contractPrice.formattedWithSeparator
         
-        contractPriceLabel.text = "\("$" + contractPrice)"
+    
+        contractPriceLabel.text = "\("$" + String(formattedContractPrice))"
         
         fromLabel.text = "FROM: \(clientName)"
         

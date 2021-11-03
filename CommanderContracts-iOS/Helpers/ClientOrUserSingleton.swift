@@ -89,9 +89,9 @@ class ClientOrUserSingleton {
     
     
     
-    func setContractAmount(theAmount: Int) -> () {
+    func setContractAmount(theAmount: Double) -> () {
         
-        contractAmount = Double(Int(theAmount))
+        contractAmount = theAmount
         
     }
     

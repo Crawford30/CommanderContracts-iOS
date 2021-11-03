@@ -52,6 +52,12 @@ extension String {
     }
     
     
+    func toDouble() -> Double? {
+        return NumberFormatter().number(from: self)?.doubleValue
+    }
+    
+    
+    
     
     
 }
@@ -104,22 +110,22 @@ extension UIImageView {
     
     public func maskCircle(anyImage: UIImage) {
         self.contentMode = UIView.ContentMode.scaleAspectFill
-       self.layer.cornerRadius = self.frame.height / 2
-       self.layer.masksToBounds = false
-       self.clipsToBounds = true
-
-      // make square(* must to make circle),
-      // resize(reduce the kilobyte) and
-      // fix rotation.
-      self.image = anyImage
-     }
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = false
+        self.clipsToBounds = true
+        
+        // make square(* must to make circle),
+        // resize(reduce the kilobyte) and
+        // fix rotation.
+        self.image = anyImage
+    }
     
     
     
     func loadImageUsingCacheFromUrlString(urlString: String) {
         
         //Avoid reusing the image, incase in a collection View or table view that resuses a cell
-       // self.image = nil
+        // self.image = nil
         
         //check cache for image first
         if let cachedImage = imageCache.object(forKey: urlString as NSString) {
@@ -129,7 +135,7 @@ extension UIImageView {
         }
         
         //Otherwise fireoff a new download
-
+        
         let url = NSURL(string: urlString)
         
         URLSession.shared.dataTask(with: url! as URL) { (data, response, error) in
@@ -261,8 +267,8 @@ extension UIAlertController {
     //Set background color of UIAlertController
     func setBackgroudColor(color: UIColor) {
         if let bgView = self.view.subviews.first,
-            let groupView = bgView.subviews.first,
-            let contentView = groupView.subviews.first {
+           let groupView = bgView.subviews.first,
+           let contentView = groupView.subviews.first {
             contentView.backgroundColor = color
         }
     }
@@ -275,12 +281,12 @@ extension UIAlertController {
         let attributeString = NSMutableAttributedString(string: title)//1
         if let titleFont = font {
             attributeString.addAttributes([NSAttributedString.Key.font : titleFont],//2
-                range: NSMakeRange(0, title.utf8.count))
+                                          range: NSMakeRange(0, title.utf8.count))
         }
         
         if let titleColor = color {
             attributeString.addAttributes([NSAttributedString.Key.foregroundColor : titleColor],//3
-                range: NSMakeRange(0, title.utf8.count))
+                                          range: NSMakeRange(0, title.utf8.count))
         }
         
         self.setValue(attributeString, forKey: "attributedTitle")//4
@@ -310,3 +316,36 @@ extension UIAlertController {
     }
     
 }
+
+
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ","
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 0
+        formatter.groupingSize = 3
+        
+        return formatter
+    }()
+}
+
+
+extension Numeric {
+    var formattedWithSeparator: String { Formatter.withSeparator.string(for: self) ?? "" }
+}
+
+
+extension Int {
+    func withCommas() -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value:self))!
+    }
+}
+
+
+
+
+
