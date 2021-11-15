@@ -21,6 +21,7 @@ class MyContracts: NSObject {
     var clientSignUrl: String = ""
     var companyAddress: String = ""
     var companyEmail: String = ""
+    var contractType: String = ""
     var companyName: String = ""
     var contractorSignUrl: String = ""
     var id: String = ""

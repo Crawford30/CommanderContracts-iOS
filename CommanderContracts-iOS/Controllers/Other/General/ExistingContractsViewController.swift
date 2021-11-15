@@ -265,6 +265,8 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
         singletonInstance.setContractDescription(theDesc: tempServiceRequest.clientDesc)
         singletonInstance.setContractAmount(theAmount: Double( tempServiceRequest.clientPrice)!)
+        
+        singletonInstance.setContractType(theType: tempServiceRequest.contractType)
         //setContractAmount(theAmount: Int(tempServiceRequest.clientPrice)!)
         
         //singletonInstance.setA
@@ -469,6 +471,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
                 tempID.companyAddress = (value1!["companyAddress"]!)
                 tempID.companyEmail = (value1!["companyEmail"]!)
                 tempID.companyName = (value1!["companyName"]!)
+                tempID.contractType = (value1!["companyContractType"]!)
                 tempID.contractorSignUrl = (value1!["contractorSignUri"]!)
                 tempID.id = (value1!["id"]!)
                 

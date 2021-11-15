@@ -30,6 +30,8 @@ class ContractSingleton {
     private var contractorCompanyName:  String
     private var contractorEmail:  String
     
+    private var contractType:  String
+    
     
     
     private  init() { //A  private initilaizer, means it can only be called this class
@@ -44,6 +46,8 @@ class ContractSingleton {
         
         contractorName = ""
         contractorAddress = ""
+        
+        contractType = ""
         
         contractorCompanyName = ""
         contractorEmail = ""
@@ -89,6 +93,17 @@ class ContractSingleton {
     
     func getClientAddress() -> String {
         return clientAddress
+    }
+    
+    
+    func setContractType(theType: String) -> () {
+        contractType = theType
+        
+    }
+    
+    
+    func getContractType() -> String {
+        return contractType
     }
     
     

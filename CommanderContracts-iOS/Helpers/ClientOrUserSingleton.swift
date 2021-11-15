@@ -26,6 +26,7 @@ class ClientOrUserSingleton {
         
         clientName = ""
         clientAddress = ""
+     
         contractDate = ""
         contractDescription = ""
         contractAmount = 0.0
@@ -87,6 +88,8 @@ class ClientOrUserSingleton {
         return contractDescription
     }
     
+    
+ 
     
     
     func setContractAmount(theAmount: Double) -> () {

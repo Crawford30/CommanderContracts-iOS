@@ -48,6 +48,7 @@ class GeneratePDFViewController: UIViewController {
     var contractorCompanyAddress: String  = ""
     var contractorCompanyEmail: String  = ""
     var contractorSignUrl: String  = ""
+    var contractType: String = ""
     
     
     var clientName: String  = ""
@@ -172,6 +173,19 @@ class GeneratePDFViewController: UIViewController {
         
         pdf.addVerticalSpace(40)
         pdf.setContentAlignment(.left)
+        pdf.addText( "CONTRACT TYPE", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
+        pdf.addVerticalSpace(4)
+        
+        pdf.setContentAlignment(.left)
+        pdf.addText( contractType )
+        
+        pdf.addVerticalSpace(2)
+        pdf.addLineSpace(2.0)
+        pdf.addVerticalSpace(4)
+        
+        
+        pdf.addVerticalSpace(10)
+        pdf.setContentAlignment(.left)
         pdf.addText( "CONTRACT DESCRIPTION", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
         pdf.addVerticalSpace(4)
         
@@ -181,6 +195,9 @@ class GeneratePDFViewController: UIViewController {
         pdf.addVerticalSpace(2)
         pdf.addLineSpace(2.0)
         pdf.addVerticalSpace(15)
+        
+        
+    
         
         
         
@@ -380,15 +397,18 @@ class GeneratePDFViewController: UIViewController {
         clientSignUri = singletonInstance.getClientSignUri()
         contractDesc = singletonInstance.getContractDescription()
         contractPrice = singletonInstance.getContractAmount()
+        contractType = singletonInstance.getContractType()
         
         
         //print("Contract Price: \(contractPrice)")
+        
+//        let contractTypeData  = "\(contractType)"
         
         
         navBar.topItem?.title = clientName
         
         
-        contractorAddressLabel.text = "\(contractorCompanyName)\n\(contractorCompanyAddress)\n\(contractorCompanyEmail)"
+        contractorAddressLabel.text = "\(contractorCompanyName)\n\(contractorCompanyAddress)\n\(contractorCompanyEmail)\n\(contractType)"
         
         clientAddressLabel.text = "\(clientName)\n\(clientAdress)\n\(contractDate)"
         

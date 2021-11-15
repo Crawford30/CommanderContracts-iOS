@@ -25,6 +25,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var companyNameTextField: UITextField!
     @IBOutlet weak var companyAddressTextField: UITextField!
     @IBOutlet weak var companyPhoneNumberTextField: UITextField!
+    @IBOutlet weak var companyContractType: UITextField!
     @IBOutlet weak var companyEmailAddressTextField: UITextField!
     @IBOutlet weak var companyPasswordTextField: TogglePassword!
     @IBOutlet weak var companyConfirmPasswordTextField: TogglePassword!
@@ -50,7 +51,10 @@ class RegisterViewController: UIViewController {
         companyNameTextField.delegate = self
         companyAddressTextField.delegate = self
         companyPhoneNumberTextField.delegate = self
+        companyContractType.delegate = self
         companyEmailAddressTextField.delegate = self
+        
+        
         
         companyEmailAddressTextField.delegate = self
         companyPasswordTextField.delegate = self
@@ -166,6 +170,19 @@ class RegisterViewController: UIViewController {
         companyAddressTextField.layer.borderWidth = 2.0
         companyAddressTextField.layer.borderColor = UIColor.white.cgColor
         
+        companyContractType.returnKeyType = .continue
+        companyContractType.leftViewMode = .always
+        companyContractType.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0)) //so that text is not flushed with the frame
+        companyContractType.autocapitalizationType = .none
+        companyContractType.autocorrectionType = .no
+        companyContractType.layer.masksToBounds = true
+        companyContractType.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        companyContractType.layer.cornerRadius = Constants.cornerRadius
+        companyContractType.layer.borderWidth = 2.0
+        companyContractType.layer.borderColor = UIColor.white.cgColor
+        
+        
+        
         
         
         companyPhoneNumberTextField.returnKeyType = .continue
@@ -222,6 +239,8 @@ class RegisterViewController: UIViewController {
         companyNameTextField.attributedPlaceholder = NSAttributedString(string: "Company Name",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         companyAddressTextField.attributedPlaceholder = NSAttributedString(string: "Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         
+        companyContractType.attributedPlaceholder = NSAttributedString(string: "Enter Your Contract Type Here",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        
         companyPhoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "Phone Number",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         companyEmailAddressTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         
@@ -248,6 +267,7 @@ class RegisterViewController: UIViewController {
         //===Dismiss keyboard for all fields
         companyNameTextField.resignFirstResponder()
         companyAddressTextField.resignFirstResponder()
+        companyContractType.resignFirstResponder()
         companyPhoneNumberTextField.resignFirstResponder()
         companyEmailAddressTextField.resignFirstResponder()
         companyPasswordTextField.resignFirstResponder()
@@ -257,6 +277,7 @@ class RegisterViewController: UIViewController {
         //=====Get contents of all the fields
         let comName = companyNameTextField.text
         let comAddress = companyAddressTextField.text
+        let comContractType = companyContractType.text
         let comEmail = companyEmailAddressTextField.text
         let comPhone = companyPhoneNumberTextField.text
         let comPasswordOne = companyPasswordTextField.text
@@ -265,6 +286,7 @@ class RegisterViewController: UIViewController {
         
         if (comName?.isEmpty)! ||
             (comAddress?.isEmpty)! ||
+            (comContractType?.isEmpty)! ||
             (comEmail?.isEmpty)! ||
             (comPhone?.isEmpty)! ||
             (comPasswordOne?.isEmpty)! ||
@@ -327,7 +349,7 @@ class RegisterViewController: UIViewController {
         
         //userID
         
-        Services.signUpUser(email: cleanedemail, password: cleanedpassword2, comName: comName!, comAddress: comAddress!, comPhone: comPhone!) {
+        Services.signUpUser(email: cleanedemail, password: cleanedpassword2, comName: comName!, comAddress: comAddress!, comContractType: comContractType!, comPhone: comPhone!) {
             
             self.indicator!.stop()
             self.view.isUserInteractionEnabled = true
@@ -406,35 +428,40 @@ extension RegisterViewController: UITextFieldDelegate{
         
         companyNameTextField.delegate = self
         companyAddressTextField.delegate = self
+        companyContractType.delegate = self
         companyPhoneNumberTextField.delegate = self
         companyEmailAddressTextField.delegate = self
         companyPasswordTextField.delegate = self
         companyConfirmPasswordTextField.delegate = self
         
         if(textField == companyNameTextField) {
-            companyAddressTextField.becomeFirstResponder() //the password field will be focused
+            companyAddressTextField.becomeFirstResponder()
         }
         else if(textField == companyNameTextField){
-            
-            companyAddressTextField.becomeFirstResponder() //the password field will be focused
+            companyAddressTextField.becomeFirstResponder()
         }
+        
         else if(textField == companyAddressTextField){
             
-            companyPhoneNumberTextField.becomeFirstResponder() //the password field will be focused
+            companyContractType.becomeFirstResponder()
+        }
+        
+        else if(textField == companyContractType){
+            
+            companyPhoneNumberTextField.becomeFirstResponder()
         }
         else if(textField == companyPhoneNumberTextField){
             
-            companyEmailAddressTextField.becomeFirstResponder() //the password field will be focused
+            companyEmailAddressTextField.becomeFirstResponder()
         }
         
         else if(textField == companyEmailAddressTextField){
-            
-            companyPasswordTextField.becomeFirstResponder() //the password field will be focused
+            companyPasswordTextField.becomeFirstResponder()
         }
         
         else if(textField == companyPasswordTextField){
             
-            companyConfirmPasswordTextField.becomeFirstResponder() //the password field will be focused
+            companyConfirmPasswordTextField.becomeFirstResponder() 
         }
         
         else if(textField == companyConfirmPasswordTextField){

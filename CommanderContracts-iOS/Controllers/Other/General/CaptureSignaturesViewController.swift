@@ -17,6 +17,7 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
     
     var companyEmail: String = ""
     var companyAddress: String = ""
+    var companyContractType: String = ""
     var companyName: String = ""
     var companyPhone: String = ""
     var userUID: String = ""
@@ -163,8 +164,10 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
                                     print("uploadImageData: \(isSuccess), \(url)")
                                     self.contractorSignUri = url!
                                     
+                                    //companyContractType
                                     
-                                    Services.uploadContractsToDatabase(clientAddress: self.clientAddress, clientDate: self.clientDate, clientDesc: self.clientDesc, clientID: self.clientID, clientName: self.clientName, clientPrice: self.clientPrice, clientSignUri: self.clientSignUri, companyAddress: self.companyAddress, companyEmail: self.companyEmail, companyName: self.companyName, contractorSignUri: self.contractorSignUri, id: self.userRef.key!)
+                                    
+                                    Services.uploadContractsToDatabase(clientAddress: self.clientAddress, clientDate: self.clientDate, clientDesc: self.clientDesc, clientID: self.clientID, clientName: self.clientName, clientPrice: self.clientPrice, clientSignUri: self.clientSignUri, companyAddress: self.companyAddress, companyContractType: self.companyContractType, companyEmail: self.companyEmail, companyName: self.companyName, contractorSignUri: self.contractorSignUri, id: self.userRef.key!)
                                     {
                                         
                                         self.indicator!.stop()
@@ -245,6 +248,7 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
             
             companyEmail = (snapshot.value as! NSDictionary)["companyEmail"] as! String
             companyAddress = (snapshot.value as! NSDictionary)["companyAddress"] as! String
+            companyContractType = (snapshot.value as! NSDictionary)["contractType"] as! String
             companyName = (snapshot.value as! NSDictionary)["companyName"] as! String
             companyPhone = (snapshot.value as! NSDictionary)["companyPhone"] as! String
             userUID = (snapshot.value as! NSDictionary)["uid"] as! String

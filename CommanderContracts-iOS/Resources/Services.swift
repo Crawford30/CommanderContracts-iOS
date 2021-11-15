@@ -10,7 +10,7 @@ import Firebase
 
 class Services {
     
-    static func signUpUser(email: String, password: String,comName: String, comAddress: String, comPhone: String,  onSuccess: @escaping () ->Void, onError: @escaping ( _ error:Error) ->Void ){
+    static func signUpUser(email: String, password: String,comName: String, comAddress: String,comContractType: String, comPhone: String,  onSuccess: @escaping () ->Void, onError: @escaping ( _ error:Error) ->Void ){
         
         let auth = Auth.auth()
         
@@ -24,7 +24,7 @@ class Services {
             }
             
             
-            uploadToDatabase(comName: comName, comAddress: comAddress, comPhone: comPhone, comEmail: email, onSuccess: onSuccess)
+            uploadToDatabase(comName: comName, comAddress: comAddress,comContractType: comContractType, comPhone: comPhone, comEmail: email, onSuccess: onSuccess)
             
         }
         
@@ -32,7 +32,7 @@ class Services {
     }
     
     
-    static func uploadToDatabase(comName: String, comAddress: String, comPhone: String,comEmail: String, onSuccess: @escaping () ->Void){
+    static func uploadToDatabase(comName: String, comAddress: String,comContractType:String, comPhone: String,comEmail: String, onSuccess: @escaping () ->Void){
         
         let   ref = Database.database().reference()
         let uid = Auth.auth().currentUser?.uid
@@ -43,7 +43,7 @@ class Services {
         let imgUrl = "https://firebasestorage.googleapis.com/v0/b/commander-s-contracts.appspot.com/o/images%2F36588d87-88a7-46d0-a86a-6d374be54040?alt=media&token=a4b5503e-9434-49ad-8ce6-bfc325244fe3"
         
         
-        ref.child("users").child(uid!).setValue( ["companyAddress" : comAddress, "companyEmail": comEmail,  "companyLogoImageUrl": imgUrl, "companyName" : comName, "companyPhone" : comPhone, "uid": uid ])
+        ref.child("users").child(uid!).setValue( ["companyAddress" : comAddress, "contractType" : comContractType, "companyEmail": comEmail,  "companyLogoImageUrl": imgUrl, "companyName" : comName, "companyPhone" : comPhone, "uid": uid ])
         
         onSuccess()
         
@@ -55,7 +55,7 @@ class Services {
     
     
     static func uploadContractsToDatabase(clientAddress: String, clientDate: String, clientDesc: String,clientID: String, clientName: String, clientPrice: String,
-                                          clientSignUri: String,companyAddress: String, companyEmail: String, companyName: String,
+                                          clientSignUri: String,companyAddress: String,companyContractType: String, companyEmail: String, companyName: String,
                                           contractorSignUri: String, id: String, onSuccess: @escaping () ->Void){
         
         let uid = Auth.auth().currentUser?.uid
@@ -78,6 +78,7 @@ class Services {
                      "clientProfileLogoUri" : clientProfileLogoUri,
                      "clientSignUri" : clientSignUri,
                      "companyAddress" : companyAddress,
+                     "companyContractType" : companyContractType,
                      "companyEmail" : companyEmail,
                      "companyName" : companyName,
                      "contractorSignUri" : contractorSignUri,
