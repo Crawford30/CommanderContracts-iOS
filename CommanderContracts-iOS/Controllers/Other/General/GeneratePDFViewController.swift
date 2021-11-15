@@ -173,7 +173,7 @@ class GeneratePDFViewController: UIViewController {
         
         pdf.addVerticalSpace(40)
         pdf.setContentAlignment(.left)
-        pdf.addText( "CONTRACT TYPE", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
+        pdf.addText( "TYPE OF CONTRACTOR", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
         pdf.addVerticalSpace(4)
         
         pdf.setContentAlignment(.left)

@@ -239,7 +239,7 @@ class RegisterViewController: UIViewController {
         companyNameTextField.attributedPlaceholder = NSAttributedString(string: "Company Name",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         companyAddressTextField.attributedPlaceholder = NSAttributedString(string: "Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         
-        companyContractType.attributedPlaceholder = NSAttributedString(string: "Enter Your Contract Type Here",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        companyContractType.attributedPlaceholder = NSAttributedString(string: "What Type Of Contractor Are You?",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         
         companyPhoneNumberTextField.attributedPlaceholder = NSAttributedString(string: "Phone Number",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         companyEmailAddressTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
