@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import SafariServices
 
 class RegisterViewController: UIViewController {
     var ref: DatabaseReference!
@@ -29,6 +30,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var companyConfirmPasswordTextField: TogglePassword!
     @IBOutlet weak var termsAndPrivacyContainer: UIView!
     
+    @IBOutlet weak var privacyLabel: UILabel!
     @IBOutlet weak var registerBtn: UIButton!
     struct Constants {
         static let cornerRadius: CGFloat = 8.0
@@ -76,7 +78,7 @@ class RegisterViewController: UIViewController {
                 
                 //self.showToastMessage(message: "A verification email has been sent your inbox, please check your inbox and verify your email")
                 
-   
+                
             })
         }
         else {
@@ -95,6 +97,22 @@ class RegisterViewController: UIViewController {
     
     
     
+    @IBAction func privacyPolicyTapped(_ sender: Any) {
+        
+        Utilities.vibrate()
+        
+        //https://www.iubenda.com/privacy-policy/26278213
+        
+        
+        print("Terms Button tapped!")
+        
+        guard let url = URL(string: "https://www.iubenda.com/privacy-policy/26278213") else {
+            return
+        }
+        
+        let vc = SFSafariViewController(url: url)
+        present(vc, animated: true, completion: nil)
+    }
     
     
     @IBAction func backToLoginVC(_ sender: Any) {
@@ -119,6 +137,8 @@ class RegisterViewController: UIViewController {
     }
     
     func setUpView(){
+        
+        privacyLabel.isUserInteractionEnabled = true
         
         registerBtn.layer.cornerRadius = Constants.cornerRadius
         
@@ -331,7 +351,7 @@ class RegisterViewController: UIViewController {
         }
         
         
-   
+        
         
     }
     
@@ -361,7 +381,7 @@ class RegisterViewController: UIViewController {
         toastLabel.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         toastLabel.textColor = UIColor.white
         toastLabel.textAlignment = .center;
-//        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
+        //        toastLabel.font = UIFont(name: "Montserrat-Light", size: 12.0)
         toastLabel.text = message
         toastLabel.alpha = 1.0
         toastLabel.layer.cornerRadius = 10;

@@ -165,19 +165,23 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Terms and Conditions" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbz-gZ-YIg">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Terms and Conditions" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qbz-gZ-YIg">
                                         <rect key="frame" x="8" y="0.0" width="132" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.4226532201" green="0.25813929079999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Privacy Policy" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heM-8Y-NNX">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Privacy Policy" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heM-8Y-NNX">
                                         <rect key="frame" x="230" y="0.0" width="97" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.32671330440000002" green="0.15063337739999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="nbx-Be-38E" appends="YES" id="egD-2c-EpN"/>
+                                        </connections>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -302,13 +306,19 @@
                         <outlet property="companyNameTextField" destination="Ivv-kc-oUb" id="L4d-Ql-ebe"/>
                         <outlet property="companyPasswordTextField" destination="vrO-g5-ONi" id="PYi-2R-vEt"/>
                         <outlet property="companyPhoneNumberTextField" destination="7az-XC-cw2" id="xRt-Rn-wTH"/>
+                        <outlet property="privacyLabel" destination="heM-8Y-NNX" id="zuN-kr-iL6"/>
                         <outlet property="registerBtn" destination="dcc-Kv-tXV" id="yhD-Du-emW"/>
                         <outlet property="termsAndPrivacyContainer" destination="Nfm-yT-hca" id="ab4-bf-uq9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7TK-p2-00S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="nbx-Be-38E">
+                    <connections>
+                        <action selector="privacyPolicyTapped:" destination="g3u-9w-SKs" id="Ewg-bV-DwT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="386.25" y="-140.49295774647888"/>
+            <point key="canvasLocation" x="384.80000000000001" y="-140.77961019490255"/>
         </scene>
         <!--Reset Password View Controller-->
         <scene sceneID="LmX-o6-oYI">
