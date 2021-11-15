@@ -122,7 +122,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         bgRect.origin.x         = contractCollectionView.frame.origin.x + 20
         bgRect.origin.y         = 0
         bgRect.size.width       = contractCollectionView.frame.size.width - 60.0
-        bgRect.size.height      = ( buttonRect.size.height * 3.0 ) + ( buttonGap * 4.0 )
+        bgRect.size.height      = ( buttonRect.size.height * 4.0 ) + ( buttonGap * 5.0 )
         bgLabel.frame           = bgRect
         tempView.addSubview( bgLabel )
         
@@ -136,8 +136,6 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
         
         let viewPDFButton:  UIButton            = UIButton.init()
-        
-        
         viewPDFButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             
             //UIColor(named: "myLightGray")
@@ -159,19 +157,41 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         //-----------------------------------------------------------------------------------
         
         
-        let shareContractButton: UIButton             = UIButton.init()
-        shareContractButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+        let editContractButton: UIButton             = UIButton.init()
+        editContractButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             //UIColor(named: "myLightGray")
-        shareContractButton.titleLabel?.textAlignment = .center
-        shareContractButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
-        shareContractButton.setTitleColor( UIColor.white, for: .normal)
-        shareContractButton.setTitle("Share", for: .normal )
-        shareContractButton.addTarget(self, action: #selector( self.handleShareContract ), for: .touchUpInside )
-        tempView.addSubview( shareContractButton )
-        shareContractButton.layer.cornerRadius = 8.0
-        shareContractButton.clipsToBounds      = true
+        editContractButton.titleLabel?.textAlignment = .center
+        editContractButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+        editContractButton.setTitleColor( UIColor.white, for: .normal)
+        editContractButton.setTitle("Edit Contract", for: .normal )
+        editContractButton.addTarget(self, action: #selector( self.handleUpdateContract ), for: .touchUpInside )
+        tempView.addSubview( editContractButton )
+        editContractButton.layer.cornerRadius = 8.0
+        editContractButton.clipsToBounds      = true
         
-        shareContractButton.frame = buttonRect
+        editContractButton.frame = buttonRect
+        
+        buttonRect.origin.y += buttonRect.size.height + buttonGap
+        
+        
+        
+        //-----------------------------------------------------------------------------------
+        
+        
+        let deleteContractButton: UIButton             = UIButton.init()
+        deleteContractButton.backgroundColor           =  UIColor.red
+            //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            //UIColor(named: "myLightGray")
+        deleteContractButton.titleLabel?.textAlignment = .center
+        deleteContractButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+        deleteContractButton.setTitleColor( UIColor.white, for: .normal)
+        deleteContractButton.setTitle("Delete Contract", for: .normal )
+        deleteContractButton.addTarget(self, action: #selector( self.handleDeleteContract ), for: .touchUpInside )
+        tempView.addSubview( deleteContractButton )
+        deleteContractButton.layer.cornerRadius = 8.0
+        deleteContractButton.clipsToBounds      = true
+        
+        deleteContractButton.frame = buttonRect
         
         buttonRect.origin.y += buttonRect.size.height + buttonGap
         
@@ -281,8 +301,44 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     
     
     
-    //MARK:-CONTRACT SHARE
-    @objc func handleShareContract(sender: UIButton) {
+    //MARK:-CONTRACT Update
+    @objc func handleUpdateContract(sender: UIButton) {
+        
+        Utilities.vibrate()
+        sender.tag = myCurrentButton
+        
+        print("Share Button \(String(sender.tag)) pressed!")
+        
+        var tempService:MyContracts
+        
+        //initialising
+        tempService = MyContracts.init()
+        
+        
+        if shouldShowSearchResults {
+            
+            tempService = currentFilteredArray[sender.tag]
+            
+            searchController.dismiss(animated: false, completion: nil)
+            
+        } else {
+            
+            tempService = allContracts[sender.tag]
+        }
+        
+        
+   
+        
+        self.view.viewWithTag(1000)?.removeFromSuperview()
+        
+    }
+    
+    
+    
+    
+    
+    //MARK:-CONTRACT Delete
+    @objc func handleDeleteContract(sender: UIButton) {
         
         Utilities.vibrate()
         sender.tag = myCurrentButton

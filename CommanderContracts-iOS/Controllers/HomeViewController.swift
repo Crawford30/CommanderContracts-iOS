@@ -9,6 +9,7 @@ import FirebaseAuth
 import UIKit
 
 class HomeViewController: UIViewController {
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var floatBtn: UIButton!
@@ -136,7 +137,7 @@ class HomeViewController: UIViewController {
     
     
     private func setUpViews() {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "commanderlogo.jpg")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named: "commanderlogo.jpg")!)
         createContractBtn.layer.cornerRadius = Constants.cornerRadius
         viewExistingContractBtn.layer.cornerRadius = Constants.cornerRadius
         

@@ -252,7 +252,7 @@ class GeneratePDFViewController: UIViewController {
         
         var docURL = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)).last as NSURL?
         
-        docURL = docURL?.appendingPathComponent( "myFileName.pdf") as NSURL?
+        docURL = docURL?.appendingPathComponent( "\(clientName)" + ".pdf") as NSURL?
         
         //Lastly, write your file to the disk.
         try? pdfData.write(to: docURL! as URL)
@@ -298,7 +298,7 @@ class GeneratePDFViewController: UIViewController {
         
         var documentsDirectory = paths[0]
         let docURLReceived = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
-        let targetURL = docURLReceived.appendingPathComponent("myFileName.pdf")
+        let targetURL = docURLReceived.appendingPathComponent("\(clientName)" + ".pdf")
         var request = URLRequest(url: targetURL)
 //        webView.loadRequest(request)
 //        view.addSubview(webView)
