@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DB6CEE92179B24237B124A516FF25050"
-               BuildableName = "Pods_CommanderContracts_iOSTests.framework"
-               BlueprintName = "Pods-CommanderContracts-iOSTests"
+               BlueprintIdentifier = "EB17C34BB3A42AFC09460B96722932AE"
+               BuildableName = "Pods_Commander_Contracts.framework"
+               BlueprintName = "Pods-Commander Contracts"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

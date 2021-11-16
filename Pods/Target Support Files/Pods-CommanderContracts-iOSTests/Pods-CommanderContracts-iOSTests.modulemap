@@ -1,6 +1,0 @@
-framework module Pods_CommanderContracts_iOSTests {
-  umbrella header "Pods-CommanderContracts-iOSTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

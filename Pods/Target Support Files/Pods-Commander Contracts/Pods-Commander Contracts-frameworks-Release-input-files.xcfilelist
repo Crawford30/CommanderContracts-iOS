@@ -1,4 +1,4 @@
-${PODS_ROOT}/Target Support Files/Pods-CommanderContracts-iOS/Pods-CommanderContracts-iOS-frameworks.sh
+${PODS_ROOT}/Target Support Files/Pods-Commander Contracts/Pods-Commander Contracts-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Appirater/Appirater.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework
 ${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework

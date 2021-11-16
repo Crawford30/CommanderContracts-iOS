@@ -1,0 +1,6 @@
+framework module Pods_Commander_Contracts {
+  umbrella header "Pods-Commander Contracts-umbrella.h"
+
+  export *
+  module * { export * }
+}

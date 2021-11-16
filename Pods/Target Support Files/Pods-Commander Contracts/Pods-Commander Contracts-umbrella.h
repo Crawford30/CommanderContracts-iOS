@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_CommanderContracts_iOSVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_CommanderContracts_iOSVersionString[];
+FOUNDATION_EXPORT double Pods_Commander_ContractsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_Commander_ContractsVersionString[];
 
