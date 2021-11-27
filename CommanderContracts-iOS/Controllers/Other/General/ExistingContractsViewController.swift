@@ -11,12 +11,24 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
-
 import PDFKit
 
 class ExistingContractsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     
-    var myCurrentButton: Int = 0
+    enum buttonStatus: Int {
+        case buttonAddContract
+//        case buttonUpdateService
+        case buttonDeleteContract
+        case buttonInactiveContract
+        
+    }
+    
+    let defaults = UserDefaults.standard
+    
+    
+    var myCurrentButton: Int = -1
+    
+    var myCurrentBtn: Int        = -1     // Nothing selected yet
     
     var currentFilteredArray: [MyContracts] = []  //for search
     var searchController: UISearchController!
@@ -229,6 +241,10 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         print("VIEW PDF Button \(String(sender.tag)) pressed!")
         
         
+        UserDefaults.standard.set( buttonStatus.buttonAddContract.rawValue, forKey: "UpdateInfo")
+        UserDefaults.standard.set( sender.tag,                                forKey: "ItemTapped")
+        
+        
         
         var tempServiceRequest: MyContracts
         
@@ -347,6 +363,11 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         sender.tag = myCurrentButton
         
         print("DELETE Button \(String(sender.tag)) pressed!")
+        
+        
+        UserDefaults.standard.set( buttonStatus.buttonDeleteContract.rawValue, forKey: "UpdateInfo")
+        UserDefaults.standard.set( sender.tag,                                forKey: "ItemTapped")
+        
         
         
         

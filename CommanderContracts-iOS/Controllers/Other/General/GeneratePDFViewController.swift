@@ -11,6 +11,25 @@ import WebKit
 
 class GeneratePDFViewController: UIViewController {
     
+    
+    enum possibleModes: Int {
+        
+        case generatePDF
+        //        case modeUpdate
+        case modeDelete
+        case modeInactive
+        
+    }
+    
+    //holding mode of button use to chnage label on both button and title of Register For Service with respect to click item
+    var valueForInfo:Int = 0
+    
+    let defualts = UserDefaults.standard
+    
+    
+    var currentMode: Int = possibleModes.modeInactive.rawValue     // Just a safeguard ‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️‼️
+    
+    
     let docsDir: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first! //document directory
     
     
@@ -73,16 +92,74 @@ class GeneratePDFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        getSentData()
+        
+        updateLabel()
+        
         // createDir(dir: "AllPDFS" )
         view.backgroundColor = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
         genericView.backgroundColor = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-        getSentData()
+       
         
         // Do any additional setup after loading the view.
     }
     
+    
+    
+    
+    
+    
+    
+    func updateLabel() {
+        
+        valueForInfo = UserDefaults.standard.integer(forKey: "UpdateInfo")
+        
+        switch valueForInfo {
+        
+        //========= ADD SERVICE ============================================================================
+        
+        case possibleModes.generatePDF.rawValue:
+            
+            generatePDFNowBtn.tintColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            
+            //UIColor(named: "myTintGreen")
+            //addServiceButtonOutlet.backgroundColor =  UIColor(named: "myTintGreen")
+            
+            navBar.topItem?.title = clientName
+            
+            generatePDFNowBtn.setTitle("GENERATE PDF AND SHARE", for: .normal)
+            
+            
+            break
+            
+            
+            
+        //===== DELETE SERVICE =============================================================================
+        
+        case possibleModes.modeDelete.rawValue:
+            
+            generatePDFNowBtn.backgroundColor = UIColor.red
+            generatePDFNowBtn.setTitle("DELETE", for: .normal)
+            
+            navBar.topItem?.title = "Delete Contract Information"
+            
+            
+            break
+            
+        default:
+            
+            return
+            
+        }
+        
+        
+        
+    }
+    
+    //🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷//🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷🔷
     
     
     
@@ -119,7 +196,77 @@ class GeneratePDFViewController: UIViewController {
     
     @IBAction func generatePdfNowAction(_ sender: Any) {
         
+        
         Utilities.vibrate()
+        
+        
+        switch valueForInfo {
+        
+        case possibleModes.generatePDF.rawValue:
+            generatePDFNow()
+            
+            break
+            
+        case possibleModes.modeDelete.rawValue:
+            
+            
+            let alert = UIAlertController(title: "Delete Contract" ,message: "Are you sure you want to delete your  Contract?",preferredStyle: .alert)
+            
+            // Change font and color of title
+            alert.setTitle(font: UIFont.boldSystemFont(ofSize: 26), color: UIColor.white)
+            
+            // Change font and color of message
+            alert.setMessage(font: UIFont(name: "", size: 18), color: UIColor.white)
+            
+            // Change background color of UIAlertController
+            alert.setBackgroudColor(color: UIColor.red)
+            
+            // Accessing alert view backgroundColor :
+            //alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.red
+            
+            alert.view.tintColor = UIColor.white
+            
+            alert.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: { (UIAlertAction) in
+                
+                self.dismiss(animated: true, completion: nil)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "PROCEED", style: .default, handler: { (UIAlertAction) in
+                
+                
+                
+                
+                
+            }))
+            
+            self.present(alert,animated: true, completion: nil)
+            
+            break
+            
+        default:
+            
+            return
+            
+        }
+        
+        
+        
+        
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        
+        
+        Utilities.vibrate()
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    private func generatePDFNow() {
+        
         
         if(clientImageView.isEmpty && contractorImageView.isEmpty) {
             return
@@ -197,7 +344,7 @@ class GeneratePDFViewController: UIViewController {
         pdf.addVerticalSpace(15)
         
         
-    
+        
         
         
         
@@ -256,13 +403,7 @@ class GeneratePDFViewController: UIViewController {
         pdf.setContentAlignment(.center)
         pdf.addText( "****END****", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
         pdf.addVerticalSpace(10)
-        
-        
-        
-        //       // pdf.addImage( (clientImageView?.image)!  )
-        //        //        pdf.addAttributedText( clientAddressLabel.text! as! NSAttributedString  )
-        //        pdf.addLineSeparator(height: 30) // or pdf.addLineSeparator() default height is 1.0
-        //        pdf.addLineSpace(20)
+
         
         let pdfData = pdf.generatePDFdata()
         
@@ -273,91 +414,43 @@ class GeneratePDFViewController: UIViewController {
         
         //Lastly, write your file to the disk.
         try? pdfData.write(to: docURL! as URL)
-        
-        
-        //        print("FILE URL: \(docURL)")
-        
-        //savePdf(urlString: docsDir, fileName: "myPDF")
-        
-        
-        //        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        //        let documentsDirectory = paths[0]
-        //
-        //        print(documentsDirectory)
-        
-        
-        //        let docURLRecieved = (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last)
-        //               do{
-        //                   let contents = try (FileManager.default.contentsOfDirectory(at: docURLRecieved!, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles))
-        //                   print("There are")
-        //                   print(contents)
-        //               }
-        //               catch (let error)
-        //               {
-        //                   print("error contents \(error)")
-        //               }
-        //
-        
-        
-        
-        
-//        let docURLReceived = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
-//        let targetURL = docURLReceived.appendingPathComponent("myFileName.pdf")
-//
-//        print("There are")
-//        print(targetURL)
-        
-        
-        
-//        var webView = UIWebView(frame : view.frame)
-//        webView.scalesPageToFit = true
+ 
         var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         
         var documentsDirectory = paths[0]
         let docURLReceived = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last!
         let targetURL = docURLReceived.appendingPathComponent("\(clientName)" + ".pdf")
         var request = URLRequest(url: targetURL)
-//        webView.loadRequest(request)
-//        view.addSubview(webView)
+        //        webView.loadRequest(request)
+        //        view.addSubview(webView)
         
         
         var shareItems = [Any]()
-           shareItems.append("Compartilhar em...")
-           shareItems.append(targetURL)
-
-           let avController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
+        shareItems.append("Compartilhar em...")
+        shareItems.append(targetURL)
+        
+        let avController = UIActivityViewController(activityItems: shareItems, applicationActivities: nil)
         avController.excludedActivityTypes  = [
-               .postToWeibo,
-               .message,
-               .mail,
-               .print,
-               .copyToPasteboard,
-               .assignToContact,
-               .saveToCameraRoll,
-               .addToReadingList,
-               .postToFlickr,
-               .postToVimeo,
-               .postToTencentWeibo,
-               .airDrop
-           ] // caso queira excluir alguma opção
-
-           self.present(avController, animated: true, completion: nil)
+            .postToWeibo,
+            .message,
+            .mail,
+            .print,
+            .copyToPasteboard,
+            .assignToContact,
+            .saveToCameraRoll,
+            .addToReadingList,
+            .postToFlickr,
+            .postToVimeo,
+            .postToTencentWeibo,
+            .airDrop
+        ] // caso queira excluir alguma opção
         
-     
+        self.present(avController, animated: true, completion: nil)
         
         
         
         
     }
-    
-    @IBAction func backButtonTapped(_ sender: Any) {
-        
-        
-        Utilities.vibrate()
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     
     
     func showSavedPdf(url:String, fileName:String) {
@@ -402,10 +495,10 @@ class GeneratePDFViewController: UIViewController {
         
         //print("Contract Price: \(contractPrice)")
         
-//        let contractTypeData  = "\(contractType)"
+        //        let contractTypeData  = "\(contractType)"
         
-        
-        navBar.topItem?.title = clientName
+       // navBar.topItem?.title = clientName
+       
         
         
         contractorAddressLabel.text = "\(contractorCompanyName)\n\(contractorCompanyAddress)\n\(contractorCompanyEmail)\n\(contractType)"
@@ -417,7 +510,7 @@ class GeneratePDFViewController: UIViewController {
         
         let formattedContractPrice = contractPrice.formattedWithSeparator
         
-    
+        
         contractPriceLabel.text = "\("$" + String(formattedContractPrice))"
         
         fromLabel.text = "FROM: \(clientName)"
