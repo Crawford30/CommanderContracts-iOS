@@ -44,6 +44,7 @@
 		EEB9A002274333D100E503F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEB9A001274333D100E503F1 /* GoogleService-Info.plist */; };
 		EEEEB5F7272AC7FB00F704C2 /* NewContractViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */; };
 		EEEEB5FC272AF09B00F704C2 /* CaptureSignaturesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEEB5FB272AF09B00F704C2 /* CaptureSignaturesViewController.swift */; };
+		EEEF495B27523E9F005D9C21 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEEF495A27523E9F005D9C21 /* DateExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		EEB9A001274333D100E503F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EEEEB5F6272AC7FB00F704C2 /* NewContractViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewContractViewController.swift; sourceTree = "<group>"; };
 		EEEEB5FB272AF09B00F704C2 /* CaptureSignaturesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSignaturesViewController.swift; sourceTree = "<group>"; };
+		EEEF495A27523E9F005D9C21 /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				EE50B9B6271DB89D0073B197 /* StorageManager.swift */,
 				EE50B9BB271DB8E70073B197 /* DatabaseManager.swift */,
 				EE78453B2729698A008EDEF6 /* Services.swift */,
+				EEEF495A27523E9F005D9C21 /* DateExtensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				EE3A58642728222300AC4B53 /* UIShowHideTextField.swift in Sources */,
 				EE784541272982B6008EDEF6 /* Toast.swift in Sources */,
 				EE20E632272C929600E7C783 /* ExistingContractsViewController.swift in Sources */,
+				EEEF495B27523E9F005D9C21 /* DateExtensions.swift in Sources */,
 				EE20E657272D5F2E00E7C783 /* PDFViewController.swift in Sources */,
 				EEA71760272B2B840036A87B /* ClientOrUserSingleton.swift in Sources */,
 				EEEEB5FC272AF09B00F704C2 /* CaptureSignaturesViewController.swift in Sources */,
