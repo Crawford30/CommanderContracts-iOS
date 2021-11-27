@@ -9,6 +9,9 @@ import UIKit
 
 class NewContractViewController: UIViewController, UITextViewDelegate {
     
+    
+   
+    
     let datePicker: UIDatePicker = UIDatePicker()
     
     struct Constants {
@@ -25,9 +28,15 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var contractPriceTextField: UITextField!
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var contractDescriptionTexView: UITextView!
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        clientDateTextField.rightView = textFieldBtn
+//        clientDateTextField.rightViewMode = .always
         
         
         clientAddressTextField.delegate = self
@@ -43,6 +52,14 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+//    @objc func selectDateTapped() {
+//
+//        createDatePickerView()
+//    }
+//    
     
 
     @IBAction func backBtnTapped(_ sender: Any) {
@@ -247,6 +264,11 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         }
         
     }
+    
+    
+    
+    
+    
     
     
     
