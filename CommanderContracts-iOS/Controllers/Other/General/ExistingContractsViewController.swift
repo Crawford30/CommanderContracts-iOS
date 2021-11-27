@@ -122,7 +122,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         bgRect.origin.x         = contractCollectionView.frame.origin.x + 20
         bgRect.origin.y         = 0
         bgRect.size.width       = contractCollectionView.frame.size.width - 60.0
-        bgRect.size.height      = ( buttonRect.size.height * 4.0 ) + ( buttonGap * 5.0 )
+        bgRect.size.height      = ( buttonRect.size.height * 3.0 ) + ( buttonGap * 4.0 )
         bgLabel.frame           = bgRect
         tempView.addSubview( bgLabel )
         
@@ -156,22 +156,22 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
         //-----------------------------------------------------------------------------------
         
-        
-        let editContractButton: UIButton             = UIButton.init()
-        editContractButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
-            //UIColor(named: "myLightGray")
-        editContractButton.titleLabel?.textAlignment = .center
-        editContractButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
-        editContractButton.setTitleColor( UIColor.white, for: .normal)
-        editContractButton.setTitle("Edit Contract", for: .normal )
-        editContractButton.addTarget(self, action: #selector( self.handleUpdateContract ), for: .touchUpInside )
-        tempView.addSubview( editContractButton )
-        editContractButton.layer.cornerRadius = 8.0
-        editContractButton.clipsToBounds      = true
-        
-        editContractButton.frame = buttonRect
-        
-        buttonRect.origin.y += buttonRect.size.height + buttonGap
+//
+//        let editContractButton: UIButton             = UIButton.init()
+//        editContractButton.backgroundColor           =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+//            //UIColor(named: "myLightGray")
+//        editContractButton.titleLabel?.textAlignment = .center
+//        editContractButton.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+//        editContractButton.setTitleColor( UIColor.white, for: .normal)
+//        editContractButton.setTitle("Edit Contract", for: .normal )
+//        editContractButton.addTarget(self, action: #selector( self.handleUpdateContract ), for: .touchUpInside )
+//        tempView.addSubview( editContractButton )
+//        editContractButton.layer.cornerRadius = 8.0
+//        editContractButton.clipsToBounds      = true
+//
+//        editContractButton.frame = buttonRect
+//
+//        buttonRect.origin.y += buttonRect.size.height + buttonGap
         
         
         
@@ -302,39 +302,39 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     
     
     
-    
-    //MARK:-CONTRACT Update
-    @objc func handleUpdateContract(sender: UIButton) {
-        
-        Utilities.vibrate()
-        sender.tag = myCurrentButton
-        
-        print("Share Button \(String(sender.tag)) pressed!")
-        
-        var tempService:MyContracts
-        
-        //initialising
-        tempService = MyContracts.init()
-        
-        
-        if shouldShowSearchResults {
-            
-            tempService = currentFilteredArray[sender.tag]
-            
-            searchController.dismiss(animated: false, completion: nil)
-            
-        } else {
-            
-            tempService = allContracts[sender.tag]
-        }
-        
-        
-   
-        
-        self.view.viewWithTag(1000)?.removeFromSuperview()
-        
-    }
-    
+//
+//    //MARK:-CONTRACT Update
+//    @objc func handleUpdateContract(sender: UIButton) {
+//
+//        Utilities.vibrate()
+//        sender.tag = myCurrentButton
+//
+//        print("Share Button \(String(sender.tag)) pressed!")
+//
+//        var tempService:MyContracts
+//
+//        //initialising
+//        tempService = MyContracts.init()
+//
+//
+//        if shouldShowSearchResults {
+//
+//            tempService = currentFilteredArray[sender.tag]
+//
+//            searchController.dismiss(animated: false, completion: nil)
+//
+//        } else {
+//
+//            tempService = allContracts[sender.tag]
+//        }
+//
+//
+//
+//
+//        self.view.viewWithTag(1000)?.removeFromSuperview()
+//
+//    }
+//
     
     
     
@@ -343,30 +343,63 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     @objc func handleDeleteContract(sender: UIButton) {
         
         Utilities.vibrate()
+        
         sender.tag = myCurrentButton
         
-        print("Share Button \(String(sender.tag)) pressed!")
+        print("DELETE Button \(String(sender.tag)) pressed!")
         
-        var tempService:MyContracts
         
-        //initialising
-        tempService = MyContracts.init()
+        
+        var tempServiceRequest: MyContracts
+        
+        tempServiceRequest = MyContracts.init()
         
         
         if shouldShowSearchResults {
             
-            tempService = currentFilteredArray[sender.tag]
+            tempServiceRequest = currentFilteredArray[sender.tag]
             
             searchController.dismiss(animated: false, completion: nil)
             
         } else {
             
-            tempService = allContracts[sender.tag]
+            tempServiceRequest = allContracts[sender.tag]
         }
         
         
-   
+        let singletonInstance = ContractSingleton.shared
         
+        singletonInstance.setContractorCompanyName(theName: tempServiceRequest.companyName)
+        
+        singletonInstance.setContractorAddress(theAddress: tempServiceRequest.companyAddress)
+        
+        singletonInstance.setContractorEmail(theEmail: tempServiceRequest.companyEmail)
+        
+        singletonInstance.setClientName(theName: tempServiceRequest.clientName)
+        singletonInstance.setClientAddress(theAddress: tempServiceRequest.clientAdress)
+        singletonInstance.setContractDate(theDate: tempServiceRequest.clientDate)
+        
+        singletonInstance.setClientSignUri(theUri: tempServiceRequest.clientSignUrl)
+        
+        singletonInstance.setContractorSignUrl(theUri: tempServiceRequest.contractorSignUrl)
+        
+        singletonInstance.setContractDescription(theDesc: tempServiceRequest.clientDesc)
+        singletonInstance.setContractAmount(theAmount: Double( tempServiceRequest.clientPrice)!)
+        
+        singletonInstance.setContractType(theType: tempServiceRequest.contractType)
+
+        
+       
+    
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "GeneratePDFID") as? GeneratePDFViewController
+        
+        homeVC?.modalPresentationStyle = .fullScreen
+        self.present(homeVC!, animated: true, completion: nil)
+        
+      
+        
+      
         self.view.viewWithTag(1000)?.removeFromSuperview()
         
     }
