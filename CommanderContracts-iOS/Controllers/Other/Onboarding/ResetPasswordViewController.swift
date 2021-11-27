@@ -98,6 +98,11 @@ class ResetPasswordViewController: UIViewController {
     func setUpView(){
         forgotPasswordBtn.layer.cornerRadius = Constants.cornerRadius
         
+        forgotPasswordBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        forgotPasswordBtn.titleLabel?.numberOfLines = 1
+        forgotPasswordBtn.titleLabel?.minimumScaleFactor = 0.1
+        forgotPasswordBtn.clipsToBounds = true
+        
         
         forgotPasswordTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
         

@@ -98,7 +98,7 @@ class GeneratePDFViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        setUpView()
         getSentData()
         
         updateLabel()
@@ -113,6 +113,22 @@ class GeneratePDFViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    
+    
+    private func setUpView() {
+        
+        contractorAddressLabel.adjustsFontSizeToFitWidth = true
+        
+        clientAddressLabel.adjustsFontSizeToFitWidth = true
+        
+        contractDescriptionDetail.adjustsFontSizeToFitWidth = true
+    
+        generatePDFNowBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        
+        generatePDFNowBtn.titleLabel?.numberOfLines = 1
+        generatePDFNowBtn.titleLabel?.minimumScaleFactor = 0.1
+        generatePDFNowBtn.clipsToBounds = true
+    }
     
     
     

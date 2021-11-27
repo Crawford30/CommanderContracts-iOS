@@ -225,9 +225,29 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
     private func setUpViews() {
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         captureContractorSignBtn.layer.cornerRadius = Constants.cornerRadius
+        captureContractorSignBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        captureContractorSignBtn.titleLabel?.numberOfLines = 1
+        captureContractorSignBtn.titleLabel?.minimumScaleFactor = 0.1
+        captureContractorSignBtn.clipsToBounds = true
+        
+        
         captureClientSignBtn.layer.cornerRadius = Constants.cornerRadius
-        submitBtn.layer.cornerRadius = Constants.cornerRadius
+        
+        captureClientSignBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        captureClientSignBtn.titleLabel?.numberOfLines = 1
+        captureClientSignBtn.titleLabel?.minimumScaleFactor = 0.1
+        captureClientSignBtn.clipsToBounds = true
+        
+       
         contractorImageView.layer.cornerRadius = Constants.cornerRadius
+        
+        submitBtn.layer.cornerRadius = Constants.cornerRadius
+        submitBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        submitBtn.titleLabel?.numberOfLines = 1
+        submitBtn.titleLabel?.minimumScaleFactor = 0.1
+        submitBtn.clipsToBounds = true
+        
+        
         clientImageView.layer.cornerRadius = Constants.cornerRadius
     }
     
