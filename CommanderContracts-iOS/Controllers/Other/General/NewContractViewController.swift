@@ -291,7 +291,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         datePicker.datePickerMode = .date
         
         datePicker.minimumDate = Date() //Hide past Date
-        datePicker.maximumDate = Date() //Hide future Date
+        //datePicker.maximumDate = Date() //Hide future Date
         
     }
     
@@ -306,7 +306,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         //format the text when done is pressed
         
         let formatter = DateFormatter()
-        formatter.dateStyle = .full
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none  //includes the time when selected hence none removes it
         formatter.calendar = .current
         
