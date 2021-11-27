@@ -220,6 +220,8 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
     }
     
     
+
+    
     private func setUpViews() {
         self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         captureContractorSignBtn.layer.cornerRadius = Constants.cornerRadius
@@ -281,38 +283,7 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
     
     
     
-    
-    //    /// - Parameter digit: the number of digit
-    //    /// - Returns: the ramdom generate number or nil if wrong parameter
-    //    func randomNumber(with digit: Int) -> Int? {
-    //
-    //        guard 0 < digit, digit < 20 else { // 0 digit number don't exist and 20 digit Int are to big
-    //            return nil
-    //        }
-    //
-    //        /// The final ramdom generate Int
-    //        var finalNumber : Int = 0;
-    //
-    //        for i in 1...digit {
-    //
-    //            /// The new generated number which will be add to the final number
-    //            var randomOperator : Int = 0
-    //
-    //            repeat {
-    //                #if os(Linux)
-    //                    randomOperator = Int(random() % 9) * Int(powf(10, Float(i - 1)))
-    //                #else
-    //                    randomOperator = Int(arc4random_uniform(9)) * Int(powf(10, Float(i - 1)))
-    //                #endif
-    //
-    //            } while Double(randomOperator + finalNumber) > Double(Int.max) // Verification to be sure to don't overflow Int max size
-    //
-    //            finalNumber += randomOperator
-    //        }
-    //
-    //        return finalNumber
-    //    }
-    //
+   
     
     func didSelectContractorImage(_ image: UIImage) {
         contractorImageView.image = image

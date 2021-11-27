@@ -60,7 +60,14 @@ class Services {
         
         let uid = Auth.auth().currentUser?.uid
         
+        
+        var  contractID = ""
+        
+        //let key = Database.database().reference().child("/user-contracts/\(uid!)").childByAutoId().key
+        
         let   ref = Database.database().reference().child("/user-contracts/\(uid!)").childByAutoId()
+        
+      
         
         
         
@@ -83,13 +90,24 @@ class Services {
                      "companyName" : companyName,
                      "contractorSignUri" : contractorSignUri,
                      "id" : id,
+                     "contractID": ""
                      
                      
                      
                      
-        ]
+        ] as [String : Any]
         
         ref.setValue(data)
+        
+        
+        contractID = (ref.key)!
+        
+        
+        
+        ///Saved auto generated ID as well, used to delete data
+        ref.updateChildValues(["contractID" : contractID as AnyObject])
+        
+        
         
         
         

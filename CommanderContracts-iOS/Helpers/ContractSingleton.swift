@@ -15,6 +15,12 @@ class ContractSingleton {
     static let shared = ContractSingleton()
     
     
+    private var userUID: String
+    private var userKey: String
+    
+    private var contractID: String
+    
+    
     private var clientName:  String
     private var clientSignUrl:  String
     private var clientCompanyName:  String
@@ -36,6 +42,11 @@ class ContractSingleton {
     
     private  init() { //A  private initilaizer, means it can only be called this class
         
+        
+        userUID = ""
+        contractID = ""
+        
+        userKey = ""
         clientName = ""
         clientSignUrl = ""
         clientCompanyName = ""
@@ -54,6 +65,38 @@ class ContractSingleton {
         contractorSignUrl = ""
         
     } //not to be accessed anywhere apart from this class
+    
+    
+    
+    func setContractID(theID: String) -> () {
+        contractID = theID
+    }
+    
+    
+    func getContractID() -> String {
+        return contractID
+    }
+    
+    
+    
+    func setUID(theUID: String) -> () {
+        userUID = theUID
+    }
+    
+    
+    func getUID() -> String {
+        return userUID
+    }
+    
+    func setUserKey(theKey: String) -> () {
+        userKey = theKey
+    }
+    
+    
+    func getUserKey() -> String {
+        return userKey
+    }
+    
     
     
     

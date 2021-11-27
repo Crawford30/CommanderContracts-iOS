@@ -265,6 +265,12 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
         let singletonInstance = ContractSingleton.shared
         
+        
+        singletonInstance.setContractID(theID: tempServiceRequest.contractID)
+        singletonInstance.setUserKey(theKey: tempServiceRequest.id)
+        
+        singletonInstance.setUID(theUID: tempServiceRequest.cientID)
+        
         singletonInstance.setContractorCompanyName(theName: tempServiceRequest.companyName)
         
         singletonInstance.setContractorAddress(theAddress: tempServiceRequest.companyAddress)
@@ -389,6 +395,14 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
         
         let singletonInstance = ContractSingleton.shared
+        
+        singletonInstance.setUserKey(theKey: tempServiceRequest.id)
+        
+        singletonInstance.setUID(theUID: tempServiceRequest.cientID)
+        
+        singletonInstance.setContractID(theID: tempServiceRequest.contractID)
+        
+            
         
         singletonInstance.setContractorCompanyName(theName: tempServiceRequest.companyName)
         
@@ -528,6 +542,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
                 tempID.contractType = (value1!["companyContractType"]!)
                 tempID.contractorSignUrl = (value1!["contractorSignUri"]!)
                 tempID.id = (value1!["id"]!)
+                tempID.contractID =  (value1!["contractID"]!)
                 
                 self.allContracts.append( tempID )
                 

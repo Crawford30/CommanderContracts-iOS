@@ -8,6 +8,8 @@
 import UIKit
 import SimplePDF
 import WebKit
+import Firebase
+
 
 class GeneratePDFViewController: UIViewController {
     
@@ -78,6 +80,10 @@ class GeneratePDFViewController: UIViewController {
     var contractDesc: String  = ""
     var contractPrice: Double  = 0.0
     
+    var userUID: String  = ""
+    
+    var contractID: String  = ""
+    
     
     
     
@@ -102,7 +108,7 @@ class GeneratePDFViewController: UIViewController {
         
         genericView.backgroundColor = #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
-       
+        
         
         // Do any additional setup after loading the view.
     }
@@ -143,6 +149,14 @@ class GeneratePDFViewController: UIViewController {
             
             generatePDFNowBtn.backgroundColor = UIColor.red
             generatePDFNowBtn.setTitle("DELETE", for: .normal)
+           // generatePDFNowBtn.titleLabel?.font = .systemFont(ofSize: 16.0)
+            //generatePDFNowBtn.titleLabel?.font = .boldSystemFont(ofSize: 16.0)
+            
+          
+                
+                generatePDFNowBtn.titleLabel?.font          = UIFont.boldSystemFont(ofSize: 20.0 )
+                
+              
             
             navBar.topItem?.title = "Delete Contract Information"
             
@@ -210,7 +224,7 @@ class GeneratePDFViewController: UIViewController {
         case possibleModes.modeDelete.rawValue:
             
             
-            let alert = UIAlertController(title: "Delete Contract" ,message: "Are you sure you want to delete your  Contract?",preferredStyle: .alert)
+            let alert = UIAlertController(title: "Delete Contract" ,message: "Are you sure you want to delete this  Contract?",preferredStyle: .alert)
             
             // Change font and color of title
             alert.setTitle(font: UIFont.boldSystemFont(ofSize: 26), color: UIColor.white)
@@ -232,10 +246,10 @@ class GeneratePDFViewController: UIViewController {
                 
             }))
             
-            alert.addAction(UIAlertAction(title: "PROCEED", style: .default, handler: { (UIAlertAction) in
+            alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (UIAlertAction) in
                 
                 
-                
+                self.deleteContract()
                 
                 
             }))
@@ -403,7 +417,7 @@ class GeneratePDFViewController: UIViewController {
         pdf.setContentAlignment(.center)
         pdf.addText( "****END****", font: UIFont.boldSystemFont(ofSize: 16.0), textColor: UIColor.blue )
         pdf.addVerticalSpace(10)
-
+        
         
         let pdfData = pdf.generatePDFdata()
         
@@ -414,7 +428,7 @@ class GeneratePDFViewController: UIViewController {
         
         //Lastly, write your file to the disk.
         try? pdfData.write(to: docURL! as URL)
- 
+        
         var paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         
         var documentsDirectory = paths[0]
@@ -453,7 +467,34 @@ class GeneratePDFViewController: UIViewController {
     }
     
     
-    func showSavedPdf(url:String, fileName:String) {
+    
+    
+    private  func deleteContract() {
+        let uid = Auth.auth().currentUser!.uid
+        
+        
+        let   ref = Database.database().reference().child("/user-contracts/\(userUID)/").child(contractID)
+        
+        ref.removeValue { error,arg  in
+            if error != nil {
+                print("error \(error)")
+            }
+        }
+        
+        
+        self.dismiss(animated: true, completion: nil)
+        
+        print("REF: \(ref)")
+        
+     
+        
+        
+    }
+    
+    
+    
+    
+    private  func showSavedPdf(url:String, fileName:String) {
         if #available(iOS 10.0, *) {
             do {
                 let docURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -480,6 +521,14 @@ class GeneratePDFViewController: UIViewController {
         
         let singletonInstance = ContractSingleton.shared
         
+        userUID = singletonInstance.getUID()
+        
+        contractID = singletonInstance.getContractID()
+        
+        print("THIS IS USER UID: \(userUID)")
+        
+        print("THIS IS CONTRCT ID: \(contractID)")
+        
         contractorCompanyName = singletonInstance.getContractorCompanyName()
         contractorCompanyAddress = singletonInstance.getContractorAddress()
         contractorCompanyEmail = singletonInstance.getContractorEmail()
@@ -497,8 +546,8 @@ class GeneratePDFViewController: UIViewController {
         
         //        let contractTypeData  = "\(contractType)"
         
-       // navBar.topItem?.title = clientName
-       
+        // navBar.topItem?.title = clientName
+        
         
         
         contractorAddressLabel.text = "\(contractorCompanyName)\n\(contractorCompanyAddress)\n\(contractorCompanyEmail)\n\(contractType)"
