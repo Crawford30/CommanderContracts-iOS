@@ -23,6 +23,14 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         
     }
     
+    
+    let bgColor = UIColor.rgb(red: 157.0, green: 169.0, blue: 170.0, alpha: 1.0)
+    
+    let whiteColor = UIColor.rgb(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
+    
+    let blackColor = UIColor.rgb(red: 100.0, green: 100.0, blue: 100.0, alpha: 1.0)
+    
+    
     let defaults = UserDefaults.standard
     
     
@@ -58,7 +66,9 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         contractCollectionView.dataSource = self
         contractCollectionView.delegate = self
         
-        self.contractCollectionView.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+        self.contractCollectionView.backgroundColor = bgColor
+            
+            //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
         
         
@@ -628,6 +638,9 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let contractCell = contractCollectionView.dequeueReusableCell(withReuseIdentifier: "MyContractsID", for: indexPath) as! MyContractsCollectionViewCell
+        
+        
+        contractCell.clientNameLabel.textColor = blackColor
         
        
         
