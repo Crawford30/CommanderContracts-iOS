@@ -25,5 +25,5 @@ class MyContracts: NSObject {
     var companyName: String = ""
     var contractorSignUrl: String = ""
     var id: String = ""
-    var contractID = ""
+    var contractID: String? = ""
 }
