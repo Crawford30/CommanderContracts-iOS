@@ -83,6 +83,16 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func captureContractorSignBtn(_ sender: Any) {
+        
+        UserDefaults.standard.set(true, forKey: "WhoseSign")
+        
+        Utilities.vibrate()
+        
+        gotToSignaturePad()
+        
+        
+    }
     
     
     @IBAction func captureContractorSignAction(_ sender: Any) {
@@ -93,6 +103,16 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
         
         gotToSignaturePad()
     }
+    
+    @IBAction func captureClientSignBtn(_ sender: Any) {
+        
+        UserDefaults.standard.set(false, forKey: "WhoseSign")
+        
+        Utilities.vibrate()
+        
+        gotToSignaturePad()
+    }
+    
     
     
     @IBAction func captureClientSignAction(_ sender: Any) {
@@ -216,6 +236,8 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
         let homeVC = storyboard.instantiateViewController(withIdentifier: "ExistingContractsID") as? ExistingContractsViewController
         homeVC?.modalPresentationStyle = .fullScreen
         self.present(homeVC!, animated: true, completion: nil)
+        
+        //self.navigationController?.popToRootViewController(animated: true)
         
     }
     

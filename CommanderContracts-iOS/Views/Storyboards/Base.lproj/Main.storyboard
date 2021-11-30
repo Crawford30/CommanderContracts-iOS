@@ -678,6 +678,26 @@
                                     <action selector="submitBtnAction:" destination="phX-lO-m1L" eventType="touchUpInside" id="8Gt-AU-2lS"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xh-ZM-ibA">
+                                <rect key="frame" x="20" y="59" width="335" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captureContractorSignBtn:" destination="phX-lO-m1L" eventType="touchUpInside" id="xGW-OU-OIo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tgW-1y-0vm">
+                                <rect key="frame" x="20" y="317" width="339" height="170"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="captureClientSignBtn:" destination="phX-lO-m1L" eventType="touchUpInside" id="6Z8-A0-BtT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OOX-xy-znA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -712,7 +732,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wl4-Ng-SJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2471.25" y="-140.49295774647888"/>
+            <point key="canvasLocation" x="2471.1999999999998" y="-140.77961019490255"/>
         </scene>
         <!--Signature Pad View Controller-->
         <scene sceneID="Llx-GN-e1i">
