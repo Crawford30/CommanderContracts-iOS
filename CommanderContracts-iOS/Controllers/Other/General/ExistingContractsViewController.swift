@@ -640,7 +640,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
         let contractCell = contractCollectionView.dequeueReusableCell(withReuseIdentifier: "MyContractsID", for: indexPath) as! MyContractsCollectionViewCell
         
         
-        contractCell.clientNameLabel.textColor = blackColor
+        //contractCell.clientNameLabel.textColor = blackColor
         
        
         
