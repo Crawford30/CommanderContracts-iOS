@@ -9,7 +9,11 @@ import UIKit
 
 class NewContractViewController: UIViewController, UITextViewDelegate {
     
+    let bgColor = UIColor.rgb(red: 157.0, green: 169.0, blue: 170.0, alpha: 1.0)
     
+    let whiteColor = UIColor.rgb(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
+    
+    let blackColor = UIColor.rgb(red: 100.0, green: 100.0, blue: 100.0, alpha: 1.0)
    
     
     let datePicker: UIDatePicker = UIDatePicker()
@@ -65,6 +69,10 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     @IBAction func backBtnTapped(_ sender: Any) {
         Utilities.vibrate()
         
+        
+        //https://stackoverflow.com/questions/30990507/dismiss-more-than-one-view-controller-simultaneously
+        
+       // self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -143,7 +151,8 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     
     private func setUpViews() {
         
-        self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+       
+        self.view.backgroundColor = bgColor
         
         nextBtn.layer.cornerRadius = Constants.cornerRadius
         
@@ -157,13 +166,15 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         clientNameTextField.autocapitalizationType = .none
         clientNameTextField.autocorrectionType = .no
         clientNameTextField.layer.masksToBounds = true
-        clientNameTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        clientNameTextField.backgroundColor = bgColor
+            
+            //#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             
             //.secondarySystemBackground
         clientNameTextField.layer.cornerRadius = Constants.cornerRadius
         clientNameTextField.layer.borderWidth = 2.0
-        clientNameTextField.layer.borderColor = UIColor.white.cgColor
+        clientNameTextField.layer.borderColor = whiteColor.cgColor
         
         
         
@@ -176,7 +187,9 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         clientAddressTextField.autocapitalizationType = .none
         clientAddressTextField.autocorrectionType = .no
         clientAddressTextField.layer.masksToBounds = true
-        clientAddressTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        clientAddressTextField.backgroundColor =  bgColor
+            
+            //#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             
             //.secondarySystemBackground
@@ -193,20 +206,21 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         clientDateTextField.autocapitalizationType = .none
         clientDateTextField.autocorrectionType = .no
         clientDateTextField.layer.masksToBounds = true
-        clientDateTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        clientDateTextField.backgroundColor = bgColor
             //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             
             //.secondarySystemBackground
         clientDateTextField.layer.cornerRadius = Constants.cornerRadius
         clientDateTextField.layer.borderWidth = 2.0
-        clientDateTextField.layer.borderColor = UIColor.white.cgColor
+        clientDateTextField.layer.borderColor = whiteColor.cgColor
+           // UIColor.white.cgColor
         
         
         
       
         
         contractDescriptionTexView.text = "Description"
-        contractDescriptionTexView.textColor = UIColor.black
+        contractDescriptionTexView.textColor =  blackColor
         
         contractDescriptionTexView.leftSpace()
         
@@ -215,13 +229,16 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         contractDescriptionTexView.autocapitalizationType = .none
         contractDescriptionTexView.autocorrectionType = .no
         contractDescriptionTexView.layer.masksToBounds = true
-        contractDescriptionTexView.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        contractDescriptionTexView.backgroundColor = bgColor
+            //#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             
             //.secondarySystemBackground
         contractDescriptionTexView.layer.cornerRadius = Constants.cornerRadius
         contractDescriptionTexView.layer.borderWidth = 2.0
-        contractDescriptionTexView.layer.borderColor = UIColor.white.cgColor
+        contractDescriptionTexView.layer.borderColor = whiteColor.cgColor
+            
+            //UIColor.white.cgColor
         
         
         
@@ -233,13 +250,17 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         contractPriceTextField.autocapitalizationType = .none
         contractPriceTextField.autocorrectionType = .no
         contractPriceTextField.layer.masksToBounds = true
-        contractPriceTextField.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        contractPriceTextField.backgroundColor = bgColor
+            
+            //#colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
             
             //.secondarySystemBackground
         contractPriceTextField.layer.cornerRadius = Constants.cornerRadius
         contractPriceTextField.layer.borderWidth = 2.0
-        contractPriceTextField.layer.borderColor = UIColor.white.cgColor
+        contractPriceTextField.layer.borderColor = whiteColor.cgColor
+            
+            //UIColor.white.cgColor
         
         
     }
@@ -285,7 +306,9 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         toolBar.barStyle      = UIBarStyle.default
         toolBar.isTranslucent = true
 //        toolBar.tintColor     = UIColor(named: "myToolbarTintColor")
-         toolBar.tintColor     = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.tintColor     = UIColor.rgb(red: 76.0, green: 217.0, blue: 100.0, alpha: 1.0)
+            
+            //UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
         toolBar.sizeToFit()
         
         //=======creating done button ===
@@ -348,14 +371,18 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if contractDescriptionTexView.textColor == UIColor.black {
             contractDescriptionTexView.text = nil
-            contractDescriptionTexView.textColor = UIColor.black
+            contractDescriptionTexView.textColor = blackColor
+                
+                //UIColor.black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if contractDescriptionTexView.text.isEmpty {
             contractDescriptionTexView.text = "Description"
-            contractDescriptionTexView.textColor = UIColor.black
+            contractDescriptionTexView.textColor = blackColor
+                
+                //UIColor.black
         }
     }
     

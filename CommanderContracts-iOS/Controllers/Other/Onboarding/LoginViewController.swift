@@ -38,10 +38,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         
+        let bgColor = UIColor.rgb(red: 157.0, green: 169.0, blue: 170.0, alpha: 1.0)
+        self.view.backgroundColor = bgColor
         
-        
-        
-        self.view.backgroundColor =  #colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
+            //#colorLiteral(red: 0.61176471, green: 0.6627451, blue: 0.66666667,alpha: 1.0)
         
         forgotPasswordLabel.font = forgotPasswordLabel.font.italic
         

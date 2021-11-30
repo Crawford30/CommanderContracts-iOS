@@ -80,6 +80,8 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
         
         Utilities.vibrate()
         
+        //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        
         self.dismiss(animated: true, completion: nil)
     }
     

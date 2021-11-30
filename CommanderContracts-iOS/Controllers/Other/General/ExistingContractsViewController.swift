@@ -76,7 +76,13 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     @IBAction func backButtonTapped(_ sender: Any) {
         
         Utilities.vibrate()
+        
+      
         self.dismiss(animated: true, completion: nil)
+        
+        //self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+        
+        //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
     }
     
     
