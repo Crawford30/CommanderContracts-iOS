@@ -220,7 +220,8 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
       
         
         contractDescriptionTexView.text = "Description"
-        contractDescriptionTexView.textColor =  blackColor
+        contractDescriptionTexView.textColor = UIColor.black
+        
         
         contractDescriptionTexView.leftSpace()
         
@@ -371,18 +372,14 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if contractDescriptionTexView.textColor == UIColor.black {
             contractDescriptionTexView.text = nil
-            contractDescriptionTexView.textColor = blackColor
-                
-                //UIColor.black
+            contractDescriptionTexView.textColor = UIColor.black
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if contractDescriptionTexView.text.isEmpty {
             contractDescriptionTexView.text = "Description"
-            contractDescriptionTexView.textColor = blackColor
-                
-                //UIColor.black
+            contractDescriptionTexView.textColor = UIColor.black
         }
     }
     
