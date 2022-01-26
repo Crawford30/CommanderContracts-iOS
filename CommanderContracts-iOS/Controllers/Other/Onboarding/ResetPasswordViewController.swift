@@ -105,7 +105,7 @@ class ResetPasswordViewController: UIViewController {
         forgotPasswordBtn.clipsToBounds = true
         
         
-        forgotPasswordTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        forgotPasswordTextField.attributedPlaceholder = NSAttributedString(string: "E-mail Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
         forgotPasswordTextField.returnKeyType = .continue
         forgotPasswordTextField.leftViewMode = .always

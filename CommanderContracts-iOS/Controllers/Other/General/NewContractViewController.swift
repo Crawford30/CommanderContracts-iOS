@@ -158,7 +158,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         
         
         
-        clientNameTextField.attributedPlaceholder = NSAttributedString(string: "Client Name",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        clientNameTextField.attributedPlaceholder = NSAttributedString(string: "Client Name",attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
         clientNameTextField.returnKeyType = .continue
         clientNameTextField.leftViewMode = .always
@@ -179,7 +179,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         
         
         
-        clientAddressTextField.attributedPlaceholder = NSAttributedString(string: "Client Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        clientAddressTextField.attributedPlaceholder = NSAttributedString(string: "Client Address",attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         
         clientAddressTextField.returnKeyType = .continue
         clientAddressTextField.leftViewMode = .always
@@ -199,7 +199,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         
         
         
-        clientDateTextField.attributedPlaceholder = NSAttributedString(string: "Click to select date",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        clientDateTextField.attributedPlaceholder = NSAttributedString(string: "Click to select date",attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         clientDateTextField.returnKeyType = .continue
         clientDateTextField.leftViewMode = .always
         clientDateTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0)) //so that text is not flushed with the frame
@@ -220,12 +220,11 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
       
         
         contractDescriptionTexView.text = "Description"
-        contractDescriptionTexView.textColor = UIColor.black
+        contractDescriptionTexView.textColor = UIColor.darkGray
+        
         
         
         contractDescriptionTexView.leftSpace()
-        
-        
         
         contractDescriptionTexView.autocapitalizationType = .none
         contractDescriptionTexView.autocorrectionType = .no
@@ -244,7 +243,7 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         
         
         
-        contractPriceTextField.attributedPlaceholder = NSAttributedString(string: "Price (In USD)",attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        contractPriceTextField.attributedPlaceholder = NSAttributedString(string: "Price (In USD)",attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         contractPriceTextField.returnKeyType = .continue
         contractPriceTextField.leftViewMode = .always
         contractPriceTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0)) //so that text is not flushed with the frame
@@ -370,18 +369,18 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
     
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if contractDescriptionTexView.textColor == UIColor.black {
+        if contractDescriptionTexView.textColor == UIColor.darkGray {
             contractDescriptionTexView.text = nil
             contractDescriptionTexView.textColor = UIColor.black
         }
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if contractDescriptionTexView.text.isEmpty {
-            contractDescriptionTexView.text = "Description"
-            contractDescriptionTexView.textColor = UIColor.black
-        }
-    }
+//    func textViewDidEndEditing(_ textView: UITextView) {
+//        if contractDescriptionTexView.text.isEmpty {
+//            contractDescriptionTexView.text = "Description"
+//            contractDescriptionTexView.textColor = UIColor.black
+//        }
+//    }
     
     
     
@@ -427,6 +426,10 @@ extension NewContractViewController: UITextFieldDelegate{
         
         return true
     }
+    
+    
+    
+   
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
