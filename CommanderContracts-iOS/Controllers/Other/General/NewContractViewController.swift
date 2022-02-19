@@ -124,13 +124,14 @@ class NewContractViewController: UIViewController, UITextViewDelegate {
         singleInstance.setContractDescription(theDesc: (clientDesc)!)
         singleInstance.setContractAmount(theAmount: (clientPrice!).toDouble()!)
         
+        resetTextField()
         
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let homeVC = storyboard.instantiateViewController(withIdentifier: "CaptureSignatureID") as? CaptureSignaturesViewController
         homeVC?.modalPresentationStyle = .fullScreen
         self.present(homeVC!, animated: true, completion: nil)
         
-        resetTextField()
+       
         
         
         

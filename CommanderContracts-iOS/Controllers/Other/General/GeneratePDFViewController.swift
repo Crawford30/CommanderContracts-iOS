@@ -488,7 +488,7 @@ class GeneratePDFViewController: UIViewController {
     private  func deleteContract() {
         let uid = Auth.auth().currentUser!.uid
         
-        
+    
         let   ref = Database.database().reference().child("/user-contracts/\(userUID)/").child(contractID)
         
         ref.removeValue { error,arg  in

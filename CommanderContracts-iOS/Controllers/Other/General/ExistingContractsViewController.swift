@@ -110,7 +110,8 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     }
     
     
-    @IBAction func verticalDotTapped(_ sender: Any) {
+    @IBAction func verticalDotTapped(_ sender: UIButton) {
+        myCurrentBtn = sender.tag
         Utilities.vibrate()
         
     // print("Cell number \(String(indexPath.item)) tapped" )
@@ -610,7 +611,7 @@ class ExistingContractsViewController: UIViewController, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Utilities.vibrate()
+       
         
         myCurrentButton = indexPath.item
         
