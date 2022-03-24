@@ -32,9 +32,6 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
     
     
     
-    
-    
-    
     var indicator:ProgressIndicator?
     
     
@@ -175,9 +172,6 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
                         
                         
                         if let contractorData = self.contractorImageView.image!.pngData() {
-                            // convert your UIImage into Data object using png representation
-//                            var number = arc4random_uniform(900000) + 100000
-                            
                             let uniqueName = NSUUID().uuidString
                             FirebaseStorageManager().uploadImageData(data: contractorData, serverFileName: "\(uniqueName).png") { (isSuccess, url) in
                                 
@@ -186,9 +180,7 @@ class CaptureSignaturesViewController: UIViewController, ImageInfoClientViewCont
                                     print("uploadImageData: \(isSuccess), \(url)")
                                     self.contractorSignUri = url!
                                     
-                                    //companyContractType
-                                    
-                                    
+                                  
                                     Services.uploadContractsToDatabase(clientAddress: self.clientAddress, clientDate: self.clientDate, clientDesc: self.clientDesc, clientID: self.clientID, clientName: self.clientName, clientPrice: self.clientPrice, clientSignUri: self.clientSignUri, companyAddress: self.companyAddress, companyContractType: self.companyContractType, companyEmail: self.companyEmail, companyName: self.companyName, contractorSignUri: self.contractorSignUri, id: self.userRef.key!)
                                     {
                                         
